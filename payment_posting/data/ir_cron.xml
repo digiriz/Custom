@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="ir_cron_generate_employee_production" model="ir.cron">
+            <field name="name">Generate Employee Production</field>
+            <field name="model_id" ref="model_employee_target"/>
+            <field name="state">code</field>
+            <field name="code">#model.action_generate_employee_production(from_date='2024-11-01',to_date='2024-11-01', type=False, name=False)
+model.action_generate_employee_production()
+#type=['edm_process','ecom_process','835_push','pp_adjustments','pp_denials','pp_corrections','pp_transfers','pp_chk_research']
+#name='Rizwan Ahmed'
+
+            </field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=2, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />
+            <field name="active">True</field>
+        </record>
+
+
+        <record id="ir_cron_generate_employee_timesheet" model="ir.cron">
+            <field name="name">Push Production Work Hours</field>
+            <field name="model_id" ref="model_employee_target"/>
+            <field name="state">code</field>
+            <field name="code">#model.action_generate_employee_timesheet(from_date='2024-11-01',to_date='2024-11-01', type=False, name=False)
+model.action_generate_employee_timesheet()
+            </field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=4, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />
+            <field name="active">True</field>
+        </record>
+
+    </data>
+</odoo>

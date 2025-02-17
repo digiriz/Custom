@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_import_ecom_payment_posting_production_tree" model="ir.ui.view">
+            <field name="name">import.ecom.payment.posting.production.tree</field>
+            <field name="model">import.payment.posting</field>
+            <field name="arch" type="xml">
+                <tree string="ECOM Payment Posting" multi_edit="True" default_order="priority desc">
+                    <field name="priority" widget="priority" nolabel="1"/>
+                    <field name="grp" optional="show"/>
+                    <field name="run" optional="show"/>
+                    <field name="import_status" optional="show"/>
+                    <field name="division_id" optional="show"/>
+                    <field name="edm_batch" optional="show" string="Batch" decoration-bf="1"/>
+                    <field name="status" optional="show"/>
+                    <field name="init_s" optional="show"/>
+                    <field name="ecom_type" optional="show"/>
+                    <field name="bk_dep_dt" optional="show"/>
+                    <field name="created" optional="show"/>
+                    <field name="descriptions" optional="show"/>
+                    <field name="eob_s" optional="show"/>
+                    <field name="check_s" optional="show"/>
+                    <field name="not_posted" optional="show"/>
+                    <field name="not_posted_amount" widget="monetary"
+                           options="{'currency_field': 'company_currency_id'}" optional="show" sum="Not Posted Amount"
+                           decoration-bf="1" decoration-info="1"/>
+                    <field name="offset_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"
+                           optional="show" sum="Offset Amount" decoration-bf="1" decoration-info="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_import_ecom_payment_posting_production_form" model="ir.ui.view">
+            <field name="name">import.ecom.payment.posting.form</field>
+            <field name="model">import.payment.posting</field>
+            <field name="arch" type="xml">
+                <form string="Import Payment Posting">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="grp"/>
+                                <field name="division_id"/>
+                                <field name="run"/>
+                                <field name="edm_batch" string="Batch"/>
+                                <field name="status"/>
+                                <field name="init_s"/>
+                                <field name="ecom_type"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                                <field name="type" readonly="1" force_save="1"/>
+                            </group>
+                            <group>
+                                <field name="bk_dep_dt"/>
+                                <field name="created"/>
+                                <field name="descriptions"/>
+                                <field name="eob_s"/>
+                                <field name="check_s"/>
+                                <field name="not_posted"/>
+                                <field name="company_currency_id" invisible="1"/>
+                                <field name="not_posted_amount" widget='monetary'
+                                       options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="offset_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="write_uid"/>
+                                <field name="write_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_import_ecom_payment_posting_production" model="ir.actions.act_window">
+            <field name="name">Import ECOM Payment Posting</field>
+            <field name="res_model">import.payment.posting</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{'search_default_not_imported': 'true', 'ecom_payment_posting': True}</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'tree', 'view_id': ref('view_import_ecom_payment_posting_production_tree')}),
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_import_ecom_payment_posting_production_form')})]"/>
+
+        </record>
+
+
+       <!-- <menuitem id="menu_import_ecom_payment_posting_root" name="Import ECOM"
+                  sequence="2"
+                  parent="menu_import_payment_posting_root"
+                  action="action_import_ecom_payment_posting_production"
+                  groups="group_custom_supervisor,group_custom_supervisor_quality"
+        />-->
+
+    </data>
+</odoo>

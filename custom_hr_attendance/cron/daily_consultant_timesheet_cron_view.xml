@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_custom_task" model="ir.cron">
+            <field name="name">Generate Daily Timesheet(Consolidation)</field>
+            <field name="model_id" ref="model_daily_consulted_timesheet"/>
+            <field name="state">code</field>
+            <field name="code">#model._cron_update_attendance_and_hours(from_date=False, to_date=False, employee_name=False)
+    model._cron_update_attendance_and_hours()</field>
+            <field name="interval_type">days</field>
+            <field name="interval_number">1</field>
+            <field name="nextcall">2025-01-20 07:00:00</field>
+        </record>
+    </data>
+
+</odoo>

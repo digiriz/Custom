@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_action_taken_form" model="ir.ui.view">
+        <field name="name">action.taken.form</field>
+        <field name="model">action.taken</field>
+        <field name="arch" type="xml">
+            <form string="Action Taken">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_action_taken_tree" model="ir.ui.view">
+        <field name="name">action.taken.tree</field>
+        <field name="model">action.taken</field>
+        <field name="arch" type="xml">
+            <tree string="Action Taken">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_action_taken" model="ir.actions.act_window">
+        <field name="name">Action Taken</field>
+        <field name="res_model">action.taken</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="main_etm_masters_root_menu" name="ETM Masters"
+              parent="payment_posting.masters_payment_posting_menu"
+              sequence="12"
+    />
+
+
+    <menuitem id="menu_action_taken" name="Action Taken"
+              parent="main_etm_masters_root_menu"
+              action="action_action_taken"
+              groups="payment_posting.group_custom_admin"
+              sequence="2"
+    />
+
+</odoo>

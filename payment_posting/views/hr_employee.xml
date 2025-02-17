@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><!-- Inherit Form View to Modify it -->
+    <record id="view_employee_form_targer" model="ir.ui.view">
+        <field name="name">hr.employee.form.target</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="employee_target" string="Production Target">
+                    <field name="target_lines" readonly="True">
+                        <tree>
+                            <field name="process_type"/>
+                            <field name="from_date"/>
+                            <field name="employee_id"/>
+                            <field name="transaction_target"/>
+                            <field name="invoice_target"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="escalation_lines_page" string="Appreciation / Escalation">
+                    <field name="esclation_lines" readonly="True">
+                        <tree>
+                            <field name="type"/>
+                            <field name="date"/>
+                            <field name="escalation_type_id"/>
+                            <field name="description"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_employee_public_form_target" model="ir.ui.view">
+        <field name="name">hr.employee.public.form.target</field>
+        <field name="model">hr.employee.public</field>
+        <field name="inherit_id" ref="hr.hr_employee_public_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="employee_target" string="Production Target">
+                    <field name="target_lines" readonly="True">
+                        <tree>
+                            <field name="process_type"/>
+                            <field name="from_date"/>
+                            <field name="employee_id"/>
+                            <field name="transaction_target"/>
+                            <field name="invoice_target"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="escalation_lines_page" string="Escalation">
+                    <field name="esclation_lines" readonly="True">
+                        <tree>
+                            <field name="date"/>
+                            <field name="escalation_type_id"/>
+                            <field name="description"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

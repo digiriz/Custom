@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_reprocessing_status_form" model="ir.ui.view">
+        <field name="name">reprocessing.status.form</field>
+        <field name="model">reprocessing.status</field>
+        <field name="arch" type="xml">
+            <form string="Reprocessing Status">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_reprocessing_status_tree" model="ir.ui.view">
+        <field name="name">reprocessing.status.tree</field>
+        <field name="model">reprocessing.status</field>
+        <field name="arch" type="xml">
+            <tree string="Reprocessing Status">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_reprocessing_status" model="ir.actions.act_window">
+        <field name="name">Reprocessing Status</field>
+        <field name="res_model">reprocessing.status</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_reprocessing_status" name="Reprocessing Status"
+              parent="masters_payment_posting_menu"
+              action="action_reprocessing_status"
+              groups="group_custom_admin"
+              sequence="4"
+    />
+</odoo>

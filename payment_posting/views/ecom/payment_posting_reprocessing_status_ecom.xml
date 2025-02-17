@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_payment_posting_reprocessing_ecom_tree" model="ir.ui.view">
+            <field name="name">payment.posting.reprocessing.tree</field>
+            <field name="model">payment.posting</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Posting" multi_edit="false" create="false" default_order="priority desc"
+                      decoration-info="id_duplicate and id_duplicate == True">
+                    <field name="company_currency_id" column_invisible="1"/>
+                    <field name="id_duplicate" column_invisible="1"/>
+                    <field name="priority_compute" column_invisible="1"/>
+                    <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
+                    <field name="grp" optional="hide"/>
+                    <field name="division_id" optional="show"/>
+                    <field name="run" optional="hide"/>
+                    <field name="edm_batch" optional="show" string="Batch" decoration-bf="1"/>
+                    <field name="status" optional="hide"/>
+                    <field name="init_s" optional="hide"/>
+                    <field name="ecom_type" optional="hide"/>
+                    <field name="bk_dep_dt" optional="show"/>
+                    <field name="created" optional="hide"/>
+                    <field name="descriptions" optional="hide"/>
+                    <field name="eob_s" optional="hide"/>
+                    <field name="check_s" optional="show"/>
+                    <field name="not_posted" optional="hide"/>
+                    <field name="not_posted_amount" widget="monetary"
+                           options="{'currency_field': 'company_currency_id'}" optional="show" sum="Not Posted Amount"
+                           decoration-bf="1" decoration-info="1"/>
+                    <field name="offset_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"
+                           optional="show" sum="Offset Amount" decoration-bf="1" decoration-info="1"/>
+                    <field name="assigned_to" optional="hide" widget="many2one_avatar_user"/>
+                    <field name="assigned_date" optional="hide"/>
+                    <field name="bar_batch" optional="hide"/>
+                    <field name="posted_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"
+                           optional="hide" decoration-bf="1" decoration-info="1"/>
+                    <field name="pending_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"
+                           optional="hide" decoration-bf="1" decoration-info="1"/>
+                    <field name="transaction" optional="hide"/>
+                    <field name="status_id" optional="hide"/>
+                    <field name="posted_date" optional="show"/>
+                    <field name="remarks_id" optional="hide"/>
+                    <field name="clarification_sent_date" optional="hide"/>
+                    <field name="clarification_received_date" optional="hide"/>
+                    <field name="batch_closed_date" optional="hide"/>
+                    <field name="tat" widget="float_time" optional="hide"/>
+                    <field name="auditor_user_id" optional="hide"/>
+                    <field name="audited_date" optional="hide"/>
+                    <field name="of_transactions" optional="show"/>
+                    <field name="audit_id" optional="show"/>
+                    <field name="auditor_status" optional="hide"/>
+                    <field name="error_count" optional="show"/>
+                    <field name="incorrect" optional="show"/>
+                    <field name="missed" optional="show"/>
+                    <field name="navigation" optional="show"/>
+                    <field name="error_comments" optional="hide"/>
+                    <field name="reprocessing_id" optional="hide"/>
+                    <field name="fixing_date" optional="hide"/>
+                    <field name="updated_bar_batch" optional="hide"/>
+                    <field name="comments" optional="hide"/>
+                    <field name="error_status" optional="hide"/>
+                    <field name="total_work_hours" widget="float_time" optional="show"/>
+                    <field name="client_audit_status" optional="hide"/>
+                    <field name="client_error_count" optional="hide"/>
+                    <field name="reprocessing_id" optional="hide"/>
+                    <field name="c_audit_date" optional="hide"/>
+                    <field name="client_remarks_id" optional="hide"/>
+                    <field name="rebuttals" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_payment_posting_reprocessing_ecom_form" model="ir.ui.view">
+            <field name="name">payment.posting.reprocessing.form</field>
+            <field name="model">payment.posting</field>
+            <field name="arch" type="xml">
+                <form string="Payment Posting">
+                    <header>
+                        <field name="reprocessing_id" widget="statusbar" readonly="1"/>
+                        <field name="ref_count" invisible="1"/>
+                        <field name="timer_start" invisible="1"/>
+                        <button name="action_start_time" type="object" string="Start" invisible="timer_start"
+                                class="btn btn-success text-uppercase"/>
+                        <button name="action_stop_timing" type="object" string="Stop" invisible="not timer_start"
+                                class="btn btn-danger text-uppercase"/>
+                        <button name="action_view_reference_payment_posting" type="object" class="oe_stat_button"
+                                icon="fa-external-link" invisible="ref_count == 0" string="Duplicates"/>
+                    </header>
+                    <sheet>
+                        <group readonly="1">
+                            <group readonly="1">
+                                <field name="grp" readonly="1"/>
+                                <field name="division_id" readonly="1"/>
+                                <field name="run" readonly="1"/>
+                                <field name="edm_batch" string="Batch" readonly="1"/>
+                                <field name="status" readonly="1"/>
+                                <field name="init_s" readonly="1"/>
+                                <field name="ecom_type" readonly="1"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                                <field name="type" readonly="1" force_save="1"/>
+                                <field name="tag_ids" widget="many2many_tags" readonly="1"/>
+                                <field name="total_work_hours" widget="float_time"/>
+                            </group>
+                            <group readonly="1">
+                                <field name="bk_dep_dt" readonly="1"/>
+                                <field name="created" readonly="1"/>
+                                <field name="descriptions" readonly="1"/>
+                                <field name="eob_s" readonly="1"/>
+                                <field name="check_s" readonly="1"/>
+                                <field name="not_posted" readonly="1"/>
+                                <field name="company_currency_id" invisible="1"/>
+                                <field name="not_posted_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}" readonly="1"/>
+                                <field name="offset_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}" readonly="1"/>
+                                <field name="write_uid"/>
+                                <field name="write_date"/>
+                            </group>
+                        </group>
+                        <group readonly="1">
+                            <group string="Supervisor Input" name="supervisor_input">
+                                <field name="assigned_to" readonly="1"/>
+                                <field name="assigned_date" readonly="1"/>
+                            </group>
+                        </group>
+                        <group string="User Input" name="user_input">
+                            <group>
+                                <field name="bar_batch"/>
+                                <field name="posted_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="pending_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="of_transactions"/>
+                                <field name="transaction"/>
+                                <field name="status_id"/>
+                            </group>
+                            <group>
+                                <field name="posted_date"/>
+                                <field name="remarks_id"/>
+                                <field name="clarification_sent_date"/>
+                                <field name="clarification_received_date"/>
+                                <field name="batch_closed_date"/>
+                                <field name="tat"/>
+                            </group>
+                            <notebook colspan="4">
+                                <page string="Notes" name="payment_posting_invoice" autofocus="autofocus">
+                                    <field name="payment_posting_invoice_ids">
+                                        <tree editable="bottom" limit="200">
+                                            <field name="invoice_no"/>
+                                            <field name="amount"/>
+                                        </tree>
+                                    </field>
+                                    <group>
+                                        <field name="total_invoice_amount" widget="monetary"
+                                               options="{'currency_field': 'company_currency_id'}"/>
+                                        <field name="total_invoice_pending_amount" widget="monetary"
+                                               options="{'currency_field': 'company_currency_id'}"/>
+                                    </group>
+                                </page>
+                                <page string="Production Timing" name="production_timing" autofocus="autofocus">
+                                    <field name="production_timing_ids">
+                                        <tree create="0" editable="bottom">
+                                            <field name="production_start_time"/>
+                                            <field name="production_end_time"/>
+                                            <field name="duration" type="measure" widget="float_time"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+
+                        </group>
+                        <group string="Auditor Status" name="auditor_status">
+                            <group>
+                                <field name="error_comments" readonly="1"/>
+                                <field name="error_count" readonly="1"/>
+                                <field name="incorrect" readonly="1"/>
+                                <field name="missed" readonly="1"/>
+                                <field name="navigation" readonly="1"/>
+                                <field name="auditor_status" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="auditor_user_id" readonly="1"/>
+                                <field name="audited_date" readonly="1"/>
+                                <field name="error_category_id" readonly="1"/>
+                                <field name="audit_id" readonly="1"/>
+                                <field name="auditor_invoice_count" readonly="1"/>
+                            </group>
+                        </group>
+                        <group string="ERROR FIXING BY USER" name="error_fixing_by_user">
+                            <group>
+                                <field name="fixing_date"/>
+                                <field name="updated_bar_batch"/>
+                                <field name="comments"/>
+                                <field name="error_status"/>
+                                <field name="reprocessing_id"/>
+                            </group>
+                        </group>
+                        <group string="Client Status" name="client_status">
+                            <group>
+                                <field name="client_audit_status"/>
+                                <field name="client_error_count"/>
+                                <field name="c_audit_date"/>
+                            </group>
+                            <group>
+                                <field name="client_remarks_id"/>
+                                <field name="rebuttals"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_payment_posting_reprocessing_ecom" model="ir.actions.act_window">
+            <field name="name">Reprocessing - ECOM</field>
+            <field name="res_model">payment.posting</field>
+            <field name="view_mode">tree,form,search,pivot</field>
+            <field name="domain">[
+                ('reprocessing_id', '!=', False),('type', '=', 'ecom_process')
+                ]
+            </field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_payment_posting_reprocessing_ecom_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_payment_posting_reprocessing_ecom_form')})]"/>
+
+        </record>
+
+        <menuitem id="main_payment_posting_reprocessing_ecom_menu" name="ECOM"
+                  parent="menu_payment_posting_pp_ehm_reprocessing"
+                  action="action_payment_posting_reprocessing_ecom"
+                  groups="group_custom_user,group_custom_user_quality"
+                  sequence="2"
+        />
+
+    </data>
+</odoo>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_import_payment_posting_production_tree" model="ir.ui.view">
+            <field name="name">import.payment.posting.production.tree</field>
+            <field name="model">import.payment.posting</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Posting" multi_edit="True" default_order="priority desc">
+                    <field name="priority" widget="priority" nolabel="1"/>
+                    <field name="edm_batch"/>
+                    <field name="import_status"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="images"/>
+                    <field name="docs"/>
+                    <field name="def_doc_type"/>
+                    <field name="tag_ids" widget="many2many_tags" optional="hide"/>
+                    <field name="created"/>
+                    <field name="last_edited_by"/>
+                    <field name="amount"/>
+                    <field name="write_uid" optional="hide"/>
+                    <field name="write_date" optional="hide"/>
+                    <field name="descriptions" optional="hide"/>
+                    <field name="payment_posting_status_id" optional="hide"/>
+                    <field name="division_id"/>
+                    <field name="deposit_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_import_payment_posting_production_form" model="ir.ui.view">
+            <field name="name">import.payment.posting.form</field>
+            <field name="model">import.payment.posting</field>
+            <field name="arch" type="xml">
+                <form string="Import Payment Posting">
+                    <sheet>
+                        <group>
+                            <group readonly="1">
+                                <field name="edm_batch"/>
+                                <field name="status"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                                <field name="images"/>
+                                <field name="docs"/>
+                                <field name="def_doc_type"/>
+                                <field name="tag_ids" widget="many2many_tags"/>
+                            </group>
+                            <group readonly="1">
+                                <field name="created"/>
+                                <field name="last_edited_by"/>
+                                <field name="amount"/>
+                                <field name="write_uid"/>
+                                <field name="write_date"/>
+                                <field name="descriptions"/>
+                                <field name="division_id"/>
+                                <field name="deposit_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="import_payment_posting_view_search" model="ir.ui.view">
+            <field name="name">import.payment.posting.search</field>
+            <field name="model">import.payment.posting</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="edm_batch"/>
+                    <filter name="not_imported" domain="[('import_status', '=', 'not_imported')]" string="Not Imported"/>
+                    <group expand="0" string="Group by...">
+                        <filter name="payment_posting_status_id" context="{'group_by' : 'payment_posting_status_id'}" string="PStatus"/>
+                        <filter name="import_status_group" context="{'group_by' : 'import_status'}" string="Import Status"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_import_payment_posting_production" model="ir.actions.act_window">
+            <field name="name">Import EDM Payment Posting</field>
+            <field name="res_model">import.payment.posting</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{'search_default_not_imported': 'true', 'edm_payment_posting': True}</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'tree', 'view_id': ref('view_import_payment_posting_production_tree')}),
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_import_payment_posting_production_form')})]"/>
+
+        </record>
+
+
+        <!--<menuitem id="menu_import_payment_posting_root" name="Import"
+                  sequence="-1"
+                  parent="menu_payment_posting_root"
+                  groups="group_custom_supervisor,group_custom_supervisor_quality"
+        />-->
+
+        <!--<menuitem id="menu_import_payment_posting_root_allocation" name="Import EDM"
+                  sequence="1"
+                  parent="menu_import_payment_posting_root"
+                  action="action_import_payment_posting_production"
+                  groups="group_custom_supervisor,group_custom_supervisor_quality"
+        />-->
+
+        <record id="action_move_to_allocation" model="ir.actions.server">
+            <field name="name">Move to Allocation</field>
+            <field name="model_id" ref="model_import_payment_posting"/>
+            <field name="binding_model_id" ref="model_import_payment_posting"/>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records.action_move_to_allocation()
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

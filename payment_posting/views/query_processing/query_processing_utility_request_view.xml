@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_payment_posting_production_utility_request_form_view" model="ir.ui.view">
+        <field name="name">payment.posting.utility.request.form.view</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <form string="Utility Request">
+                <header>
+                    <field name="status_id" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="division_id"/>
+                            <field name="type" string="Category"/>
+                            <field name="deposit_date" string="Deposit Date"/>
+                            <field name="exchange" string="Exchange"/>
+                            <field name="current_status"/>
+                            <field name="request"/>
+                            <field name="edm_batch" string="EDM#"/>
+                            <field name="bar_batch" string="ECOM - BAR BATCH#"/>
+                            <field name="q_status_id"/>
+                        </group>
+                        <group>
+                            <field name="pg"/>
+                            <field name="remarks_id"/>
+                            <field name="approximate_invoice_count"/>
+                            <field name="assigned_to" string="Username"/>
+                            <field name="mail_date"/>
+                            <field name="query_status"/>
+                            <field name="transaction" string="Trans Count"/>
+                            <field name="query_bar_batch"/>
+                            <field name="posted_date" string="Completed Date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_payment_posting_utility_request_tree" model="ir.ui.view">
+        <field name="name">payment.posting.utility.request.tree</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <tree string="Utility Request">
+                <field name="priority_compute" column_invisible="1"/>
+                    <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
+                <field name="division_id" optional="show"/>
+                <field name="type" string="Category" optional="show"/>
+                <field name="deposit_date" string="Deposit Date" optional="show"/>
+                <field name="exchange" string="Exchange" optional="show"/>
+                <field name="current_status" optional="show"/>
+                <field name="request" optional="show"/>
+                <field name="edm_batch" string="EDM#" optional="show"/>
+                <field name="bar_batch" string="ECOM - BAR BATCH#" optional="show"/>
+                <field name="remarks_id" string="PG#" optional="show"/>
+                <field name="approximate_invoice_count" optional="show"/>
+                <field name="assigned_to" string="Username" optional="show"/>
+                <field name="mail_date" optional="show"/>
+                <field name="query_status" optional="show"/>
+                <field name="transaction" string="Trans Count" optional="show"/>
+                <field name="query_bar_batch" optional="show"/>
+                <field name="posted_date" string="Completed Date" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_payment_posting_production_utility_request" model="ir.actions.act_window">
+        <field name="name">PP-EHM Utility Request</field>
+        <field name="res_model">payment.posting</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="domain">[('status_id', '=', 'Hold')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_payment_posting_utility_request_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_payment_posting_production_utility_request_form_view')})]"/>
+
+    </record>
+
+    <menuitem id="main_payment_posting_query_processing_root_menu" name="Query Handling"
+              parent="menu_payment_posting_root"
+              sequence="6"
+    />
+    <menuitem id="main_payment_posting_ehm_query_processing_root_menu" name="PP-EHM"
+              parent="main_payment_posting_query_processing_root_menu"
+              groups="group_custom_supervisor"
+              sequence="1"
+    />
+
+
+    <menuitem id="main_sub_production_utility_request_menu" name="Utility Request"
+              parent="main_payment_posting_ehm_query_processing_root_menu"
+              action="action_payment_posting_production_utility_request"
+              sequence="1"
+    />
+</odoo>

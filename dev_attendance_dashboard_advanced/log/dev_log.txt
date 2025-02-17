@@ -1,0 +1,23 @@
+16 May 2024
+---------------------------
+v 17.0.1.0
+
+    * Module Created
+    
+ 24 July 2024
+ ---------------------------
+ v 17.0.1.1
+ 
+    * Add access rights for Attendance Dashboard.
+    
+    
+ 20 Sep 2024
+ ---------------------------
+ v 17.0.1.2
+ 
+    * Add default images for admin and employees.
+    * hour display format changed like, 9H to 09:09 H
+    * table header get fixed 
+    * leave summary count issue solve
+    * add next and prev button in leave summary table
+    

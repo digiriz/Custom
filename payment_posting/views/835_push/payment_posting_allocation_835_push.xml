@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_payment_posting_production_835_push_tree" model="ir.ui.view">
+            <field name="name">payment.posting.production.tree</field>
+            <field name="model">payment.posting</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Posting" multi_edit="True" default_order="priority desc"
+                      decoration-info="id_duplicate and id_duplicate == True">
+                    <field name="id_duplicate" column_invisible="1" optional="hide"/>
+                    <field name="priority_compute" column_invisible="1"/>
+                    <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
+                    <field name="exchange" optional="show"/>
+                    <field name="check_eft_number" optional="show"/>
+                    <field name="load_date" optional="show"/>
+                    <field name="tax_id" optional="hide"/>
+                    <field name="offset" optional="hide"/>
+                    <field name="clm" optional="hide"/>
+                    <field name="pay_m" optional="hide"/>
+                    <field name="recon_date" optional="hide"/>
+                    <field name="created" optional="show"/>
+                    <field name="amount" optional="show"/>
+                    <field name="division_id" optional="show"/>
+                    <field name="reprocessing_id" optional="hide"/>
+                    <field name="tx" optional="show"/>
+                    <field name="remit_adv" optional="hide"/>
+                    <field name="payer_identity" optional="hide"/>
+                    <field name="payer_nm" optional="hide"/>
+                    <field name="pro_date" optional="show"/>
+                    <field name="assigned_to" optional="show"/>
+                    <field name="assigned_date" optional="show"/>
+                    <field name="status_id" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_payment_posting_production_835_push_form" model="ir.ui.view">
+            <field name="name">payment.posting.form</field>
+            <field name="model">payment.posting</field>
+            <field name="arch" type="xml">
+                <form string="Payment Posting">
+                    <header>
+                        <field name="status_id" widget="statusbar" readonly="1"/>
+                        <field name="ref_count" invisible="1"/>
+                        <button name="action_view_reference_payment_posting" type="object" class="oe_stat_button"
+                                icon="fa-external-link" invisible="ref_count == 0" string="Duplicates"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group readonly="1">
+                                <field name="exchange"/>
+                                <field name="check_eft_number"/>
+                                <field name="load_date"/>
+                                <field name="tax_id"/>
+                                <field name="offset"/>
+                                <field name="clm"/>
+                                <field name="pay_m"/>
+                                <field name="type" readonly="1"/>
+
+                            </group>
+                            <group readonly="1">
+                                <field name="created"/>
+                                <field name="amount"/>
+                                <field name="division_id"/>
+                                <field name="tx"/>
+                                <field name="remit_adv"/>
+                                <field name="payer_identity"/>
+                                <field name="payer_nm"/>
+                                <field name="pro_date"/>
+                            </group>
+                        </group>
+                        <group readonly="1">
+                            <group string="Supervisor Input" name="supervisor_input">
+                                <field name="assigned_to"/>
+                                <!--<field name="employee_id"/>
+                                <field name="employee_parent_id"/>
+                                <field name="category_ids" widget="many2many_tags"/>-->
+                                <field name="assigned_date"/>
+                            </group>
+                        </group>
+                        <group string="User Input" name="user_input">
+                            <group>
+                                <field name="bar_batch"/>
+                                <field name="posted_amount"/>
+                                <field name="pending_amount"/>
+                                <field name="of_transactions"/>
+                                <field name="transaction"/>
+                                <field name="status_id"/>
+                            </group>
+                            <group>
+                                <field name="posted_date"/>
+                                <field name="remarks_id"/>
+                                <field name="recon_date"/>
+                                <field name="clarification_sent_date"/>
+                                <field name="clarification_received_date"/>
+                                <field name="batch_closed_date"/>
+                            </group>
+                            <notebook colspan="4">
+                                <page string="Notes" name="payment_posting_invoice" autofocus="autofocus">
+                                    <field name="payment_posting_invoice_ids">
+                                        <tree editable="bottom" limit="200">
+                                            <field name="invoice_no"/>
+                                            <field name="amount"/>
+                                        </tree>
+                                    </field>
+                                    <group>
+                                        <field name="total_invoice_amount" widget="monetary"
+                                               options="{'currency_field': 'company_currency_id'}"/>
+                                        <field name="total_invoice_pending_amount" widget="monetary"
+                                               options="{'currency_field': 'company_currency_id'}"/>
+                                    </group>
+                                    <!--<div class="oe_right">
+                                        <div class="oe_inline">
+                                            <label for="total_invoice_amount" class="oe_form_label"
+                                                   style="font-weight: bold;">Total :
+                                            </label>
+                                            <span class="oe_form_value">
+                                                <field name="total_invoice_amount" widget="monetary" nolabel="1"
+                                                       options="{'currency_field': 'company_currency_id'}"/>
+                                            </span>
+                                        </div>
+                                        <div class="oe_inline">
+                                            <label for="total_invoice_pending_amount" class="oe_form_label"
+                                                   style="font-weight: bold;">Pending Amount:
+                                            </label>
+                                            <span class="oe_form_value">
+                                                <field name="total_invoice_pending_amount" widget="monetary" nolabel="1"
+                                                       options="{'currency_field': 'company_currency_id'}"/>
+                                            </span>
+                                        </div>
+                                    </div>-->
+                                </page>
+                            </notebook>
+
+                        </group>
+                        <group string="Auditor Status" name="auditor_status">
+                            <group>
+                                <field name="error_comments"/>
+                                <field name="error_count"/>
+                                <field name="incorrect"/>
+                                <field name="missed"/>
+                                <field name="navigation"/>
+                                <field name="auditor_status"/>
+                            </group>
+                            <group>
+                                <field name="auditor_user_id"/>
+                                <field name="audited_date"/>
+                                <field name="error_category_id"/>
+                                <field name="audit_id"/>
+                            </group>
+                        </group>
+                        <group string="ERROR FIXING BY USER" name="error_fixing_by_user">
+                            <group>
+                                <field name="fixing_date"/>
+                                <field name="updated_bar_batch"/>
+                                <field name="comments"/>
+                                <field name="error_status"/>
+                                <field name="reprocessing_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_payment_posting_production_835_push" model="ir.actions.act_window">
+            <field name="name">Allocation - 835Push</field>
+            <field name="res_model">payment.posting</field>
+            <field name="view_mode">tree,form,search,pivot</field>
+            <field name="domain">[("type", "=", '835_push')]</field>
+            <field name="context">{'search_default_unassigned_status_id': 1, 'default_type': '835_push'}</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'tree', 'view_id': ref('view_payment_posting_production_835_push_tree')}),
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_payment_posting_production_835_push_form')})]"/>
+
+        </record>
+
+        <menuitem id="menu_payment_posting_pp_ehm_allocation" name="PP-EHM"
+                  sequence="1"
+                  parent="menu_payment_posting_root_allocation"
+                  groups="payment_posting.group_custom_supervisor,payment_posting.group_custom_supervisor_quality"
+        />
+
+
+        <menuitem id="main_payment_posting_production_835_push_menu" name="835Push"
+                  parent="menu_payment_posting_pp_ehm_allocation"
+                  action="action_payment_posting_production_835_push"
+                  groups="group_custom_user"
+                  sequence="3"/>
+
+    </data>
+</odoo>

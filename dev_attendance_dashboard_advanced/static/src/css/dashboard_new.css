@@ -1,0 +1,125 @@
+.css-shadow {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 1px solid #94437d;
+    filter: drop-shadow(0 0 8px #710553);
+    object-fit: cover;
+}
+.emp-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #94437d;
+    filter: drop-shadow(0 0 2px #710553);
+    object-fit: cover;
+}
+
+.filters {
+    border-radius: 15px !important;
+    border: none !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.box-header {
+    border-radius: 20px;
+    background-color: #663dff;
+    background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+}
+
+.box-body {
+    border-radius: 20px !important;
+}
+
+.box {
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.box:hover {
+    background-color: #2db1bb;
+    background-image: linear-gradient(315deg, #41bcc5 0%, #087179 74%);
+    cursor: pointer;
+}
+
+.bar-chart {
+    width: 50%;
+    height: 50vh;
+    max-width: 650px;
+    max-height: 300px;
+    /* width: calc(50% - 20px); 
+    max-width: 650px;
+    height: calc(50vh - 20px); 
+    max-height: 300px; 
+    margin: 10px; 
+    box-sizing: border-box;  */
+
+
+}
+
+.bar-container {
+    height: 100%;
+    width: 100%;
+}
+
+
+/* @media (max-width: 768px) {
+    .bar-chart {
+        width: 40%;
+        height: 40vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .bar-chart {
+        width: 70%;
+        height: 30vh;
+    }
+} */
+#attendanceCalender{
+    font-size: 13px;
+}
+
+.table-card{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* overflow-x:scroll; */
+}
+
+.table-header{
+    text-align: center;
+    background-color:#f8e8fd;
+    font-size: large;
+    font-weight: 500;
+    padding : 8px 0px;
+}
+
+.table{
+    margin-bottom: 0px;
+}
+
+ /* tooltip  */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

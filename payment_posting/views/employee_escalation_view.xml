@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<odoo>
+    <record id="view_employee_escalation_form" model="ir.ui.view">
+        <field name="name">employee.escalation.form</field>
+        <field name="model">employee.escalation</field>
+        <field name="arch" type="xml">
+            <form string="Appreciation / Escalation">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="type"/>
+                            <field name="date"/>
+                            <field name="employee_id"/>
+                            <field name="escalation_type_id"/>
+                            <field name="description"/>
+                            <field name="root_cause"/>
+                            <field name="incident_details"/>
+                        </group>
+                        <group>
+                            <field name="corrective_action_plan"/>
+                            <field name="employee_response"/>
+                            <field name="tl_comments"/>
+                            <field name="manager_comments"/>
+                            <field name="hr_comments"/>
+                        </group>
+
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_escalation_tree" model="ir.ui.view">
+        <field name="name">employee.escalation.tree</field>
+        <field name="model">employee.escalation</field>
+        <field name="arch" type="xml">
+            <tree string="Appreciation / Escalation List">
+                <field name="type"/>
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="escalation_type_id"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_employee_escalation" model="ir.actions.act_window">
+        <field name="name">Appreciation / Escalation</field>
+        <field name="res_model">employee.escalation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_employee_escalation_tree"/>
+    </record>
+
+    <menuitem id="menu_escalations" name="Appreciation / Escalation" parent="payment_posting.main_production_reporting_root_menu" action="action_employee_escalation" sequence="5"/>
+</odoo>

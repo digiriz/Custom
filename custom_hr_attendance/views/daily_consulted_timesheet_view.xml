@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_daily_consulted_timesheet_form" model="ir.ui.view">
+            <field name="name">daily.consolidated.timesheet.form</field>
+            <field name="model">daily.consulted.timesheet</field>
+            <field name="arch" type="xml">
+                <form string="Daily Consolidated Timesheet">
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                            <field name="employee_id"/>
+                            <field name="attendance_hours" readonly="1" force_save="1" widget="float_time"/>
+                        </group>
+                        <group>
+                            <field name="worked_hours" readonly="1" force_save="1" widget="float_time"/>
+                            <field name="shortage_hours" readonly="1" force_save="1" widget="float_time"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Worked Hours" name="analytic_line_ids">
+                                <field name="analytic_line_ids" context="{'form_view_ref': 'custom_hr_attendance.view_form_account_analytic_line'}">
+                                    <tree>
+<!--
+                                        <field name="date"/>
+-->
+<!--
+                                        <field name="employee_id"/>
+-->
+                                        <field name="project_id"/>
+                                        <field name="task_id"/>
+                                        <field name="name"/>
+                                        <field name="unit_amount"  string="Work Hours" sum="Total Hours" widget="float_time"/>
+                                        <field name="state" />
+                                    </tree>
+                                </field>
+                                <button name="add_timesheet" string="Add Timesheet" class="btn btn-primary" type="object" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_daily_consulted_timesheet_tree" model="ir.ui.view">
+            <field name="name">daily.consultant.timesheet.tree</field>
+            <field name="model">daily.consulted.timesheet</field>
+            <field name="arch" type="xml">
+                <tree string="Daily Consolidated Timesheet" decoration-danger="attendance_hours != worked_hours">
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <field name="attendance_hours" widget="float_time"/>
+                    <field name="worked_hours" widget="float_time"/>
+                    <field name="shortage_hours" widget="float_time"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_account_analytic_line" model="ir.ui.view">
+            <field name="name">account.analytic.line.form</field>
+            <field name="model">account.analytic.line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,awaiting_approval,approved,declined" readonly="1"/>
+                        <button name="action_awaiting_approval" type="object" string="Send For Approval"
+                                invisible="state not in ['draft']" class="btn-primary"/>
+                        <button name="action_approved" type="object" string="Approve"
+                                invisible="state not in ['awaiting_approval']" class="btn-primary"/>
+                        <button name="action_declined" type="object" string="Decline"
+                                invisible="state not in ['awaiting_approval']"
+                                class="btn-primary"/>
+                         <button name="action_draft" type="object" string="Set to Draft"
+                            invisible="state not in ['declined']"
+                            class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="readonly_timesheet" invisible="1"/>
+                                <field name="timesheet_id" invisible="1"/>
+                                <field name="project_id" options="{'no_create_edit': True}"
+                                    context="{'search_default_my_projects': True}"
+                                    required="1"
+                                    readonly="readonly_timesheet"/>
+                                <field name="task_id" widget="task_with_hours" options="{'no_create': True,'no_edit': True, 'no_open':True}"
+                                    context="{'default_project_id': project_id, 'search_default_my_tasks': True, 'search_default_open_tasks': True}"
+                                    readonly="readonly_timesheet"/>
+                                <field name="name" readonly="readonly_timesheet" />
+                                <field name="company_id" groups="base.group_multi_company" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="date" readonly="readonly_timesheet"/>
+                                <field name="amount" invisible="1"/>
+                                <field name="unit_amount" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24"
+                                    readonly="readonly_timesheet" decoration-muted="unit_amount == 0"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="company_id" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_daily_consulted_timesheet" model="ir.actions.act_window">
+            <field name="name">Daily Consolidated Timesheet</field>
+            <field name="res_model">daily.consulted.timesheet</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_daily_consulted_timesheet" name="Daily Consolidated Timesheet"
+                  parent="hr_timesheet.menu_timesheets_reports"
+                  action="action_daily_consulted_timesheet"
+                  sequence="5"
+        />
+    </data>
+</odoo>

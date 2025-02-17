@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="payment_posting.menu_payment_posting_root" name="P-Square"
+                  sequence="-100"
+                  groups="payment_posting.group_custom_user,payment_posting.group_custom_user_quality,payment_posting_etm.group_custom_user_etm,payment_posting_etm.group_custom_user_quality_etm"
+                  web_icon="payment_posting,static/description/icon.png"
+        />
+
+        <menuitem id="payment_posting.menu_payment_posting_root_allocation" name="Allocation"
+                  sequence="1"
+                  parent="payment_posting.menu_payment_posting_root"/>
+
+        <menuitem id="menu_payment_posting_pp_etm_allocation" name="PP-ETM"
+                  sequence="2"
+                  parent="payment_posting.menu_payment_posting_root_allocation"
+                  groups="payment_posting_etm.group_custom_supervisor_etm,payment_posting_etm.group_custom_supervisor_quality_etm"
+        />
+
+        <menuitem id="main_payment_posting_pp_adjustments_menu_etm" name="PP-Adjustments"
+                  parent="menu_payment_posting_pp_etm_allocation"
+                  action="action_payment_posting_etm_pp_adjustments_allocation"
+                  sequence="1"/>
+        <menuitem id="main_payment_posting_pp_denials_menu" name="PP-Denials"
+                  parent="menu_payment_posting_pp_etm_allocation"
+                  action="action_payment_posting_etm_pp_denials_allocation"
+                  sequence="2"/>
+        <menuitem id="main_payment_posting_pp_corrections_menu" name="PP-Corrections"
+                  parent="menu_payment_posting_pp_etm_allocation"
+                  action="action_payment_posting_etm_pp_corrections_allocation"
+                  sequence="3"/>
+
+        <menuitem id="main_payment_posting_pp_transfer_menu" name="PP-Transfer"
+                  parent="menu_payment_posting_pp_etm_allocation"
+                  action="action_payment_posting_etm_pp_transfer_allocation"
+                  sequence="4"/>
+        <menuitem id="main_payment_posting_pp_chk_research_menu" name="PP-Chk Research"
+                  parent="menu_payment_posting_pp_etm_allocation"
+                  action="action_payment_posting_etm_pp_chk_research_allocation"
+                  sequence="5"/>
+
+
+        <menuitem id="payment_posting.main_sub_production_root_menu" name="Production"
+                  parent="payment_posting.menu_payment_posting_root" sequence="2"
+        />
+        <menuitem id="menu_payment_posting_pp_etm_production" name="PP-ETM"
+                  sequence="2"
+                  parent="payment_posting.main_sub_production_root_menu"
+                  groups="payment_posting_etm.group_custom_user_etm"
+        />
+
+        <menuitem id="main_payment_posting_pp_adjustments_production_menu" name="PP-Adjustments"
+                  parent="menu_payment_posting_pp_etm_production"
+                  action="action_payment_posting_etm_pp_production_adjustments_allocation"
+                  sequence="1"/>
+
+        <menuitem id="main_payment_posting_pp_denials_production_menu" name="PP-Denials"
+                  parent="menu_payment_posting_pp_etm_production"
+                  action="action_payment_posting_etm_pp_denials_production"
+                  sequence="2"/>
+
+        <menuitem id="main_payment_posting_pp_corrections_production_menu" name="PP-Corrections"
+                  parent="menu_payment_posting_pp_etm_production"
+                  action="action_payment_posting_etm_pp_corrections_production"
+                  sequence="3"/>
+
+        <menuitem id="main_payment_posting_pp_transfer_production_menu" name="PP-Transfer"
+                  parent="menu_payment_posting_pp_etm_production"
+                  action="action_payment_posting_etm_pp_transfer_production"
+                  sequence="4"/>
+
+        <menuitem id="main_payment_posting_pp_production_chk_research_menu" name="PP-Chk Research"
+                  parent="menu_payment_posting_pp_etm_production"
+                  action="action_payment_posting_etm_pp_chk_research_production"
+                  sequence="5"/>
+
+        <menuitem id="menu_payment_posting_pp_etm_quality_allocation" name="PP-ETM"
+                  sequence="2"
+                  parent="payment_posting.main_payment_posting_quality_root_menu"
+                  groups="payment_posting_etm.group_custom_user_quality_etm"
+        />
+
+        <menuitem id="main_payment_posting_pp_adjustments_quality_allocation_menu" name="PP-Adjustments"
+                  parent="menu_payment_posting_pp_etm_quality_allocation"
+                  action="action_payment_posting_etm_pp_adjustments_quality_allocation"
+                  sequence="1"/>
+
+        <menuitem id="main_payment_posting_pp_denials_quality_allocation_menu" name="PP-Denials"
+                  parent="menu_payment_posting_pp_etm_quality_allocation"
+                  action="action_payment_posting_etm_pp_denials_quality_allocation"
+                  sequence="2"/>
+
+        <menuitem id="main_payment_posting_pp_corrections_quality_allocation_menu" name="PP-Corrections"
+                  parent="menu_payment_posting_pp_etm_quality_allocation"
+                  action="action_payment_posting_etm_pp_corrections_quality_allocation"
+                  sequence="3"/>
+
+        <menuitem id="main_payment_posting_pp_transfer_quality_allocation_menu" name="PP-Transfer"
+                  parent="menu_payment_posting_pp_etm_quality_allocation"
+                  action="action_payment_posting_etm_pp_transfer_quality_allocation"
+                  sequence="4"/>
+
+        <menuitem id="main_payment_posting_pp_quality_allocation_chk_research_menu" name="PP-Chk Research"
+                  parent="menu_payment_posting_pp_etm_quality_allocation"
+                  action="action_payment_posting_etm_pp_chk_research_quality_allocation"
+                  sequence="5"/>
+
+
+        <menuitem id="menu_payment_posting_pp_etm_quality_assurance" name="PP-ETM"
+                  sequence="2"
+                  parent="payment_posting.main_quality_assurance_root_menu"
+                  groups="payment_posting_etm.group_custom_user_quality_etm"
+        />
+
+        <menuitem id="main_payment_posting_pp_adjustments_quality_assurance_menu" name="PP-Adjustments"
+                  parent="menu_payment_posting_pp_etm_quality_assurance"
+                  action="action_payment_posting_etm_pp_adjustments_quality_assurance"
+                  sequence="1"/>
+
+        <menuitem id="main_payment_posting_pp_denials_quality_assurance_menu" name="PP-Denials"
+                  parent="menu_payment_posting_pp_etm_quality_assurance"
+                  action="action_payment_posting_etm_pp_denials_quality_assurance"
+                  sequence="2"/>
+
+        <menuitem id="main_payment_posting_pp_corrections_quality_assurance_menu" name="PP-Corrections"
+                  parent="menu_payment_posting_pp_etm_quality_assurance"
+                  action="action_payment_posting_etm_pp_corrections_quality_assurance"
+                  sequence="3"/>
+
+        <menuitem id="main_payment_posting_pp_transfer_quality_assurance_menu" name="PP-Transfer"
+                  parent="menu_payment_posting_pp_etm_quality_assurance"
+                  action="action_payment_posting_etm_pp_transfer_quality_assurance"
+                  sequence="4"/>
+
+        <menuitem id="main_payment_posting_pp_quality_assurance_chk_research_menu" name="PP-Chk Research"
+                  parent="menu_payment_posting_pp_etm_quality_assurance"
+                  action="action_payment_posting_etm_pp_chk_research_quality_assurance"
+                  sequence="5"/>
+
+
+        <menuitem id="menu_payment_posting_pp_etm_reporting" name="PP-ETM"
+                  sequence="2"
+                  parent="payment_posting.main_production_reporting_root_menu"
+                  groups="group_custom_user_etm"
+        />
+
+        <menuitem id="main_payment_posting_pp_adjustments_reporting_menu" name="PP-Adjustments"
+                  parent="menu_payment_posting_pp_etm_reporting"
+                  action="action_payment_posting_etm_pp_adjustments_reporting"
+                  sequence="1"/>
+
+        <menuitem id="main_payment_posting_pp_denials_reporting_menu" name="PP-Denials"
+                  parent="menu_payment_posting_pp_etm_reporting"
+                  action="action_payment_posting_etm_pp_denials_reporting"
+                  sequence="2"/>
+
+        <menuitem id="main_payment_posting_pp_corrections_reporting_menu" name="PP-Corrections"
+                  parent="menu_payment_posting_pp_etm_reporting"
+                  action="action_payment_posting_etm_pp_corrections_reporting"
+                  sequence="3"/>
+        <menuitem id="main_payment_posting_pp_transfer_reporting_menu" name="PP-Transfer"
+                  parent="menu_payment_posting_pp_etm_reporting"
+                  action="action_payment_posting_etm_pp_transfer_reporting"
+                  sequence="4"/>
+
+        <menuitem id="main_payment_posting_pp_chk_research_reporting_menu" name="PP-Chk Research"
+                  parent="menu_payment_posting_pp_etm_reporting"
+                  action="action_payment_posting_etm_pp_chk_research_reporting"
+                  sequence="5"/>
+        <menuitem id="main_payment_posting_combined_menu" name="Combined"
+                  parent="menu_payment_posting_pp_etm_reporting"
+                  action="action_payment_posting_combined_etm"
+                  sequence="6"/>
+
+
+        <menuitem id="menu_payment_posting_pp_etm_reprocessing" name="PP-ETM"
+                  sequence="2"
+                  parent="payment_posting.main_payment_posting_reprocessing_root_menu"
+                  groups="payment_posting_etm.group_custom_user_etm,payment_posting_etm.group_custom_user_quality_etm"
+        />
+
+        <menuitem id="main_payment_posting_pp_adjustments_reprocessing_menu" name="PP-Adjustments"
+                  parent="menu_payment_posting_pp_etm_reprocessing"
+                  action="action_payment_posting_etm_pp_adjustments_reprocessing"
+                  sequence="1"/>
+
+        <menuitem id="main_payment_posting_pp_denials_reprocessing_menu" name="PP-Denials"
+                  parent="menu_payment_posting_pp_etm_reprocessing"
+                  action="action_payment_posting_etm_pp_denials_reprocessing"
+                  sequence="2"/>
+
+        <menuitem id="main_payment_posting_pp_corrections_reprocessing_menu" name="PP-Corrections"
+                  parent="menu_payment_posting_pp_etm_reprocessing"
+                  action="action_payment_posting_etm_pp_corrections_reprocessing"
+                  sequence="3"/>
+
+        <menuitem id="main_payment_posting_pp_transfer_reprocessing_menu" name="PP-Transfer"
+                  parent="menu_payment_posting_pp_etm_reprocessing"
+                  action="action_payment_posting_etm_pp_transfer_reprocessing"
+                  sequence="4"/>
+
+        <menuitem id="main_payment_posting_pp_chk_research_reprocessing_menu" name="PP-Chk Research"
+                  parent="menu_payment_posting_pp_etm_reprocessing"
+                  action="action_payment_posting_etm_pp_chk_research_reprocessing"
+                  sequence="5"/>
+
+        <menuitem id="payment_posting.masters_payment_posting_menu" name="Technical"
+                  parent="payment_posting.menu_payment_posting_root"
+                  groups="payment_posting.group_custom_supervisor,payment_posting_etm.group_custom_supervisor_etm"
+                  sequence="10"/>
+
+    </data>
+</odoo>

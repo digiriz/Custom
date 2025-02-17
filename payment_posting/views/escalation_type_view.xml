@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_escalation_type_form" model="ir.ui.view">
+        <field name="name">escalation.type.form</field>
+        <field name="model">escalation.type</field>
+        <field name="arch" type="xml">
+            <form string="Escalation Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_escalation_type_tree" model="ir.ui.view">
+        <field name="name">escalation.type.tree</field>
+        <field name="model">escalation.type</field>
+        <field name="arch" type="xml">
+            <tree string="Escalation Type">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_escalation_type" model="ir.actions.act_window">
+        <field name="name">Escalation Type</field>
+        <field name="res_model">escalation.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_escalation_type" name="Escalation Type"
+              parent="masters_payment_posting_menu"
+              action="action_escalation_type"
+              sequence="8"
+    />
+</odoo>

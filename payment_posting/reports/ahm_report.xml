@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record model='ir.ui.view' id='ahm_report_form'>
+            <field name="name">ahm.report.form</field>
+            <field name="model">ahm.report</field>
+            <field name="arch" type="xml">
+                <form string="Batch Report">
+                    <p>
+                       Please enter Batch or Bar Batch or Division
+                    </p>
+                    <group>
+                        <field name="type" />
+                        <field name="selection_field" />
+                        <field name="batch_numbers" />
+
+
+                    </group>
+                    <footer>
+                        <button name="ahm_report_action" type="object" default_focus="1"
+                                string="View" class="oe_highlight"
+                                />
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='ahm_report_act'>
+            <field name="name">Batch Report</field>
+            <field name="res_model">ahm.report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="ahm_report_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem name="Batch Report"
+                  parent="main_production_reporting_root_menu"
+                  id="ahm_report_menu"
+                  action="ahm_report_act"
+                  sequence="6"/>
+    </data>
+
+</odoo>

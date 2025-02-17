@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><!-- Inherit Form View to Modify it -->
+
+    <record id="ir_cron_daily_attendance_shortage" model="ir.cron">
+        <field name="name">Daily Attendance Shortage</field>
+        <field name="model_id" ref="model_hr_employee"/>
+        <field name="state">code</field>
+        <field name="code">model.attendance_shortage_cron_daily()</field>
+        <field name="active">True</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="nextcall">2025-01-14 11:30:00</field> <!-- 12:00 AM IST -->
+    </record>
+
+    <!-- <record id="ir_cron_weekly_attendance_shortage" model="ir.cron">
+             <field name="name">Weekly Attendance Shortage</field>
+             <field name="model_id" ref="model_hr_employee"/>
+             <field name="state">code</field>
+             <field name="code">model.attendance_shortage_cron_weekly()</field>
+             <field name="active">True</field>
+             <field name="interval_number">1</field>
+             <field name="interval_type">weeks</field>
+             <field name="nextcall">2025-01-12 18:30:00</field> &lt;!&ndash; 12:00 AM IST &ndash;&gt;
+     </record>-->
+
+    <record id="ir_cron_daily_attendance_email" model="ir.cron">
+        <field name="name">Daily Attendance Email</field>
+        <field name="model_id" ref="model_hr_leave"/>
+        <field name="state">code</field>
+        <field name="code">model.send_daily_attendance_email()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 09:00:00')"/>
+    </record>
+
+    <record id="ir_cron_weekly_timeoff_report" model="ir.cron">
+        <field name="name">Weekly Time-Off Report</field>
+        <field name="model_id" ref="model_hr_leave"/>
+        <field name="state">code</field>
+        <field name="code">model.send_weekly_timeoff_report()</field>
+        <field name="interval_type">weeks</field>
+        <field name="interval_number">1</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">False</field>
+        <field name="nextcall"
+               eval="(DateTime.now() + timedelta(days=(4 - DateTime.now().weekday()) % 7)).replace(hour=7, minute=0, second=0)"/>
+    </record>
+
+    <record id="ir_cron_monthly_timeoff_report" model="ir.cron">
+        <field name="name">Monthly Time-Off Report</field>
+        <field name="model_id" ref="model_hr_leave"/>
+        <field name="state">code</field>
+        <field name="code">model.send_monthly_timeoff_report()</field>
+        <field name="interval_type">months</field>
+        <field name="interval_number">1</field>
+        <field name="numbercall">-1</field>
+        <field name="doall">False</field>
+        <field name="nextcall" eval="datetime.now().replace(day=26, hour=7, minute=30, second=0)"/>
+    </record>
+</odoo>

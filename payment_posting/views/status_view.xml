@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_user_status_form" model="ir.ui.view">
+        <field name="name">user.status.form</field>
+        <field name="model">user.status</field>
+        <field name="arch" type="xml">
+            <form string="User Status">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="in_process"/>
+                        <field name="remarks_required"/>
+                        <field name="completed_status"/>
+                        <field name="is_hold_status"/>
+                        <field name="is_clarification_status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_user_status_tree" model="ir.ui.view">
+        <field name="name">user.status.tree</field>
+        <field name="model">user.status</field>
+        <field name="arch" type="xml">
+            <tree string="User Status">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_user_status" model="ir.actions.act_window">
+        <field name="name">PStatus</field>
+        <field name="res_model">user.status</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_user_status" name="PStatus"
+              parent="masters_payment_posting_menu"
+              action="action_user_status"
+              groups="group_custom_admin"
+              sequence="3"
+    />
+</odoo>

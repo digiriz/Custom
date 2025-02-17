@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+
+    <t t-name= "ks_dn_advance.KsDashboardNinjaHeader" t-inherit="ks_dashboard_ninja.KsDashboardNinjaHeader" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('more-option-btn')]/ul" position="inside">
+            <t t-if='state.ks_dashboard_item_length != 0'>
+                <li>
+                    <a class="ks_start_tv_dashboard dropdown-item" href="#" title="Dashboard TV" t-on-click="startTvDashboard">
+                        <span class="me-2 new-feature-icons">
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.58301 9.99999V8.76666C7.58301 7.17499 8.70801 6.53333 10.083 7.32499L11.1497 7.94166L12.2163 8.55833C13.5913 9.34999 13.5913 10.65 12.2163 11.4417L11.1497 12.0583L10.083 12.675C8.70801 13.4667 7.58301 12.8167 7.58301 11.2333V9.99999Z"
+                                stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99996C18.3334 5.39759 14.6025 1.66663 10.0001 1.66663C5.39771 1.66663 1.66675 5.39759 1.66675 9.99996C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333Z"
+                                stroke="" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        </span>
+
+                        Dashboard TV
+                    </a>
+                </li>
+
+                <li>
+                    <a class=" ks_dashboard_print_pdf dropdown-item" href="#" title="Print Dashboard" t-on-click="ks_dash_print">
+                        <span class="me-2 new-feature-icons">
+                             <svg width="16" height="16" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.04175 5.83341H13.9584V4.16675C13.9584 2.50008 13.3334 1.66675 11.4584 1.66675H8.54175C6.66675 1.66675 6.04175 2.50008 6.04175 4.16675V5.83341Z" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.3334 12.5V15.8333C13.3334 17.5 12.5001 18.3333 10.8334 18.3333H9.16675C7.50008 18.3333 6.66675 17.5 6.66675 15.8333V12.5H13.3334Z" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.5 8.33325V12.4999C17.5 14.1666 16.6667 14.9999 15 14.9999H13.3333V12.4999H6.66667V14.9999H5C3.33333 14.9999 2.5 14.1666 2.5 12.4999V8.33325C2.5 6.66659 3.33333 5.83325 5 5.83325H15C16.6667 5.83325 17.5 6.66659 17.5 8.33325Z" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.1666 12.5H13.1583H5.83325" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.83325 9.16675H8.33325" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        </span>
+
+                        Print Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a class="ks_dashboard_send_email dropdown-item" href="#" title="Email" t-on-click="ks_send_mail">
+                        <span class="new-feature-icons me-2">
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.66669 7.08341C1.66669 4.16675 3.33335 2.91675 5.83335 2.91675H14.1667C16.6667 2.91675 18.3334 4.16675 18.3334 7.08341V12.9167C18.3334 15.8334 16.6667 17.0834 14.1667 17.0834H5.83335" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.1666 7.5L11.5583 9.58333C10.7 10.2667 9.29164 10.2667 8.43331 9.58333L5.83331 7.5" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.66669 13.75H6.66669" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.66669 10.4167H4.16669" stroke="" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        </span>
+
+                        Email
+                    </a>
+                </li>
+            </t>
+        </xpath>
+    </t>
+
+    <t t-name="ks_dn_advance.ks_main_body_container" t-inherit="ks_dashboard_ninja.ks_main_body_container" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('ks_dashboard_main_content')]" position="replace">
+            <div class="ks_dashboard_main_content" t-ref="ks_main_body" t-att-class="state.ks_dashboard_item_length === 0 ? ' h-0' : ''">
+                <t t-if="state.ks_dashboard_item_length != 0">
+                    <div class="ks_dashboard_item_content grid-stack ks_dashboard_items_list m-2" gs-w="36"/>
+                        <t t-call="ks_dashboard_item_template"/>
+                </t>
+        </div>
+        </xpath>
+    </t>
+</templates>

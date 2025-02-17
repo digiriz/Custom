@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_error_category_form" model="ir.ui.view">
+        <field name="name">error.category.form</field>
+        <field name="model">error.category</field>
+        <field name="arch" type="xml">
+            <form string="Error Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_error_category_tree" model="ir.ui.view">
+        <field name="name">error.category.tree</field>
+        <field name="model">error.category</field>
+        <field name="arch" type="xml">
+            <tree string="Error Category">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_error_category" model="ir.actions.act_window">
+        <field name="name">Error Category</field>
+        <field name="res_model">error.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_error_category" name="Error Category"
+              parent="masters_payment_posting_menu"
+              action="action_error_category"
+              groups="group_custom_admin"
+              sequence="5"
+    />
+</odoo>

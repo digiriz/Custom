@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+    <t t-name="ks_dn_advance.KsCarousel">
+        <div t-ref="carousel">
+<!--            <div class="tv-modal-overlay"></div>-->
+<!--            <button class="btn ks_stop_tv_dashboard  mr-2" aria-expanded="false"-->
+<!--                    t-on-click="ksStopTvDashboard">-->
+<!--                <span class="fa fa-times"/>-->
+<!--            </button>-->
+            <div class="owl-carousel owl-theme">
+                <t t-foreach="graph" t-as="item" t-key="item['id']">
+                    <Ksdashboardgraph item="item" dashboard_data="ks_dashboard_data"
+                                      ksdatefilter="props.ksdatefilter"
+                                      pre_defined_filter="props.pre_defined_filter"
+                                      custom_filter="props.custom_filter"
+                                      ks_speak="(ev)=>this.speak_once(ev,items)"
+                                      explain_ai_whole="true"
+
+                    />
+                </t>
+                <t t-foreach="kpi" t-as="item" t-key="item['id']">
+                   <Ksdashboardkpiview item="item" dashboard_data="ks_dashboard_data"
+                    ksdatefilter="props.ksdatefilter"
+                    pre_defined_filter="props.pre_defined_filter"
+                    custom_filter="props.custom_filter"
+                    ks_speak="(ev)=>this.speak_once(ev,items)"
+                    />
+                </t>
+                <t t-foreach="tiles" t-as="item" t-key="item['id']">
+                      <Ksdashboardtile item="item"
+                     dashboard_data="ks_dashboard_data"
+                     ksdatefilter="props.ksdatefilter"
+                     pre_defined_filter="props.pre_defined_filter"
+                     custom_filter="props.custom_filter"
+                     ks_speak="(ev)=>this.speak_once(ev,items)"
+
+                    />
+                </t>
+                <t t-foreach="to_do" t-as="item_todo" t-key="item_todo['id']">
+                    <Ksdashboardtodo item="item_todo" dashboard_data="ks_dashboard_data" />
+                </t>
+            </div>
+        </div>
+    </t>
+
+</template>

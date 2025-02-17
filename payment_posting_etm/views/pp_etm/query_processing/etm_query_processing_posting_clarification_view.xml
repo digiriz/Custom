@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_payment_posting_production_posting_etm_clarification_form_view" model="ir.ui.view">
+        <field name="name">payment.posting.posting.etm.clarification.form.view</field>
+        <field name="model">payment.posting.etm</field>
+        <field name="arch" type="xml">
+            <form string="Posting ETM Clarification">
+                <header>
+                    <field name="status_id" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="type" string="Deposit Type"/>
+                            <field name="check" string="#VALUE!"/>
+                            <field name="bar_batch" string="Bar Batch#"/>
+                            <field name="clarification_response"/>
+                            <field name="issue_raised_date"/>
+                            <field name="action_needed" />
+                            <field name="action_comments" />
+                        </group>
+                        <group>
+                            <field name="status_id"/>
+                            <field name="q_status_id"/>
+                            <field name="posted_date"/>
+                            <field name="issue_closed_date"/>
+                            <field name="no_of_transactions"/>
+                            <field name="remarks"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_payment_posting_posting_etm_clarification_tree" model="ir.ui.view">
+        <field name="name">payment.posting.posting.etm.clarification.tree</field>
+        <field name="model">payment.posting.etm</field>
+        <field name="arch" type="xml">
+            <tree string="Payment Posting ETM Clarification" multi_edit="1">
+                <field name="division_id" optional="show"/>
+                <field name="type" string="Type" optional="show"/>
+                <field name="type" string="Deposit Type" optional="show"/>
+                <field name="check" string="#VALUE!" optional="show"/>
+                <field name="bar_batch" string="Bar Batch#" optional="show"/>
+                <field name="clarification_response" optional="show"/>
+                <field name="issue_raised_date" optional="show"/>
+                <field name="action_needed"  optional="show"/>
+                <field name="action_comments"  optional="show"/>
+                <field name="status_id" optional="show"/>
+                <field name="q_status_id" optional="show"/>
+                <field name="posted_date" optional="show"/>
+                <field name="issue_closed_date" optional="show"/>
+                <field name="no_of_transactions" optional="show"/>
+                <field name="remarks" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_payment_posting_etm_production_posting_clarification" model="ir.actions.act_window">
+        <field name="name">PP-ETM Posting Clarification</field>
+        <field name="res_model">payment.posting.etm</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="domain">[('status_id', '=', 'Clarification')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_payment_posting_posting_etm_clarification_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_payment_posting_production_posting_etm_clarification_form_view')})]"/>
+
+    </record>
+
+    <menuitem id="main_root_production_posting_etm_query_processing_menu" name="PP-ETM"
+              parent="payment_posting.main_payment_posting_query_processing_root_menu"
+              groups="group_custom_supervisor_etm"
+              sequence="2"
+    />
+
+    <menuitem id="main_sub_production_posting_etm_clarification_menu" name="Posting Clarification"
+              parent="main_root_production_posting_etm_query_processing_menu"
+              action="action_payment_posting_etm_production_posting_clarification"
+              sequence="1"
+    />
+</odoo>
