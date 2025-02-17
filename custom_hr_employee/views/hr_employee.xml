@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_employee_view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='active_group']" position="inside">
+                    <field name="emp_id" />
+                    <field name="vendra_id" />
+                    <field name="athena_id" />
+                    <field name="allow_multi_process" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

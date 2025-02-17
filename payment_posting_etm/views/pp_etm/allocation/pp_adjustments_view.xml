@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_payment_posting_etm_pp_adjustments_allocation_tree" model="ir.ui.view">
+            <field name="name">payment.posting.etm.pp.adjustments.allocation.tree</field>
+            <field name="model">payment.posting.etm</field>
+            <field name="priority">0</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Posting ETM" multi_edit="1">
+                    <field name="ind" optional="hide"/>
+                    <field name="company_currency_id" column_invisible="1"/>
+                    <field name="v_age" optional="show"/>
+                    <field name="task" optional="show"/>
+                    <field name="category" optional="hide"/>
+                    <field name="mrn"  optional="show"/>
+                    <field name="inv_enc"  optional="show"/>
+                    <field name="inv_balance" optional="show" widget="monetary" options="{'currency_field': 'company_currency_id'}" />
+                    <field name="totchag" optional="show"  widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                    <field name="dos" optional="show"/>
+                     <field name="fsc" optional="show"/>
+                    <field name="inscomp" optional="show"/>
+                    <field name="division_id" optional="show"/>
+                    <field name="type" readonly="1" optional="hide"/>
+                    <field name="note_type" optional="hide" />
+                    <field name="notes" optional="hide" />
+                    <field name="etm_id" optional="show" />
+                    <field name="received_date" optional="show"/>
+                    <field name="assigned_employee_id" optional="hide"/>
+                    <field name="athena_id" optional="hide"/>
+                    <field name="assigned_date" optional="hide"/>
+                    <field name="payer" optional="hide" />
+                    <field name="check_date" optional="hide"/>
+                    <field name="check" optional="hide"/>
+                    <field name="check_amount" optional="hide" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                    <field name="action_needed" optional="hide"/>
+                    <field name="action_comments" optional="hide"/>
+                    <field name="status_id" optional="hide"/>
+                    <field name="posted_date" optional="hide"/>
+                    <field name="etm_type" optional="hide"/>
+                    <field name="bar_batch" optional="hide"/>
+                    <field name="no_of_transactions" optional="hide"/>
+                    <field name="icn_no_tcn_no" optional="hide"/>
+                    <field name="paid_amount" optional="hide" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                    <field name="unm_amount" optional="hide" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                    <field name="deposit_date" optional="hide"/>
+                    <field name="denial_code" optional="hide"/>
+                    <field name="ar_comments" optional="hide" />
+                    <field name="cpt" optional="hide" />
+                    <field name="remarks_id" optional="hide" />
+                    <field name="clarification_response" optional="hide" />
+                    <field name="esclation_category" optional="hide" />
+                    <field name="issue_raised_date" optional="hide" />
+                    <field name="issue_closed_date" optional="hide" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_payment_posting_etm_pp_adjustments_allocation_form" model="ir.ui.view">
+            <field name="name">payment.posting.etm.allocation.form</field>
+            <field name="model">payment.posting.etm</field>
+            <field name="arch" type="xml">
+                <form string="Payment Posting ETM">
+                    <header>
+                        <button name="search_invoice" type="object" class="oe_stat_button"
+                                icon="fa-external-link" string="Search Invoice"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group readonly="1">
+
+                                <field name="ind"/>
+                                <field name="v_age"/>
+                                <field name="task"/>
+                                <field name="category"/>
+                                <field name="mrn" />
+                                <field name="inv_enc" />
+                                <field name="inv_balance" widget="monetary" options="{'currency_field': 'company_currency_id'}" />
+                                <field name="totchag"  widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="dos"/>
+                                <field name="create_uid" />
+                                <field name="create_date" />
+                            </group>
+                            <group>
+                                <field name="fsc"/>
+                                <field name="inscomp"/>
+                                <field name="division_id"/>
+                                <field name="type" readonly="1" force_save="1"/>
+                                <field name="note_type" />
+                                <field name="notes" />
+                                <field name="etm_id" />
+                                <field name="received_date"/>
+<!--                                <field name="write_uid" />-->
+<!--                                <field name="write_date" />-->
+                            </group>
+                        </group>
+                        <group readonly="1">
+                            <group string="Supervisor Input" name="supervisor_input">
+                                <field name="assigned_employee_id" options="{'no_open': True}" />
+<!--                                <field name="employee_parent_id"/>-->
+<!--                                <field name="category_ids" widget="many2many_tags"/>-->
+<!--                                <field name="athena_id"/>-->
+                                <field name="assigned_date"/>
+                            </group>
+                        </group>
+                        <group string="User Input" name="user_input">
+                            <group>
+                                <field name="payer" />
+                                <field name="check_date"/>
+                                <field name="check"/>
+                                <field name="check_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="action_needed"/>
+                                <field name="action_comments"/>
+                                <field name="etm_type"/>
+                                <field name="bar_batch"/>
+                                <field name="cpt" />
+                                <field name="remarks_id" />
+                            </group>
+                            <group>
+                                <field name="no_of_transactions"/>
+                                <field name="icn_no_tcn_no"/>
+                                <field name="paid_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="unm_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="deposit_date"/>
+                                <field name="denial_code"/>
+                                <field name="ar_comments" />
+                                <field name="status_id"/>
+                                <field name="posted_date"/>
+                            </group>
+                            <group string="Query Block" name="query_block">
+                                <group>
+                                    <field name="clarification_response"/>
+                                    <field name="esclation_category"/>
+                                    <field name="issue_raised_date"/>
+                                    <field name="issue_closed_date"/>
+                                </group>
+                            </group>
+                            <!--                            <notebook colspan="4">-->
+<!--                                <page string="Notes" name="payment_posting_invoice" autofocus="autofocus">-->
+<!--                                    <field name="payment_posting_invoice_ids">-->
+<!--                                        <tree editable="bottom" limit="200">-->
+<!--                                            <field name="invoice_no"/>-->
+<!--                                            <field name="amount"/>-->
+<!--                                        </tree>-->
+<!--                                    </field>-->
+<!--                                    <group>-->
+<!--                                        <field name="total_invoice_amount" widget="monetary"-->
+<!--                                               options="{'currency_field': 'company_currency_id'}"/>-->
+<!--                                        <field name="total_invoice_pending_amount" widget="monetary"-->
+<!--                                               options="{'currency_field': 'company_currency_id'}"/>-->
+<!--                                    </group>-->
+<!--                                </page>-->
+<!--                            </notebook>-->
+
+                        </group>
+                        <!--<group string="Auditor Status" name="auditor_status">
+                            <group>
+                                <field name="error_comments"/>
+                                <field name="error_count"/>
+                                <field name="incorrect"/>
+                                <field name="missed"/>
+                                <field name="navigation"/>
+                                <field name="auditor_status"/>
+                            </group>
+                            <group>
+                                <field name="auditor_user_id"/>
+                                <field name="audited_date"/>
+                                <field name="error_category_id"/>
+                                <field name="audit_id"/>
+                                <field name="auditor_invoice_count"/>
+                            </group>
+                        </group>
+                        <group string="ERROR FIXING BY USER" name="error_fixing_by_user">
+                            <group>
+                                <field name="fixing_date"/>
+                                <field name="updated_bar_batch"/>
+                                <field name="comments"/>
+                                <field name="error_status"/>
+                                <field name="reprocessing_id"/>
+                            </group>
+                        </group>-->
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="payment_posting_etm_view_search" model="ir.ui.view">
+            <field name="name">payment.posting.etm.search</field>
+            <field name="model">payment.posting.etm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="invoice_no"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_payment_posting_etm_pp_adjustments_allocation" model="ir.actions.act_window">
+            <field name="name">Allocation - PP-Adjustments</field>
+            <field name="res_model">payment.posting.etm</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="domain">[('type', '=', 'pp_adjustments')]</field>
+            <field name="context">{'search_default_unassigned_status_id': 1, 'default_type': 'pp_adjustments'}</field>
+            <field name="search_view_id" ref="payment_posting_etm_search_view" />
+            <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'tree', 'view_id': ref('view_payment_posting_etm_pp_adjustments_allocation_tree')}),
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_payment_posting_etm_pp_adjustments_allocation_form')})]"/>
+
+        </record>
+
+
+
+    </data>
+</odoo>

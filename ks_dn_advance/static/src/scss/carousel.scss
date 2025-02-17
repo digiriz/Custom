@@ -1,0 +1,152 @@
+.carousel-main {
+    .place-holder {
+        border: 1px solid var(--Border-Color, #E5E7EB);
+        min-height: 600px;
+        box-shadow: 0px 6.05px 30.23px 0px #EEEEEE80;
+        border-radius: 30px;
+        margin-bottom: 16px;
+        margin-top: 24px;
+        width: 100%;
+        max-height: 600px;
+        padding: 20px;
+
+        .owl-item {
+            height: 95% !important;
+            width: 100%;
+        }
+    }
+
+    .owl-carousel {
+//         display: block !important;
+
+        .owl-item {
+            border: 1px solid var(--Border-Color, #E5E7EB);
+            min-height: 600px;
+            height: 100%;
+            border-radius: 10px;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        .owl-prev,
+        .owl-next {
+            position: absolute;
+            top: 50%;
+            height: 5vh;
+            width: 5vh;
+            background-color: #fff !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .owl-prev {
+            left: -22px;
+        }
+
+        .owl-next {
+            right: -22px;
+        }
+    }
+
+    &.active {
+        .place-holder {
+            display: none;
+        }
+
+        .carousel-box {
+            width: 100%;
+
+            .owl-carousel {
+                .item {
+                    min-height: 418px;
+                }
+            }
+        }
+    }
+}
+
+.explain-ai-box {
+    border: 1px solid var(--Border-Color, #E5E7EB);
+    min-height: 589px;
+    border-radius: 20px;
+    padding: 16px;
+    background-color: #F5F8FB;
+    color: #241C1D;
+    height:100%;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22.4px;
+        text-align: left;
+    }
+
+    .ai-content {
+        max-height: 430px;
+        overflow: auto;
+        padding-right: 8px;
+        @include custom-scrollbar;
+
+
+        p {
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 19.2px;
+            text-align: left;
+        }
+    }
+
+    .voice-button {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+    }
+}
+
+// .owl-item{
+//      width:150px !important;
+//     height:100% !important;
+//     min-height:589px;
+//     }
+
+.ks_body_class .play_buttons {
+    .img-bg {
+        svg {
+            stroke:$color-black;
+            }
+        }
+    }
+
+.stroke_class {
+    svg {
+        stroke:$color-black;
+        path {
+            stroke:$color-black;
+            }
+        }
+    &.active {
+        svg {
+               stroke:#6789C6;
+               path {
+                   stroke:#6789C6;
+                   }
+            }
+
+        }
+    }
+
+.o_rtl .owl-next img,.o_rtl .owl-prev img{
+    transform: scaleX(-1);
+
+}

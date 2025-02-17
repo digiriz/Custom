@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<openerp>
+<data>
+
+    <record id="group_allow_acess_attendance_dashboard" model="res.groups">
+        <field name="name">Allow to Access Attendance Dashboard</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record> 
+</data>
+</openerp>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_q_status_form" model="ir.ui.view">
+        <field name="name">q.status.form</field>
+        <field name="model">q.status</field>
+        <field name="arch" type="xml">
+            <form string="Q Status">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="is_open_status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_q_status_tree" model="ir.ui.view">
+        <field name="name">q.status.tree</field>
+        <field name="model">q.status</field>
+        <field name="arch" type="xml">
+            <tree string="Q Status">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_q_status" model="ir.actions.act_window">
+        <field name="name">Q Status</field>
+        <field name="res_model">q.status</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_q_status" name="Q Status"
+              parent="masters_payment_posting_menu"
+              action="action_q_status"
+              groups="group_custom_admin"
+              sequence="9"
+    />
+</odoo>

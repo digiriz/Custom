@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_hr_timesheet_line_tree_inherit" model="ir.ui.view">
+            <field name="name">account.analytic.line.tree.hr_timesheet</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="state" optional="show" />
+                     <button name="action_awaiting_approval" type="object" string="Send For Approval"
+                                invisible="state not in ['draft']" class="btn-primary"/>
+                    <button name="action_approved" type="object" string="Approve"
+                            invisible="state not in ['awaiting_approval']" class="btn-primary"/>
+                    <button name="action_declined" type="object" string="Decline"
+                            invisible="state not in ['awaiting_approval']"
+                            class="btn"/>
+                    <button name="action_draft" type="object" string="Set to Draft"
+                            invisible="state not in ['declined']"
+                            class="btn-primary"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_timesheet_line_search_inherit" model="ir.ui.view">
+            <field name="name">account.analytic.line.search</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_line_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='month']" position="before">
+                    <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                    <filter name="waiting" string="Awaiting Approval" domain="[('state', '=', 'awaiting_approval')]"/>
+                    <filter name="approved" string="Approved" domain="[('state', '=', 'approved')]"/>
+                    <separator/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="hr_timesheet.menu_hr_time_tracking" model="ir.ui.menu">
+            <field name="groups_id" eval="[
+                (4, ref('payment_posting_etm.group_custom_supervisor_etm')),
+                (4, ref('payment_posting_etm.group_custom_supervisor_quality_etm'))
+            ]"/>
+        </record>
+        <record id="hr_timesheet.timesheet_menu_activity_all" model="ir.ui.menu">
+            <field name="groups_id" eval="[
+            (4, ref('payment_posting_etm.group_custom_supervisor_etm')),
+            (4, ref('payment_posting_etm.group_custom_supervisor_quality_etm'))]"/>
+        </record>
+
+        <record id="hr_timesheet.menu_hr_time_tracking" model="ir.ui.menu">
+            <field name="groups_id" eval="[
+                (4, ref('payment_posting.group_custom_supervisor')),
+                (4, ref('payment_posting.group_custom_supervisor_quality'))
+            ]"/>
+        </record>
+        <record id="hr_timesheet.timesheet_menu_activity_all" model="ir.ui.menu">
+            <field name="groups_id" eval="[
+            (4, ref('payment_posting.group_custom_supervisor')),
+            (4, ref('payment_posting.group_custom_supervisor_quality'))]"/>
+        </record>
+    </data>
+</odoo>

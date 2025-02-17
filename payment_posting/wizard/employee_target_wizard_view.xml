@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="employee_target_wizard_view_form" model="ir.ui.view">
+            <field name="name">employee.target.wizard.view.form</field>
+            <field name="model">employee.target.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="employee_target_line_ids" widget="one2many" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="process_type"/>
+                                <field name="from_date"/>
+                                <field name="employee_ids" widget="many2many_tags"/>
+                                <field name="transaction_target"/>
+                                <field name="invoice_target"/>
+                                <field name="achievement_type"/>
+                                <field name="auditor_target"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                    <footer>
+                        <button name="action_generate_employee_target" string="Generate" type="object"
+                                class="oe_highlight" data-hotkey="q"/>
+                        <button string="Discard" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="employee_target_wizard_action" model="ir.actions.act_window">
+            <field name="name">Employee Target - Configuration</field>
+            <field name="res_model">employee.target.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_employee_target_wizard" name="Employee Target - Configuration"
+                  parent="main_target_root_menu"
+                  action="employee_target_wizard_action"
+                  sequence="1"
+        />
+
+    </data>
+</odoo>

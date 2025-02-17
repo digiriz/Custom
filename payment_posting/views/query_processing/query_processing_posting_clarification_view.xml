@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_payment_posting_production_posting_clarification_form_view" model="ir.ui.view">
+        <field name="name">payment.posting.posting.clarification.form.view</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <form string="Posting Clarification">
+                <header>
+                    <field name="status_id" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="type" string="Deposit Type"/>
+                            <field name="exchange" string="Exchange"/>
+                            <field name="check_s" string="#VALUE!"/>
+                            <field name="edm_batch" string="EDM#"/>
+                            <field name="bar_batch" string="Bar Batch#"/>
+                            <field name="descriptions" string="Batch Description"/>
+                            <field name="escalation_type_id"/>
+                            <field name="clarification_details"/>
+                            <field name="poster_login"/>
+                            <field name="query_assigned_date"/>
+                        </group>
+                        <group>
+                            <field name="ss_status_id"/>
+                            <field name="q_status_id"/>
+                            <field name="posted_date_ss"/>
+                            <field name="response_date"/>
+                            <field name="closed_date"/>
+                            <field name="gottlieb_comments"/>
+                            <field name="ahs_comments"/>
+                            <field name="of_records"/>
+                            <field name="remarks"/>
+                            <field name="transaction" string="Total Transaction Count"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_payment_posting_posting_clarification_tree" model="ir.ui.view">
+        <field name="name">payment.posting.posting.clarification.tree</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <tree string="Posting Clarification">
+                <field name="priority_compute" column_invisible="1"/>
+                    <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
+                <field name="division_id" optional="show"/>
+                <field name="type" string="Deposit Type" optional="show"/>
+                <field name="exchange" string="Exchange" optional="show"/>
+                <field name="check_s" string="#VALUE!" optional="show"/>
+                <field name="edm_batch" string="EDM#" optional="show"/>
+                <field name="bar_batch" string="Bar Batch#" optional="show"/>
+                <field name="descriptions" string="Batch Description" optional="show"/>
+                <field name="escalation_type_id" optional="show"/>
+                <field name="clarification_details" optional="show"/>
+                <field name="poster_login" optional="show"/>
+                <field name="query_assigned_date" optional="show"/>
+                <field name="ss_status_id" optional="show"/>
+                <field name="posted_date_ss" optional="show"/>
+                <field name="response_date" optional="show"/>
+                <field name="closed_date" optional="show"/>
+                <field name="gottlieb_comments" optional="show"/>
+                <field name="ahs_comments" optional="show"/>
+<!--
+                <field name="of_records" optional="show"/>
+-->
+                <field name="remarks" optional="show"/>
+                <field name="transaction" string="Total Transaction Count" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_payment_posting_production_posting_clarification" model="ir.actions.act_window">
+        <field name="name">PP-EHM Posting Clarification</field>
+        <field name="res_model">payment.posting</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="domain">[('status_id', '=', 'Clarification')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_payment_posting_posting_clarification_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_payment_posting_production_posting_clarification_form_view')})]"/>
+
+    </record>
+
+
+    <menuitem id="main_sub_production_posting_clarification_menu" name="Posting Clarification"
+              parent="main_payment_posting_ehm_query_processing_root_menu"
+              action="action_payment_posting_production_posting_clarification"
+              sequence="2"
+    />
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ss_status_form" model="ir.ui.view">
+        <field name="name">ss.status.form</field>
+        <field name="model">ss.status</field>
+        <field name="arch" type="xml">
+            <form string="SS Status">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ss_status_tree" model="ir.ui.view">
+        <field name="name">ss.status.tree</field>
+        <field name="model">ss.status</field>
+        <field name="arch" type="xml">
+            <tree string="SS Status">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_ss_status" model="ir.actions.act_window">
+        <field name="name">SS Status</field>
+        <field name="res_model">ss.status</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_ss_status" name="SS Status"
+              parent="masters_payment_posting_menu"
+              action="action_ss_status"
+              groups="group_custom_admin"
+              sequence="10"
+    />
+</odoo>

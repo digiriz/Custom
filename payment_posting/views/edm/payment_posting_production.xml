@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_payment_posting_production_sub_form_view" model="ir.ui.view">
+        <field name="name">payment.posting.form.view</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <form string="Payment Posting Production" create="false">
+                <header>
+                    <field name="timer_start" invisible="1"/>
+                    <button name="action_start_time" type="object" string="Start" invisible="timer_start"
+                            class="btn btn-success text-uppercase"/>
+                    <button name="action_stop_timing" type="object" string="Stop" invisible="not timer_start"
+                            class="btn btn-danger text-uppercase"/>
+                    <field name="status_id" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group readonly="1">
+                            <field name="edm_batch" readonly="1"/>
+                            <field name="status" readonly="1"/>
+                            <field name="create_uid" readonly="1"/>
+                            <field name="create_date" readonly="1"/>
+                            <field name="images" readonly="1"/>
+                            <field name="docs" readonly="1"/>
+                            <field name="def_doc_type" readonly="1"/>
+                            <field name="tag_ids" widget="many2many_tags" readonly="1"/>
+                            <field name="total_work_hours" widget="float_time"/>
+                        </group>
+                        <group readonly="1">
+                            <field name="created" readonly="1"/>
+                            <field name="last_edited_by" readonly="1"/>
+                            <field name="amount" readonly="1"/>
+                            <field name="write_uid" readonly="1"/>
+                            <field name="write_date" readonly="1"/>
+                            <field name="descriptions" readonly="1"/>
+                            <field name="division_id" readonly="1"/>
+                            <field name="deposit_date" readonly="1"/>
+                        </group>
+                    </group>
+                    <group readonly="1">
+                        <group string="Supervisor Input" name="supervisor_input">
+                            <field name="assigned_to" readonly="1"/>
+                            <field name="assigned_date" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="User Input" name="user_input">
+                        <group>
+                            <field name="bar_batch"/>
+                            <field name="posted_amount"/>
+                            <field name="pending_amount"/>
+                            <field name="of_transactions"/>
+                            <field name="transaction"/>
+                            <field name="status_id"/>
+                        </group>
+                        <group>
+                            <field name="posted_date"/>
+                            <field name="remarks_id"/>
+                            <field name="clarification_sent_date"/>
+                            <field name="clarification_received_date"/>
+                            <field name="batch_closed_date"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Notes" name="payment_posting_invoice" autofocus="autofocus">
+                            <field name="payment_posting_invoice_ids">
+                                <tree editable="bottom" limit="200">
+                                    <field name="invoice_no"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                            <group>
+                                <field name="total_invoice_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="total_invoice_pending_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}"/>
+                            </group>
+                            <!--<div class="oe_right">
+                                <div class="oe_inline">
+                                    <label for="total_invoice_amount" class="oe_form_label"
+                                           style="font-weight: bold;">Total :
+                                    </label>
+                                    <span class="oe_form_value">
+                                        <field name="total_invoice_amount" widget="monetary" nolabel="1"
+                                               options="{'currency_field': 'company_currency_id'}"/>
+                                    </span>
+                                </div>
+                                <div class="oe_inline">
+                                    <label for="total_invoice_pending_amount" class="oe_form_label"
+                                           style="font-weight: bold;">Pending Amount:
+                                    </label>
+                                    <span class="oe_form_value">
+                                        <field name="total_invoice_pending_amount" widget="monetary" nolabel="1"
+                                               options="{'currency_field': 'company_currency_id'}"/>
+                                    </span>
+                                </div>
+                            </div>-->
+                        </page>
+                        <page string="Production Timing" name="production_timing" autofocus="autofocus">
+                            <field name="production_timing_ids">
+                                <tree create="0" editable="bottom">
+                                    <field name="production_start_time"/>
+                                    <field name="production_end_time"/>
+                                    <field name="duration" type="measure" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_payment_posting_tree" model="ir.ui.view">
+        <field name="name">payment.posting.tree</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <tree string="Payment Posting" create="false">
+                <field name="id_duplicate" column_invisible="1"/>
+                <field name="priority_compute" column_invisible="1"/>
+                    <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
+                <field name="edm_batch" optional="show" decoration-bf="1"/>
+                <field name="status" optional="hide"/>
+                <field name="created" optional="hide"/>
+                <field name="images" optional="show"/>
+                <field name="docs" optional="hide"/>
+                <field name="def_doc_type" optional="show"/>
+
+                <field name="amount" sum="Total Amount"
+                       widget='monetary' decoration-bf="1" decoration-info="1"
+                       options="{'currency_field': 'company_currency_id'}" optional="show"/>
+                <field name="last_edited_by" optional="hide"/>
+                <field name="descriptions" optional="hide"/>
+
+                <field name="division_id" optional="show"/>
+                <field name="deposit_date" optional="show"/>
+
+                <field name="assigned_to" optional="show" widget="many2one_avatar_user"/>
+                <field name="assigned_date" optional="show"/>
+
+                <field name="bar_batch" optional="hide"/>
+                <field name="company_currency_id" column_invisible="True"/>
+                <field name="posted_amount" sum="Total Posted Amount"
+                       widget='monetary' decoration-bf="1" decoration-info="1"
+                       options="{'currency_field': 'company_currency_id'}" optional="hide"/>
+                <field name="pending_amount" sum="Total Pending Amount"
+                       widget='monetary' decoration-bf="1" decoration-info="1"
+                       options="{'currency_field': 'company_currency_id'}" optional="hide"/>
+                <field name="transaction" sum="Total Transaction" optional="hide"/>
+                <field name="status_id" optional="show"/>
+                <field name="duplicate_status_id" optional="hide"/>
+                <field name="posted_date" optional="show"/>
+                <field name="remarks_id" optional="show"/>
+                <field name="clarification_sent_date" optional="hide"/>
+                <field name="clarification_received_date" optional="hide"/>
+                <field name="batch_closed_date" optional="hide"/>
+                <field name="tat" widget="float_time" optional="hide"/>
+                <field name="tag_ids" optional="hide"/>
+                <field name="auditor_user_id" optional="hide" widget="many2one_avatar_user"/>
+                <field name="audited_date" optional="hide"/>
+                <field name="of_transactions" optional="hide"/>
+                <field name="audit_id" optional="hide"/>
+                <field name="auditor_status" optional="hide"/>
+                <field name="error_count" optional="hide"/>
+                <field name="incorrect" optional="hide"/>
+                <field name="missed" optional="hide"/>
+                <field name="reprocessing_id" optional="hide"/>
+                <field name="navigation" optional="hide"/>
+                <field name="error_comments" optional="hide"/>
+                <field name="fixing_date" optional="hide"/>
+                <field name="updated_bar_batch" optional="hide"/>
+                <field name="comments" optional="hide"/>
+                <field name="error_status" optional="hide"/>
+                <field name="total_work_hours" widget="float_time" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="payment_posting_view_search" model="ir.ui.view">
+        <field name="name">payment.posting.search</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="edm_batch"/>
+                <field name="check_eft_number"/>
+                <field name="division_id"/>
+                <field name="tag_ids"/>
+                <field name="images"/>
+                <field name="status_id"/>
+                <field name="def_doc_type"/>
+
+
+                <group expand="0" string="Group by...">
+                    <filter name="division_id_group" context="{'group_by' : 'division_id'}" string="Division"/>
+                    <filter name="def_doc_type_group" context="{'group_by' : 'def_doc_type'}" string="Def Doc Type"/>
+                    <filter name="images_group" context="{'group_by' : 'images'}" string="Images"/>
+                    <filter name="status_id_group" context="{'group_by' : 'status_id'}" string="Production Status"/>
+                    <filter name="edm_batch" context="{'group_by' : 'edm_batch'}" string="EDM Batch"/>
+                    <filter name="check_eft_number" context="{'group_by' : 'check_eft_number'}"
+                            string="Check/EFT Number"/>
+                    <filter name="created" context="{'group_by' : 'created'}" string="Created"/>
+                    <filter string="Today" name="today"
+                            domain="[('write_date', '&gt;', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]"/>
+                </group>
+                <filter name="unassigned_status_id" domain="[('status_id', '=', 'Unassigned')]" string="Unassigned"/>
+                <filter name="unassigned_audit_id" domain="[('audit_id', '=', 'Unassigned')]"
+                        string="Audit - Unassigned"/>
+                <separator/>
+                <filter string="Active" name="active_true" domain="[('active', '=', True)]"/>
+                <filter string="Inactive" name="active_false" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter string="Duplicate" name="is_duplicate" domain="[('id_duplicate', '=', True)]"/>
+                <separator/>
+                <filter string="Duplicate not completed" name="is_duplicate"
+                        domain="[('id_duplicate', '=', True),('duplicate_status_id.name','!=','Completed')]"/>
+                <separator/>
+                <filter string="Today Created Record" name="today_created_records"
+                        domain="[('create_date', '&gt;=', context_today().strftime('%Y-%m-%d 00:00:00')), ('create_date', '&lt;=', context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+                <separator/>
+                <filter name="my_tasks"
+                        string="My Tasks"
+                        domain="[('assigned_to', '=', uid)]"/>
+
+
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_payment_posting_production_sub" model="ir.actions.act_window">
+        <field name="name">Production - EDM</field>
+        <field name="res_model">payment.posting</field>
+        <field name="view_mode">tree,form,search,pivot</field>
+        <field name="context">{'search_default_my_tasks': 1}</field>
+        <field name="domain">[('status_id', '!=', 'Completed'),('type', '=', 'edm_process')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_payment_posting_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_payment_posting_production_sub_form_view')})]"/>
+
+    </record>
+
+
+    <menuitem id="menu_payment_posting_root" name="P-Square"
+              sequence="-100"
+              groups="group_custom_user,group_custom_user_quality"
+              web_icon="payment_posting,static/description/icon.png"
+    />
+
+    <menuitem id="menu_payment_posting_root_allocation" name="Allocation"
+              sequence="1"
+              parent="menu_payment_posting_root"
+    />
+
+    <menuitem id="masters_payment_posting_menu" name="Technical"
+              parent="menu_payment_posting_root"
+              groups="group_custom_supervisor"
+              sequence="10"/>
+
+    <menuitem id="main_sub_production_root_menu" name="Production"
+              parent="menu_payment_posting_root"
+    />
+
+    <menuitem id="menu_payment_posting_pp_ehm_production" name="PP-EHM"
+              sequence="1"
+              parent="main_sub_production_root_menu"
+              groups="group_custom_user"
+    />
+
+
+    <menuitem id="main_sub_production_menu" name="EDM"
+              parent="menu_payment_posting_pp_ehm_production"
+              action="action_payment_posting_production_sub"
+              groups="group_custom_user"
+              sequence="2"
+    />
+</odoo>

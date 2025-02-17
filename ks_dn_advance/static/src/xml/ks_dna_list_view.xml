@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="ks_dn_advance.ks_list_view_layout_2">
+        <t t-if="state.list_view_data">
+            <table id="ksListViewTable" class="table table-dark ks_dn_table ks_list_view_layout_2"
+                   t-att-data-model="state.list_view_data['model']">
+                <thead class="ks_dn_thead">
+                    <t t-call="ks_dn_advance.ks_dns_list_view_header_2"/>
+                </thead>
+                <tbody class="ks_table_body">
+                    <t t-call="ks_dashboard_ninja.ks_list_view_tmpl"/>
+                </tbody>
+            </table>
+        </t>
+        <t t-else="">
+            No Data Present
+        </t>
+    </t>
+    <t t-name="ks_dn_advance.ks_dns_list_view_header_2">
+
+        <t t-if="calculation_type == 'custom' &amp; !isDrill">
+            <tr>
+                <t t-set="count" t-value="0"/>
+                <t t-foreach="state.list_view_data['label']" t-as="table_header" t-key="table_header_index">
+                    <th class="ks_dn_th list_header ks_dn_asc" t-att-data-item-id="item_id" t-on-click="_ksSortAscOrder"
+                        t-att-data-fields="state.list_view_data['fields'][count]"
+                        t-att-data-store="state.list_view_data['store']">
+                        <t t-esc="table_header"/>
+                        <t t-if="calculation_type == 'custom' &amp; !isDrill">
+                            <t t-if="state.list_view_data['store']">
+                                <button title="Sort button"
+                                        type="button"
+                                        class="ks_sort_icon ks_dashboard_item_action ks_sort_down ks_list_heder_hover ks_border_aliceblue"
+                                        t-att-data-item-id="item_id"
+                                        t-att-data-fields="state.list_view_data['fields'][count]"
+                                        aria-expanded="true">
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.41043 4.01636L3.55042 2.15637L1.69043 4.01636" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.55029 11.1564V2.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M6.96045 9.29639L8.82047 11.1564L10.6805 9.29639" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8.82031 2.15637V11.1564" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button title="Sort button"
+                                        type="button"
+                                        class="ks_dashboard_item_action ks_sort_up ks_plus ks_sort_icon ks_list_heder_hover ks_border_aliceblue"
+                                        t-att-data-item-id="item_id"
+                                        t-att-data-fields="state.list_view_data['fields'][count]"
+                                        aria-expanded="true">
+                                    <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.72 9.15637L2.85999 11.0164L1 9.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2.85986 10.1564V1.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5.69971 2.85999L7.55972 1L9.41971 2.85999" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.69971 1V11" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+
+                                </button>
+                            </t>
+                            <t t-set="count" t-value="count+1"/>
+                        </t>
+                    </th>
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <th class="ks_dn_th"/>
+                </t>
+            </tr>
+        </t>
+        <t t-else="">
+            <tr>
+
+                <t t-foreach="state.list_view_data['label']" t-as="table_header" t-key="table_header_index">
+                    <th class="ks_dn_th">
+                        <t t-esc="table_header"/>
+                    </th>
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <th class="ks_dn_th"/>
+                </t>
+            </tr>
+        </t>
+    </t>
+
+    <t t-name="ks_dn_advance.ks_list_view_layout_3">
+        <t t-if="state.list_view_data">
+            <table id="ksListViewTable" class="table table-bordered ks_list_view_layout_3 ks_dn_table ks_table_layput_3"
+                   t-att-data-model="state.list_view_data['model']">
+                <thead class="ks_dn_thead">
+                    <t t-call="ks_dn_advance.ks_dns_list_view_header_3"/>
+                </thead>
+                <tbody class="ks_table_body">
+                    <t t-call="ks_dashboard_ninja.ks_list_view_tmpl"/>
+                </tbody>
+            </table>
+        </t>
+        <t t-else="">
+            No Data Present
+        </t>
+    </t>
+    <t t-name="ks_dn_advance.ks_dns_list_view_header_3">
+        <t t-if="calculation_type == 'custom' &amp; !isDrill">
+            <tr>
+                <t t-set="count" t-value="0"/>
+                <t t-foreach="state.list_view_data['label']" t-as="table_header" t-key="table_header_index">
+                    <th class="ks_dn_th list_header ks_dn_asc" t-att-data-item-id="item_id" t-on-click="_ksSortAscOrder"
+                        t-att-data-fields="state.list_view_data['fields'][count]"
+                        t-att-data-store="state.list_view_data['store']">
+                        <t t-esc="table_header"/>
+                        <t t-if="calculation_type == 'custom' &amp; !isDrill">
+                            <t t-if="state.list_view_data['store']">
+                                <button title="Sort button"
+                                        type="button"
+                                        class="ks_sort_icon ks_dashboard_item_action ks_sort_down ks_list_heder_hover ks_border_aliceblue"
+                                        t-att-data-item-id="item_id"
+                                        t-att-data-fields="state.list_view_data['fields'][count]"
+                                        aria-expanded="true">
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.41043 4.01636L3.55042 2.15637L1.69043 4.01636" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.55029 11.1564V2.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M6.96045 9.29639L8.82047 11.1564L10.6805 9.29639" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8.82031 2.15637V11.1564" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button title="Sort button"
+                                        type="button"
+                                        class="ks_dashboard_item_action ks_sort_up ks_plus ks_sort_icon ks_list_heder_hover ks_border_aliceblue"
+                                        t-att-data-item-id="item_id"
+                                        t-att-data-fields="state.list_view_data['fields'][count]"
+                                        aria-expanded="true">
+                                    <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.72 9.15637L2.85999 11.0164L1 9.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2.85986 10.1564V1.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5.69971 2.85999L7.55972 1L9.41971 2.85999" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.69971 1V11" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </t>
+                            <t t-set="count" t-value="count+1"/>
+                        </t>
+                    </th>
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <th class="ks_dn_th"/>
+                </t>
+            </tr>
+        </t>
+        <t t-else="">
+            <tr>
+
+                <t t-foreach="state.list_view_data['label']" t-as="table_header" t-key="table_header_index">
+                    <th class="ks_dn_th">
+                        <t t-esc="table_header"/>
+                    </th>
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <th class="ks_dn_th"/>
+                </t>
+            </tr>
+        </t>
+    </t>
+    <t t-name="ks_dn_advance.ks_list_view_layout_4">
+        <t t-if="state.list_view_data">
+            <table id="ksListViewTable" class="table table-hover ks_dn_table ks_list_view_layout_4"
+                   t-att-data-model="state.list_view_data['model']">
+                <thead class="ks_dn_thead">
+                    <t t-call="ks_dn_advance.ks_dns_list_view_header_4"/>
+                </thead>
+                <tbody class="ks_table_body">
+                    <t t-call="ks_dashboard_ninja.ks_list_view_tmpl"/>
+                </tbody>
+            </table>
+        </t>
+        <t t-else="">
+            No Data Present
+        </t>
+    </t>
+    <t t-name="ks_dn_advance.ks_dns_list_view_header_4">
+        <t t-if="calculation_type == 'custom' &amp; !isDrill">
+            <tr>
+                <t t-set="count" t-value="0"/>
+                <t t-foreach="state.list_view_data['label']" t-as="table_header" t-key="table_header_index">
+                    <th class="ks_dn_th list_header ks_dn_asc" t-att-data-item-id="item_id" t-on-click="_ksSortAscOrder"
+                        t-att-data-fields="state.list_view_data['fields'][count]"
+                        t-att-data-store="state.list_view_data['store']">
+                        <t t-esc="table_header"/>
+                        <t t-if="calculation_type == 'custom' &amp; !isDrill">
+                            <t t-if="state.list_view_data['store']">
+                                <button title="Sort button"
+                                        type="button"
+                                        class="ks_sort_icon ks_dashboard_item_action ks_sort_down ks_list_heder_hover ks_border_aliceblue"
+                                        t-att-data-item-id="item_id"
+                                        t-att-data-fields="state.list_view_data['fields'][count]"
+                                        aria-expanded="true">
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.41043 4.01636L3.55042 2.15637L1.69043 4.01636" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.55029 11.1564V2.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M6.96045 9.29639L8.82047 11.1564L10.6805 9.29639" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8.82031 2.15637V11.1564" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button title="Sort button"
+                                        type="button"
+                                        class="ks_dashboard_item_action ks_sort_up ks_plus ks_sort_icon ks_list_heder_hover ks_border_aliceblue"
+                                        t-att-data-item-id="item_id"
+                                        t-att-data-fields="state.list_view_data['fields'][count]"
+                                        aria-expanded="true">
+                                    <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.72 9.15637L2.85999 11.0164L1 9.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2.85986 10.1564V1.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5.69971 2.85999L7.55972 1L9.41971 2.85999" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.69971 1V11" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </t>
+                            <t t-set="count" t-value="count+1"/>
+                        </t>
+                    </th>
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <th class="ks_dn_th"/>
+                </t>
+            </tr>
+        </t>
+        <t t-else="">
+            <tr>
+
+                <t t-foreach="state.list_view_data['label']" t-as="table_header" t-key="table_header_index">
+                    <th class="ks_dn_th">
+                        <t t-esc="table_header"/>
+                    </th>
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <th class="ks_dn_th"/>
+                </t>
+            </tr>
+        </t>
+    </t>
+
+    <t t-name="ks_dn_advance.Ksdashboardlistview" t-inherit="ks_dashboard_ninja.Ksdashboardlistview" t-inherit-mode="extension">
+        <xpath expr="//div/t/div[@name='ks_list_div']" position="replace">
+            <div class="card-body table-responsive ks_list_card_body ks_list_item_table">
+                <t t-if="state.list_view_data">
+                    <t t-if="layout == 'layout_2'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_2"/>
+                    </t>
+                    <t t-elif="layout == 'layout_3'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_3"/>
+                    </t>
+                    <t t-elif="layout == 'layout_4'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_4"/>
+                    </t>
+                    <t t-else="">
+                        <t t-call="ks_dashboard_ninja.ks_list_view_table"/>
+                    </t>
+                </t>
+                <t t-else="">
+                    No Data Present
+                </t>
+            </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="ks_dashboard_ninja.Ksdashboardlistview" t-inherit-mode="extension">
+        <xpath expr="//t[@t-if='ks_ai_analysis']//div[@name='ks_list_div']" position="replace">
+            <div class="card-body table-responsive ks_list_card_body ks_list_item_table ks_list_explain">
+                <t t-if="state.list_view_data">
+                    <t t-if="layout == 'layout_2'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_2"/>
+                    </t>
+                    <t t-elif="layout == 'layout_3'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_3"/>
+                    </t>
+                    <t t-elif="layout == 'layout_4'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_4"/>
+                    </t>
+                    <t t-else="">
+                        <t t-call="ks_dashboard_ninja.ks_list_view_table"/>
+                    </t>
+                </t>
+                <t t-else="">
+                    No Data Present
+                </t>
+            </div>
+        </xpath>
+    </t>
+    <t t-name="ks_dn_advance.ks_list_view_container" t-inherit="ks_dashboard_ninja.ks_list_view_container"
+       t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('ksMaxTableContent')]" position="replace">
+            <div class="card-body table-responsive ksMaxTableContent ks_list_item_table">
+                <t t-if="state.list_view_data">
+                    <t t-if="layout == 'layout_2'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_2"/>
+                    </t>
+                    <t t-elif="layout == 'layout_3'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_3"/>
+                    </t>
+                    <t t-elif="layout == 'layout_4'">
+                        <t t-call="ks_dn_advance.ks_list_view_layout_4"/>
+                    </t>
+                    <t t-else="">
+                        <t t-call="ks_dashboard_ninja.ks_list_view_table"/>
+                    </t>
+                </t>
+                <t t-else="">
+                    No Data Present
+                </t>
+            </div>
+        </xpath>
+    </t>
+    <t t-inherit="ks_dashboard_ninja.ks_list_view_tmpl" t-inherit-mode="extension">
+        <xpath expr="//tr[hasclass('ks_tr')]" position="replace">
+            <tr class="ks_tr" t-att-data-record-id="table_row['id']" t-att-data-domain="table_row['domain']"
+                t-att-data-item-Id="item_id"
+                t-att-data-sequence="table_row['sequence']" t-att-data-last_seq="table_row['last_seq']">
+                <t t-set="ks_rec_count" t-value="0"/>
+                <t t-foreach="table_row['data']" t-as="row_data" t-key="row_data_index">
+                    <t t-if="table_row['ks_column_type'][ks_rec_count]==='html'">
+                        <td class="ks_list_canvas_click">
+                            <t t-out="markup(row_data)"/>
+                        </td>
+                        <t t-set="ks_rec_count" t-value="ks_rec_count+1"/>
+                    </t>
+                    <t t-else="">
+                        <td class="ks_list_canvas_click" t-on-click="onChartCanvasClick">
+                            <t t-esc="row_data" />
+                        </td>
+                        <t t-set="ks_rec_count" t-value="ks_rec_count+1"/>
+                    </t>
+
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <td class="ks_info">
+                        <t t-if="ks_show_records">
+                            <div id="ks_item_info" t-att-data-model="state.list_view_data['model']"
+                                   t-att-data-list-type="state.list_view_data['list_view_type']"
+                                   t-att-data-groupby="state.list_view_data['groupby']"
+                                   t-att-data-record-id="table_row['id']" t-att-data-item-id="item_id"
+                                   t-att-data-list-view-type="list_type"
+                                   t-on-click="ksOnListItemInfoClick">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                    <path d="M9.16675 1.66663H7.50008C3.33341 1.66663 1.66675 3.33329 1.66675 7.49996V12.5C1.66675 16.6666 3.33341 18.3333 7.50008 18.3333H12.5001C16.6667 18.3333 18.3334 16.6666 18.3334 12.5V10.8333" stroke="#241C1D" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.3666 2.51663L6.7999 9.0833C6.5499 9.3333 6.2999 9.82497 6.2499 10.1833L5.89157 12.6916C5.75823 13.6 6.3999 14.2333 7.30823 14.1083L9.81657 13.75C10.1666 13.7 10.6582 13.45 10.9166 13.2L17.4832 6.6333C18.6166 5.49997 19.1499 4.1833 17.4832 2.51663C15.8166 0.849966 14.4999 1.3833 13.3666 2.51663Z" stroke="#241C1D" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12.425 3.45837C12.9834 5.45004 14.5417 7.00837 16.5417 7.57504" stroke="#241C1D" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </t>
+                    </td>
+                </t>
+            </tr>
+        </xpath>
+    </t>
+
+    <t t-inherit="ks_dashboard_ninja.ks_list_view_table" t-inherit-mode="extension">
+        <xpath expr="//table[hasclass('ks_list_view_layout_1')]" position="replace">
+
+            <t t-if="state.list_view_data">
+
+                <table id="ksListViewTable" class="table table-hover ks_dn_table ks_list_view_layout_1"
+                       t-att-data-model="state.list_view_data['model']">
+
+                    <thead class="ks_dn_thead">
+
+                        <t t-call="ks_dn_advance.ks_dns_list_view_header"/>
+
+                    </thead>
+
+                    <tbody class="ks_table_body">
+                        <t t-call="ks_dashboard_ninja.ks_list_view_tmpl"/>
+                    </tbody>
+                </table>
+
+            </t>
+            <t t-else="">
+                No Data Present
+            </t>
+        </xpath>
+    </t>
+
+
+    <t t-name="ks_dn_advance.ks_dns_list_view_header">
+        <t t-if="calculation_type == 'custom' &amp; !isDrill">
+            <tr style="color:black">
+                <t t-set="count" t-value="0"/>
+                <t t-foreach="state.list_view_data['label']" t-as="table_header" t-key="table_header_index">
+                    <th class="ks_dn_th list_header ks_dn_asc" t-att-data-item-id="item_id" t-on-click="_ksSortAscOrder"
+                        t-att-data-fields="state.list_view_data['fields'][count]"
+                        t-att-data-store="state.list_view_data['store']">
+                        <t t-esc="table_header"/>
+                        <t t-if="calculation_type == 'custom' &amp; !isDrill">
+                            <t t-if="state.list_view_data['store']">
+                                <button title="Sort button"
+                                        type="button"
+                                        class="ks_sort_icon ks_dashboard_item_action ks_sort_down ks_list_heder_hover ks_border_aliceblue"
+                                        t-att-data-item-id="item_id"
+                                        t-att-data-fields="state.list_view_data['fields'][count]"
+                                        aria-expanded="true">
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.41043 4.01636L3.55042 2.15637L1.69043 4.01636" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.55029 11.1564V2.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M6.96045 9.29639L8.82047 11.1564L10.6805 9.29639" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8.82031 2.15637V11.1564" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button title="Sort button"
+                                        type="button"
+                                        class="ks_dashboard_item_action ks_sort_up ks_plus ks_sort_icon ks_list_heder_hover ks_border_aliceblue"
+                                        t-att-data-item-id="item_id"
+                                        t-att-data-fields="state.list_view_data['fields'][count]"
+                                        aria-expanded="true">
+                                    <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.72 9.15637L2.85999 11.0164L1 9.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2.85986 10.1564V1.15637" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5.69971 2.85999L7.55972 1L9.41971 2.85999" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.69971 1V11" stroke="#241C1D" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </t>
+                            <t t-set="count" t-value="count+1"/>
+                        </t>
+                    </th>
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <th class="ks_dn_th"/>
+                </t>
+            </tr>
+        </t>
+        <t t-else="">
+            <tr style="color:black">
+
+                <t t-foreach="state.list_view_data['label']" t-as="table_header" t-key="table_header_index">
+                    <th class="ks_dn_th">
+                        <t t-esc="table_header"/>
+                    </th>
+                </t>
+                <t t-if="calculation_type == 'custom'">
+                    <th class="ks_dn_th"/>
+                </t>
+            </tr>
+        </t>
+    </t>
+
+
+</templates>

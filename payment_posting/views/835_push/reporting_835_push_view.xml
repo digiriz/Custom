@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_payment_posting_production_reporting_835_push_form_view" model="ir.ui.view">
+        <field name="name">payment.posting.form.view</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <form string="Payment Posting Production" create="false" edit="true" delete="false">
+                <header>
+                    <field name="timer_start" invisible="1"/>
+                    <button name="action_start_time" type="object" string="Start" invisible="timer_start"
+                            class="btn btn-success text-uppercase"/>
+                    <button name="action_stop_timing" type="object" string="Stop" invisible="not timer_start"
+                            class="btn btn-danger text-uppercase"/>
+                    <field name="status_id" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group readonly="1">
+                            <field name="exchange" readonly="1"/>
+                            <field name="check_eft_number" readonly="1"/>
+                            <field name="load_date" readonly="1"/>
+                            <field name="tax_id" readonly="1"/>
+                            <field name="offset" readonly="1"/>
+                            <field name="clm" readonly="1"/>
+                            <field name="pay_m" readonly="1"/>
+                            <field name="type" readonly="1"/>
+                            <field name="tag_ids" widget="many2many_tags" readonly="1"/>
+                            <field name="total_work_hours" widget="float_time"/>
+                        </group>
+                        <group readonly="1">
+                            <field name="created" readonly="1"/>
+                            <field name="amount" readonly="1"/>
+                            <field name="division_id" readonly="1"/>
+                            <field name="tx" readonly="1"/>
+                            <field name="remit_adv" readonly="1"/>
+                            <field name="payer_identity" readonly="1"/>
+                            <field name="payer_nm" readonly="1"/>
+                            <field name="pro_date" readonly="1"/>
+                        </group>
+                    </group>
+                    <group readonly="1">
+                        <group string="Supervisor Input" name="supervisor_input">
+                            <field name="assigned_to" readonly="1"/>
+                            <field name="assigned_date" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="User Input" name="user_input">
+                        <group>
+                            <field name="bar_batch"/>
+                            <field name="posted_amount"/>
+                            <field name="pending_amount"/>
+                            <field name="transaction"/>
+                            <field name="status_id"/>
+                        </group>
+                        <group>
+                            <field name="posted_date"/>
+                            <field name="remarks_id"/>
+                            <field name="recon_date"/>
+                            <field name="clarification_sent_date"/>
+                            <field name="clarification_received_date"/>
+                            <field name="batch_closed_date"/>
+                        </group>
+                    </group>
+                    <group string="Auditor Status" name="auditor_status">
+                        <group>
+                            <field name="error_comments" readonly="1"/>
+                            <field name="error_count" readonly="1"/>
+                            <field name="incorrect" readonly="1"/>
+                            <field name="missed" readonly="1"/>
+                            <field name="navigation" readonly="1"/>
+                            <field name="auditor_status" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="auditor_user_id" readonly="1"/>
+                            <field name="audited_date" readonly="1"/>
+                            <field name="error_category_id" readonly="1"/>
+                            <field name="audit_id" readonly="1"/>
+                            <field name="auditor_invoice_count" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group string="Client Status" name="client_status">
+                        <group>
+                            <field name="client_audit_status"/>
+                            <field name="client_error_count"/>
+                        </group>
+                        <group>
+                            <field name="client_remarks_id"/>
+                            <field name="rebuttals"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Notes" name="payment_posting_invoice" autofocus="autofocus">
+                            <field name="payment_posting_invoice_ids">
+                                <tree editable="bottom" limit="200">
+                                    <field name="invoice_no"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                            <group>
+                                <field name="total_invoice_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}"/>
+                                <field name="total_invoice_pending_amount" widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}"/>
+                            </group>
+                            <!--<div class="oe_right">
+                                <div class="oe_inline">
+                                    <label for="total_invoice_amount" class="oe_form_label"
+                                           style="font-weight: bold;">Total :
+                                    </label>
+                                    <span class="oe_form_value">
+                                        <field name="total_invoice_amount" widget="monetary" nolabel="1"
+                                               options="{'currency_field': 'company_currency_id'}"/>
+                                    </span>
+                                </div>
+                                <div class="oe_inline">
+                                    <label for="total_invoice_pending_amount" class="oe_form_label"
+                                           style="font-weight: bold;">Pending Amount:
+                                    </label>
+                                    <span class="oe_form_value">
+                                        <field name="total_invoice_pending_amount" widget="monetary" nolabel="1"
+                                               options="{'currency_field': 'company_currency_id'}"/>
+                                    </span>
+                                </div>
+                            </div>-->
+                        </page>
+                        <page string="Production Timing" name="production_timing" autofocus="autofocus">
+                            <field name="production_timing_ids">
+                                <tree create="0" editable="bottom">
+                                    <field name="production_start_time"/>
+                                    <field name="production_end_time"/>
+                                    <field name="duration" type="measure" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_payment_posting_production_reporting_835_push_tree" model="ir.ui.view">
+        <field name="name">payment.posting.tree</field>
+        <field name="model">payment.posting</field>
+        <field name="arch" type="xml">
+            <tree string="Payment Posting" create="false" edit="true" delete="false" multi_edit="1">
+                <field name="priority_compute" column_invisible="1"/>
+                    <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
+                <field name="exchange" optional="show"/>
+                <field name="check_eft_number" optional="show"/>
+                <field name="load_date" optional="show"/>
+                <field name="tax_id" optional="show"/>
+                <field name="offset" optional="show"/>
+                <field name="clm" optional="show"/>
+                <field name="pay_m" optional="show"/>
+                <field name="created" optional="show"/>
+                <field name="amount" optional="show"/>
+                <field name="division_id" optional="show"/>
+                <field name="tx" optional="show"/>
+                <field name="remit_adv" optional="show"/>
+                <field name="payer_identity" optional="show"/>
+                <field name="payer_nm" optional="show"/>
+                <field name="recon_date" optional="hide"/>
+                <field name="pro_date" optional="show"/>
+                <field name="assigned_to" optional="show"/>
+                <field name="assigned_date" optional="show"/>
+                <field name="transaction" optional="hide"/>
+                <field name="auditor_invoice_count" optional="hide" sum="Total Auditor Invoice Count"/>
+                <field name="status_id" optional="show"/>
+                <field name="posted_date" optional="show"/>
+                <field name="remarks_id" optional="show"/>
+                <field name="total_work_hours" widget="float_time" optional="show"/>
+                <field name="client_audit_status" optional="hide"/>
+                <field name="client_error_count" optional="hide"/>
+                <field name="reprocessing_id" optional="hide"/>
+                <field name="c_audit_date" optional="hide"/>
+                <field name="client_remarks_id" optional="hide"/>
+                <field name="clarification_sent_date" optional="hide"/>
+                <field name="clarification_received_date" optional="hide"/>
+                <field name="batch_closed_date" optional="hide"/>
+                <field name="tat" widget="float_time" optional="hide"/>
+                <field name="auditor_user_id" optional="hide"/>
+                <field name="audited_date" optional="hide"/>
+                <field name="auditor_invoice_count" optional="hide" sum="Total Auditor Invoice Count"/>
+                <field name="of_transactions" optional="hide"/>
+                <field name="audit_id" optional="hide"/>
+                <field name="auditor_status" optional="hide"/>
+                <field name="error_count" optional="hide"/>
+                <field name="incorrect" optional="hide"/>
+                <field name="missed" optional="hide"/>
+                <field name="navigation" optional="hide"/>
+                <field name="error_comments" optional="hide"/>
+                <field name="reprocessing_id" optional="hide"/>
+                <field name="fixing_date" optional="hide"/>
+                <field name="updated_bar_batch" optional="hide"/>
+                <field name="comments" optional="hide"/>
+                <field name="error_status" optional="hide"/>
+                <field name="total_work_hours" widget="float_time" optional="show"/>
+                <field name="client_audit_status" optional="hide"/>
+                <field name="client_error_count" optional="hide"/>
+                <field name="reprocessing_id" optional="hide"/>
+                <field name="c_audit_date" optional="hide"/>
+                <field name="client_remarks_id" optional="hide"/>
+                <field name="rebuttals" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_payment_posting_production_reporting_835_push" model="ir.actions.act_window">
+        <field name="name">Reporting - 835Push</field>
+        <field name="res_model">payment.posting</field>
+        <field name="view_mode">tree,form,search,pivot</field>
+        <field name="domain">[('type', '=', '835_push')]</field>
+        <field name="context">{'search_default_today': 1}</field>
+        <field name="groups_id" eval="[(4, ref('payment_posting.group_custom_supervisor'))]"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_payment_posting_production_reporting_835_push_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_payment_posting_production_reporting_835_push_form_view')})]"/>
+
+    </record>
+
+    <menuitem id="main_sub_my_production_835_push_menu" name="835Push"
+              parent="menu_payment_posting_pp_ehm_reporting"
+              action="action_payment_posting_production_reporting_835_push"
+              sequence="3"
+    />
+</odoo>

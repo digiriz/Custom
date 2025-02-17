@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Template for the project dashboard -->
+<templates id="AttendanceDashboard" xml:space="preserve">
+    <t t-name="AttendanceDashboard">
+        <div style="height:1000px; max-height: -webkit-fill-available; overflow-y: scroll;">
+            <div class="mx-5">
+                <div class="row gx-0 mt-3">
+                    <div class="col-12 d-flex justify-content-end ">
+                        <!-- <button id="createCheckIn" t-on-click="(e) => this.createCheckIn(e)" class="btn btn-primary p-2">
+                            <i class="fa fa-sign-in p-1" aria-hidden="true"></i> Check In
+                        </button>
+                        <button id="createBooking" t-on-click="(e) => this.createBooking(e)" class="btn btn-primary mx-2 p-2">
+                            <i class="fa fa-plus p-1" aria-hidden="true"></i> Booking
+                        </button> -->
+                        <button id="downloadBtn" t-on-click="(e) => this.downloadReport(e)" class="btn btn-primary p-2">
+                            <i class="fa fa-file-pdf-o p-1" aria-hidden="true"></i> Print
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-5" id="dashboard" >
+                <t t-call="filters"/>
+                <t t-call="calender"/>
+                <t t-call="table"/>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="filters">
+        <div class="card mt-4 mb-3 filters">
+            <div class="row p-2 m-2 gx-0 gy-2" >  
+                <div class="col-lg-1 d-flex my-auto justify-content-center">
+                    <t t-if="state.user_img.value">
+                        <img t-att-src="'data:image/png;base64,' + state.user_img.value" class="css-shadow"/>
+                    </t>
+                    <t t-else="">
+                        <img t-att-src="'dev_attendance_dashboard_advanced/static/src/icons/main.jpg'" class="css-shadow" />
+                    </t>
+                </div>
+                <div class="col-lg-4 pl-1 my-auto">
+                    <h2> <t t-esc="greetings"/>, <t t-esc="state.user_name.value"/>.</h2>
+                    <h4>Welcome to your Attendance Dashboard.</h4>
+                </div>
+                <div class="col-lg-7">  
+                    <div class="row gy-2">
+                        <div class="col-lg-3 m-0">
+                            <label for="department_selection" class="form-label fw-bolder">Department:</label>
+                            <select class="form-select" id="department_selection" t-on-change="(ev) => this._onchangeAttendanceFilter(ev)">
+                                <option value="all">All Departments</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 m-0">
+                            <label for="employee_selection" class="form-label fw-bolder">Employee:</label>
+                            <select class="form-select" id="employee_selection" t-on-change="(ev) => this._onchangeAttendanceFilter(ev)">
+                                <option value="all">All Employees</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 m-0">
+                            <label for="month_selection" class="form-label fw-bolder">Month:</label>
+                            <select class="form-select" id="month_selection" t-on-change="(ev) => this._onchangeAttendanceFilter(ev)">
+                            </select>
+                        </div>
+                        <div class="col-lg-3 m-0">
+                            <label for="year_selection" class="form-label fw-bolder">Year:</label>
+                            <select class="form-select" id="year_selection" t-on-change="(ev) => this._onchangeAttendanceFilter(ev)">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-primary" role="alert">
+            <div class="row">
+                <div class="col-2">
+                    [<b>W: </b> Weekend Day]
+                </div>
+                <div class="col-1">
+                    [<b>A: </b> Absent]
+                </div>
+                <div class="col-1">
+                    [<b>L: </b> Leave]
+                </div>
+                <div class="col-1">
+                    [<b>P: </b> Present]
+                </div>
+                <div class="col-1">
+                    [<b>H: </b> Holiday]
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="calender">
+        <div class="card">
+           <table id="attendanceCalender">
+                <thead>
+
+                </thead>
+                <tbody>
+                    
+                </tbody>
+           </table>
+        </div>
+    </t>
+
+    <t t-name="table">
+        <div class="mt-5 mb-1 alert alert-primary p-0" role="alert">
+            <h2 class="m-0 p-2 text-primary">Leave Summary</h2>
+        </div>
+        <div class="mb-5">
+            <div class="card" style="border-radius:10px; overflow-x:auto;">
+                <table id="leaveDetail" class="table">
+                    <thead class="card-header">
+                      <tr>
+                        <th scope="col">Employee</th>
+                        <th scope="col">Leave Type</th>
+                        <th scope="col">From Date</th>
+                        <th scope="col">To Date</th>
+                        <th scope="col">Days</th>
+                        <th scope="col">Description</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                    </tbody>
+                  </table>
+                  <t t-if="this.state.leave_summary">
+                    <div class="d-flex align-items-center justify-content-center text-primary m-2">
+                        <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true" id='prev_button' t-on-click="(e) => this.prevPage(e)"> </i>
+                        <span style="font-weight:600; font-size:15px; margin:0px 5px 0px 5px"> Page <t t-esc="this.state.currentPage"/> of <t t-esc="Math.ceil(this.state.leave_summary.length/this.state.rowsPerPage)"/> </span>
+                        <i class="fa fa-arrow-circle-right fa-2x" id ='next_button' aria-hidden="true" t-on-click="(e) => this.nextPage(e)"> </i>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

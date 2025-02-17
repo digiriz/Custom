@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard | Odoo Apps</title>
+    <meta name="description" content="Attendance Dashboard | Odoo Apps">
+    <meta name="keywords" content="Attendance Dashboard | Odoo Apps">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- heading & description -->
+        <section id="dev_intro" class="mt-2">
+            <div class="product-card shadow-lg p-3" style="border-radius: 14px;">
+                <div class="card-body text-center mt-3">
+                    <h2 class="card-title" style="color: #015d65;">
+                        Attendance Dashboard in Odoo 
+                    </h2>
+                    <h3 class="card-title" style="color: #015d65;">
+                        Employee Attendance Calendar
+                    </h3>
+                    <img src="images/seprator.png" alt="seprator" width=250 />
+                    <p class="card-text description mt-2"
+                        style="color: #5a5a5a; font-size: 17px; letter-spacing: 0.6px; text-align: justify;">
+                        Employee Attendance Monthly Dashboard Odoo App, designed to revolutionize your attendance
+                        management. This intuitive app provides a comprehensive attendance dashboard where you can see
+                        employees with their job designations and day-wise attendance on one screen. The app displays
+                        total hours worked each day if check-in and check-out found for that day. If an employee is on
+                        leave, it is clearly shown. For weekends, the app manages days off based on the employee’s work
+                        schedule, and global holidays are also accounted for. If an employee does not have leave,
+                        weekend, attendance, or a holiday marked, they are displayed as absent for that day.
+                        <br><br>
+                        The app features a flexible calendar that allows you to switch between months and years
+                        effortlessly. On the left side of the screen, you’ll find a summary of monthly attendance,
+                        making attendance summary management straightforward. A unique feature is the ability to click
+                        on any holiday, leave, or attendance record to view detailed information. Filters for company,
+                        employee, month, and year make it easy to customize the data displayed to suit your needs.
+                        <br><br>
+                        Additionally, the app provides a leave summary for the current month, which can be adjusted
+                        using the provided filters. This summary includes the employee’s name, leave dates, and the
+                        reason for leave. A view button allows you to see detailed information about specific leave
+                        records. The Employee Attendance Monthly Dashboard Odoo App ensures efficient and
+                        straightforward attendance management, enhancing your organization’s productivity.
+                    </p>
+                    <div class="row my-3 text-center">
+                        <div class="col">
+                            <span class='btn btn-primary'
+                                style="position: relative; overflow: hidden; border: 1px solid transparent; padding: .375rem .75rem; font-size: 1rem; line-height: 1.5; border-radius: .25rem; background-color: #015d65; border-color: #015d65;">
+                                <i class='fa fa-check'></i>
+                                <span>Community</span>
+                            </span>
+                            <span class='btn btn-primary'
+                                style="position: relative; overflow: hidden; border: 1px solid transparent; padding: .375rem .75rem; font-size: 1rem; line-height: 1.5; border-radius: .25rem; background-color: #015d65; border-color: #015d65;">
+                                <i class='fa fa-check'></i>
+                                <span>Enterprise</span>
+                            </span>
+                            <span class='btn btn-primary'
+                                style="position: relative; overflow: hidden; border: 1px solid transparent; padding: .375rem .75rem; font-size: 1rem; line-height: 1.5; border-radius: .25rem; background-color: #015d65; border-color: #015d65;">
+                                <i class='fa fa-check'></i>
+                                <span>Odoo.sh</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- features -->
+        <section id="features" class="mt-4">
+            <div class="text-center">
+                <h3 class="mb-0" style="color: #015d65;">Features</h3>
+                <img src="images/seprator.png" alt="seprator" width=120 />
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="shadow-lg rounded"
+                            style="padding:20px; margin-bottom:20px; display:block; border-radius:0.25rem">
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <img src="images/icons/dashboard.png" alt="dashboard-icon" style="height:85px;" />
+                                </div>
+                                <div class="col-md-10 col-12">
+                                    <h4 style="color: #015d65;">Comprehensive Attendance Dashboard</h4>
+                                    <p class="mb-0">
+                                        View employee attendance with job designations, check-in/out times, total hours, leave, and absence status on one screen.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="shadow-lg rounded"
+                            style="padding:20px; margin-bottom:20px; display:block; border-radius:0.25rem">
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <img src="images/icons/schedule.png" alt="dashboard-icon" style="height:85px;" />
+                                </div>
+                                <div class="col-md-10 col-12">
+                                    <h4 style="color: #015d65;">Flexible Calendar View</h4>
+                                    <p class="mb-0">
+                                        Easily switch between months and years to review past and future attendance data.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="shadow-lg rounded"
+                            style="padding:20px; margin-bottom:20px; display:block; border-radius:0.25rem">
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <img src="images/icons/verified-account.png" alt="dashboard-icon" style="height:85px;" />
+                                </div>
+                                <div class="col-md-10 col-12">
+                                    <h4 style="color: #015d65;">Monthly Attendance Summary</h4>
+                                    <p class="mb-0">
+                                        Quick reference summary of monthly attendance on the left side of the screen.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="shadow-lg rounded"
+                            style="padding:20px; margin-bottom:20px; display:block; border-radius:0.25rem">
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <img src="images/icons/pop-up.png" alt="dashboard-icon" style="height:85px;" />
+                                </div>
+                                <div class="col-md-10 col-12">
+                                    <h4 style="color: #015d65;">Interactive Record Details</h4>
+                                    <p class="mb-0">
+                                        Click on holidays, leave, or attendance records to view detailed information.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="shadow-lg rounded"
+                            style="padding:20px; margin-bottom:20px; display:block; border-radius:0.25rem">
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <img src="images/icons/leave.png" alt="dashboard-icon" style="height:85px;" />
+                                </div>
+                                <div class="col-md-10 col-12">
+                                    <h4 style="color: #015d65;">Leave and Absence Management</h4>
+                                    <p class="mb-0">
+                                        Automatically manage leave, weekends, global holidays, and absences, displaying accurate attendance records.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="shadow-lg rounded"
+                            style="padding:20px; margin-bottom:20px; display:block; border-radius:0.25rem">
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <img src="images/icons/filter1.png" alt="filter-icon" style="height:85px;" />
+                                </div>
+                                <div class="col-md-10 col-12">
+                                    <h4 style="color: #015d65;">Customizable Filters</h4>
+                                    <p class="mb-0">
+                                        Use company, employee, month, and year filters to customize the displayed data.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="shadow-lg rounded"
+                            style="padding:20px; margin-bottom:20px; display:block; border-radius:0.25rem">
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <img src="images/icons/absence.png" alt="dashboard-icon" style="height:85px;" />
+                                </div>
+                                <div class="col-md-10 col-12">
+                                    <h4 style="color: #015d65;">Leave Summary</h4>
+                                    <p class="mb-0">
+                                        View current month’s leave summary with employee names, leave dates, and reasons, with a view button for detailed records.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="shadow-lg rounded"
+                            style="padding:20px; margin-bottom:20px; display:block; border-radius:0.25rem">
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <img src="images/icons/download.png" alt="dashboard-icon" style="height:85px;" />
+                                </div>
+                                <div class="col-md-10 col-12">
+                                    <h4 style="color: #015d65;">Print Dashboard Screen</h4>
+                                    <p class="mb-0">
+                                        Using "Print" button you can save this dashboard screen as PDF file.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- tabs -->
+        <section id="tabs" class="mt-5">
+            <ul class="nav nav-tabs justify-content-center pb-2" role="tablist">
+                <li class="nav-item rounded mx-1"
+                    style="color: white !important; cursor: pointer; text-decoration: none; background-color: #015d65; font-weight: 600; font-size: 14px;">
+                    <span class="nav-link active rounded"
+                        style=" cursor: pointer; border: 1px solid #015d65;  padding: 10px 20px;" data-bs-toggle="tab"
+                        href="#Configurations">
+                        Setup
+                    </span>
+                </li>
+                <li class="nav-item rounded mx-1"
+                    style="color: white !important; cursor: pointer; text-decoration: none; background-color: #015d65; font-weight: 600; font-size: 14px;">
+                    <span class="nav-link rounded"
+                        style=" cursor: pointer; border: 1px solid #015d65;  padding: 10px 20px;" data-bs-toggle="tab"
+                        href="#Release">
+                        Releases
+                    </span>
+                </li>
+                <li class="nav-item rounded mx-1"
+                    style="color: white !important; cursor: pointer; text-decoration: none; background-color: #015d65; font-weight: 600; font-size: 14px;">
+                    <span class="nav-link rounded"
+                        style=" cursor: pointer; border: 1px solid #015d65;  padding: 10px 20px;" data-bs-toggle="tab"
+                        href="#faqs">
+                        FAQs
+                    </span>
+                </li>
+                <li class="nav-item rounded mx-1"
+                    style="color: white !important; cursor: pointer; text-decoration: none; background-color: #015d65; font-weight: 600; font-size: 14px;">
+                    <span class="nav-link rounded"
+                        style=" cursor: pointer; border: 1px solid #015d65;  padding: 10px 20px;" data-bs-toggle="tab"
+                        href="#support">
+                        Support
+                    </span>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="Configurations" role="tabpanel">
+                    <section id="screenshot" class="text-center" style="color: #015d65;">
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Default User Image and Hours Display Format <img src="images/new.png" alt="" srcset="" style="height:60px;">
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;">
+                                In case of login user do not have profile image then default image will be displayed, and change formate of hours in dashboard from "4 H" to "04:13 H".
+                            </p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/new-1.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                               Leave Summary Table  <img src="images/new.png" alt="" srcset="" style="height:60px;">
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;">
+                                Added next  and previous button into Leave Summary Table.
+                            </p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/new-2.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                User Access Rights
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;">
+                                User with this access rights only can see the attendace dashboard menu.
+                            </p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-0.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Menu Added for Dasboard
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;">
+                                If User has access right then menu will displayed. 
+                            </p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-1.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Advanced Dashboard
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;"> </p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-2.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Greetings and Filters for the dashboard
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;"> </p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-3.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Employee with their day wise attendance and summary
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;"></p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-4.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Click on Employee Name to See Detail 
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;"></p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-5.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Employee Details
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;"></p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-6.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Leave Summary Details
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;"></p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-7.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                Leave Detail of Employee on View Button
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;"></p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-8.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p style="font-size: 30px; margin: auto; letter-spacing: .5px">
+                                After Filter Applied, Employee Attendance Detail and Leave Details
+                            </p>
+                            <p style="font-size: 18px; margin: auto; margin-bottom: 20px; max-width: 80%;"></p>
+                            <div class="col-md-12">
+                                <img class="img-responsive rounded shadow-lg" src="screens/dashboard-9.png"
+                                    alt="Survey Management Workflow" style="width:100%">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="tab-pane fade" id="Release" role="tabpanel">
+                    <section id="release" class="mt-2">
+                        <div class="shadow-lg rounded bg-white" style="padding:20px; margin-bottom:15px">
+                            <h4
+                                style="font-size:16px; margin:0; color:#212121; text-decoration:none; font-weight:600; letter-spacing:1px; display:block">
+                                <span class="fa fa-hand-o-right"
+                                    style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                <span>Version 1.1</span> | <span style="color:#015d65">Released on : 21<sup>st</sup>
+                                    September 2024</span>
+                            </h4>
+                            <div style="font-size:16px; padding-left:32px; color:#555; margin:0; padding-top:15px">
+                                <div style="font-weight:normal" class="d-flex align-items-center">
+                                    <span class="fa fa-arrow-right"
+                                        style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                    <span style="vertical-align:middle; font-size:17px; font-weight: 600; ">
+                                        New Updated and Minor Issues Solved.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shadow-lg rounded bg-white" style="padding:20px; margin-bottom:15px">
+                            <h4
+                                style="font-size:16px; margin:0; color:#212121; text-decoration:none; font-weight:600; letter-spacing:1px; display:block">
+                                <span class="fa fa-hand-o-right"
+                                    style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                <span>Version 1.0</span> | <span style="color:#015d65">Released on : 25<sup>th</sup>
+                                    July 2024</span>
+                            </h4>
+                            <div style="font-size:16px; padding-left:32px; color:#555; margin:0; padding-top:15px">
+                                <div style="font-weight:normal" class="d-flex align-items-center">
+                                    <span class="fa fa-arrow-right"
+                                        style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                    <span style="vertical-align:middle; font-size:17px; font-weight: 600; ">
+                                        Initial Release.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="tab-pane fade" id="faqs" role="tabpanel">
+                    <section id="faq">
+                        <ul class="list-unstyled">
+                            <li class="shadow-lg rounded"
+                                style="padding:20px; margin-bottom:20px; font-size:20px; color:#015d65; display:block; border-radius:0.25rem">
+                                <span class="fa fa-hand-o-right"
+                                    style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                <span>
+                                    <b>Is this app compatible with Odoo Enterprise?</b>
+                                </span>
+                                <br>
+                                <ul style="color: black; font-size: 16px;">
+                                    <li>
+                                        <span class="pl-4">Yes, our app works with Odoo Enterprise as well as
+                                            Community.</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="shadow-lg rounded"
+                                style="padding:20px; margin-bottom:20px; font-size:20px; color:#015d65; display:block; border-radius:0.25rem">
+                                <span class="fa fa-hand-o-right"
+                                    style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                <span>
+                                    <b>If need of customization in this app, How can i contact ?</b>
+                                </span>
+                                <br>
+                                <ul style="color: black; font-size: 16px;">
+                                    <li>
+                                        <span class="pl-4">Please contact us on <b>odoo@devintellecs.com</b></span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="shadow-lg rounded"
+                                style="padding:20px; margin-bottom:20px; font-size:20px; color:#015d65; display:block; border-radius:0.25rem">
+                                <span class="fa fa-hand-o-right"
+                                    style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                <span>
+                                    <b>Do i get free support?</b>
+                                </span>
+                                <br>
+                                <ul style="color: black; font-size: 16px;">
+                                    <li>
+                                        <span class="pl-4">Yes, you will get free support for 90days.</b></span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="shadow-lg rounded"
+                                style="padding:20px; margin-bottom:20px; font-size:20px; color:#015d65; display:block; border-radius:0.25rem">
+                                <span class="fa fa-hand-o-right"
+                                    style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                <span>
+                                    <b>Do i get free updates?</b>
+                                </span>
+                                <br>
+                                <ul style="color: black; font-size: 16px;">
+                                    <li>
+                                        <span class="pl-4">Yes, you will get free updates for lifetime.</b></span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="shadow-lg rounded"
+                                style="padding:20px; margin-bottom:20px; font-size:20px; color:#015d65; display:block; border-radius:0.25rem">
+                                <span class="fa fa-hand-o-right"
+                                    style="color:#015d65; font-weight:600; font-size:18px; padding-right:10px"></span>
+                                <span>
+                                    <b>Do i have to buy this module for each version ?</b>
+                                </span>
+                                <br>
+                                <ul style="color: black; font-size: 16px;">
+                                    <li>
+                                        <span class="pl-4">Yes, you have to buy this module for each version.</b></span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="tab-pane fade" id="support" role="tabpanel">
+                    <section id="support" class="mt-4">
+                        <div class="text-center">
+                            <h3 class="mb-0" style="color: #015d65;">Support</h3>
+                            <img src="images/seprator.png" alt="seprator" width=150 />
+                        </div>
+                        <div class="product-card shadow-lg p-2" style="border-radius: 14px;">
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-12 text-center">
+                                    <img src="images/tube.png" alt="support" height=100>
+                                </div>
+                                <div class="col-lg-10 col-sm-12 pt-3" style="font-size: 20px; font-weight: 400;">
+                                    DevIntelle will provide FREE 90 days support for any doubt, queries, and bug fixing
+                                    (excluding
+                                    data recovery) or any
+                                    type of issues related to this app. This is applicable from the date of purchase.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- whyus  -->
+        <section id="whyus" class="mt-5">
+            <div class="text-center">
+                <h3 class="mb-0" style="color: #015d65;">Why Us?</h3>
+                <img src="images/seprator.png" alt="seprator" width=120 />
+            </div>
+            <div class="shadow-lg p-3" style="border-radius: 14px;">
+                <div class="row mt-3">
+                    <div class="col-lg-4 col-md-12 col-sm-12 text-center my-auto">
+                        <img src='images/logo.png' alt='logo' style="width: 250px;">
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 mt-1"
+                        style="font-size: 20px; font-weight: 400; color: #364546; text-align: justify !important;">
+                        DevIntelle Consulting Services Pvt Ltd is an Odoo service provider India/USA based
+                        consulting
+                        company with <b>12+ years of experience</b>. We provide a wide range of services, including
+                        implementation, customization, migration, support, and training. Devintellecs experienced
+                        team
+                        of Odoo can help you get the most out of your Odoo ERP system and achieve your business
+                        goals.
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-6 col-12 d-flex justify-content-lg-end justify-content-center">
+                        <a href="https://apps.odoo.com/apps/modules/browse?author=DevIntelle%20Consulting%20Service%20Pvt.Ltd"
+                            style="text-decoration: none;">
+                            <span class='btn btn-primary px-5 py-3 ml-auto'
+                                style="position: relative; overflow: hidden; border: 1px solid transparent; font-size: 1.3rem; line-height: 1.5; border-radius: .25rem; background-color: #015d65;border-color: #015d65;"><i
+                                    class='fa fa-cube' style="padding-right: 9px;"></i>More Apps</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-12 d-flex justify-content-lg-start justify-content-center mt-lg-0 mt-3">
+                        <a href="mailto:odoo@devintellecs.com" style="text-decoration: none;">
+                            <span class='btn btn-primary py-3 px-5'
+                                style="position: relative; overflow: hidden; border: 1px solid transparent; font-size: 1.3rem; line-height: 1.5; border-radius: .25rem; background-color: #015d65;border-color: #015d65;"><i
+                                    class='fa fa-desktop' style="padding-right: 9px;"></i>Ask for Demo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- app you like  -->
+        <section id="dev_similarapps" class="mt-5">
+            <div class="text-center mt-4">
+                <h3 class="mb-0" style="color: #015d65;">You May Also Like</h3>
+                <img src="images/seprator.png" alt="seprator" width=230 />
+            </div>
+            <div class="row my-3">
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center mb-2">
+                    <a href="https://apps.odoo.com/apps/modules/17.0/dev_hr_payroll_dashboard" target="_blank">
+                        <img src="banners/Payroll Dashboard.gif" alt="Payroll Dashboard" width="320"
+                            style="border: solid 1px #12757e;">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center mb-2">
+                    <a href="https://apps.odoo.com/apps/modules/17.0/dev_hr_recruitment_dashboard" target="_blank">
+                        <img src="banners/Recruitment.gif" alt="Recruitment Dashboard" width="320"
+                            style="border: solid 1px #12757e;">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center mb-2">
+                    <a href="https://apps.odoo.com/apps/modules/17.0/dev_leave_dashboard/" target="_blank">
+                        <img src="banners/Leave Dashboard.gif" alt="Leave Dashboard"
+                            width="320" style="border: solid 1px #12757e;">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center mb-2">
+                    <a href="https://apps.odoo.com/apps/modules/17.0/dev_pos_dashboard/" target="_blank">
+                        <img src="banners/POS Dashboard.gif" alt="POS Dashboard" width="320"
+                            style="border: solid 1px #12757e;">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center mb-2">
+                    <a href="https://apps.odoo.com/apps/modules/17.0/dev_invoice_dashboard/" target="_blank">
+                        <img src="banners/Invoice Dashboard.gif" alt="Invoice Dashboard"
+                            width="320" style="border: solid 1px #12757e;">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center mb-2">
+                    <a href="https://apps.odoo.com/apps/modules/17.0/dev_crm_dashboard/" target="_blank">
+                        <img src="banners/CRM Dashboard.gif" alt="CRM Dashboard" width="320"
+                            style="border: solid 1px #12757e;">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- most Demandend apps  -->
+        <section id="dev_demandedapps" class="mt-5">
+            <div class="text-center mt-4">
+                <h3 class="mb-0" style="color: #015d65;">Most Demandend Apps</h3>
+                <img src="images/seprator.png" alt="seprator" width=230 />
+            </div>
+            <div class="row my-3">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_picking_cancel/" target="_blank">
+                        <img src="banners/dev_picking_cancel.gif" alt="All in one Cancel" height="180">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_loan_management/" target="_blank">
+                        <img src="banners/dev_loan_management.gif" alt="Customer / Supplier Loan Management"
+                            height="180">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_customer_credit_limit/" target="_blank">
+                        <img src="banners/dev_customer_credit_limit.gif" alt="Customer Credit Limit" height="180">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_inventory_ageing_report/" target="_blank">
+                        <img src="banners/dev_inventory_ageing_report.gif" alt="Stock Inventory Aging Report PDF/Excel"
+                            height="180">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_hr_loan/" target="_blank">
+                        <img src="banners/dev_hr_loan.gif" alt="Employee Loan Management" height="180">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_export_excel/" target="_blank">
+                        <img src="banners/dev_export_excel.gif"
+                            alt="Dynamic / Global Export Excel Report For all Application-xls" height="180">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_customer_account_statement/" target="_blank">
+                        <img src="banners/dev_customer_account_statement.gif" alt="Customer Statement & Aging"
+                            height="180">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_purchase_down_payment/" target="_blank">
+                        <img src="banners/dev_purchase_down_payment.gif" alt="Purchase Advance Payment" height="180">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2 text-center">
+                    <a href="https://apps.odoo.com/apps/modules/16.0/dev_invoice_multi_payment/" target="_blank">
+                        <img src="banners/dev_invoice_multi_payment.gif" alt="Multiple Invoice Payment" height="180">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- services  -->
+
+        <section id="services" class="mt-5">
+            <div class="text-center mt-4">
+                <h3 class="mb-0" style="color: #015d65;">Devintelle Odoo Services</h3>
+                <img src="images/seprator.png" alt="seprator" width=170 />
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-4 col-sm-12 text-center">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="shadow-lg rounded btn-lg btn-block p-4 mb-2"
+                            style="font-size:25px; font-weight:bold; color: #0090e9; background-color:#d1edff; width:90%; margin:auto;">
+                            <span class="fa fa-cloud-upload" style="font-size:40px; color:#0090e9"></span> <br>
+                            <span> Odoo Implementation </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-12 text-center">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="shadow-lg rounded btn-lg btn-block p-4 mb-2"
+                            style="font-size:25px; font-weight:bold; color: #6bcf00; background-color:#ecfcda; width:90%; margin:auto;">
+                            <span class="fa fa-gear" style="font-size:40px; color:#6bcf00"></span> <br>
+                            <span> Odoo Customization </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-12 text-center">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="shadow-lg rounded btn-lg btn-block p-4 mb-2"
+                            style="font-size:25px; font-weight:bold; color: #e90065; background-color:#ffcde3; width:90%; margin:auto;">
+                            <span class="fa fa-link" style="font-size:40px; color:#e90065"></span> <br>
+                            <span> Odoo Intergration </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-4 col-sm-12 text-center">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="shadow-lg rounded btn-lg btn-block p-4 mb-2"
+                            style="font-size:25px; font-weight:bold; color: #c3c903; background-color:#feffdd; width:90%; margin:auto;">
+                            <span class="fa fa-rocket" style="font-size:40px; color:#c3c903"></span> <br>
+                            <span> Odoo Migration </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-12 text-center">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="shadow-lg rounded btn-lg btn-block p-4 mb-2"
+                            style="font-size:25px; font-weight:bold; color: #e96100; background-color:#f9ddc9; width:90%; margin:auto;">
+                            <span class="fa fa-desktop" style="font-size:40px; color:#e96100"></span> <br>
+                            <span> Odoo Training </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-12 text-center">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="shadow-lg rounded btn-lg btn-block p-4 mb-2"
+                            style="font-size:25px; font-weight:bold; color: #03b19f; background-color:#cafffa; width:90%; margin:auto;">
+                            <span class="fa fa-comments" style="font-size:40px; color:#03b19f"></span> <br>
+                            <span> Odoo Support </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- footer  -->
+        <section id="footer" class="mt-5">
+            <div class="text-center mt-4">
+                <h3 class="mb-0" style="color: #015d65;">Connect Us</h3>
+                <img src="images/seprator.png" alt="seprator" width=170 />
+            </div>
+            <div class="text-center row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <a class="shadow-lg rounded py-3 px-4 d-flex justify-content-center align-items-center mb-2"
+                        style="border-width: 1px;border-style: solid;border-color: #4FCE5D;color: #fff;position: relative; overflow: hidden;text-decoration: none;border-radius: 0px;font-size: 20px;font-weight: bold;width: 100%;background-color: #4FCE5D;border-radius: 0.25rem !important;"
+                        href="https://web.whatsapp.com/send?phone=+918780543446&text=Hi" target="_blank"><span
+                            class="fa fa-whatsapp mr-3" style="font-size: 30px;color: #fff;"></span><span
+                            class="align-middle px-2">+91 87805 43446</span></a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <a class="shadow-lg rounded py-3 px-4 d-flex justify-content-center align-items-center mb-2"
+                        style="border-width: 1px;border-style: solid;border-color: #4ca9e3;color: #fff;position: relative; overflow: hidden;text-decoration: none;border-radius: 0px;font-size: 20px;font-weight: bold;width: 100%;background-color: #4ca9e3;border-radius: 0.25rem !important;"
+                        href="skype:devintelle?chat" target="_blank"><span class="fa fa-skype mr-3"
+                            style="font-size: 30px;color: #fff;"></span><span
+                            class="align-middle px-2">@devintelle</span></a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <a class="shadow-lg rounded py-3 px-4 d-flex justify-content-center align-items-center mb-2"
+                        style="border-width: 1px;border-style: solid;border-color: #ce493b;color: #fff;position: relative; overflow: hidden;text-decoration: none;border-radius: 0px;font-size: 20px;font-weight: bold;width: 100%;background-color: #ce493b;border-radius: 0.25rem !important;"
+                        href="mailto:odoo@devintellecs.com" target="_blank"><span class="fa fa-envelope mr-3"
+                            style="font-size: 30px;color: #fff;"></span><span
+                            class="align-middle px-2">odoo@devintellecs.com</span></a>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <img src="images/seprator.png" alt="seprator" width=170 />
+            </div>
+            <div class="row mt-4 mb-4">
+                <div class="col-12 text-center">
+                    <img src="images/logo.png" alt="Devintelle Consulting Services" height="100">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col text-center mt-3">
+                    <a class="mx-2" href="https://www.instagram.com/devintelle_odoo/" target="_blank"><img
+                            src="images/insta.png" alt="instagram" height="45"></a>
+                    <a class="mx-2" href="https://www.facebook.com/Odoodevintellecs/" target="_blank"><img
+                            src="images/fb.png" alt="facebook" height="45"></a>
+                    <a class="mx-2" href="https://www.youtube.com/channel/UCrmu-T0c8rhMXGuB44bH7gA" target="_blank"><img
+                            src="images/yt.png" alt="youtube" height="45"></a>
+                    <a class="mx-2" href="https://twitter.com/devintelle" target="_blank"><img src="images/twit.png"
+                            alt="twitter" height="45" style="border-radius: 5px;"></a>
+                    <a class="mx-2" href="https://www.linkedin.com/in/devintelle-odoo-service-provide-34785b144/"
+                        target="_blank"><img src="images/in.png" alt="linkedin" height="45"></a>
+                    <a class="mx-2" href="https://in.pinterest.com/devintellecs_odoo_expert/" target="_blank"><img
+                            src="images/pin.png" alt="pinterest" height="45"></a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_production_tree" model="ir.ui.view">
+        <field name="name">employee.production.tree</field>
+        <field name="model">employee.production</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Production" create="false" edit="false">
+                <field name="process_type"/>
+                <field name="from_date"/>
+                <field name="employee_id"/>
+                <field name="original_transaction_target" optional="hide"/>
+                <field name="transaction_target"/>
+                <field name="transaction_achieved"/>
+                <field name="original_invoice_target"  optional="hide"/>
+                <field name="invoice_target"/>
+                <field name="invoice_achieved"/>
+                <field name="original_auditor_target"  optional="hide"/>
+                <field name="auditor_target"/>
+                <field name="auditor_achieved"/>
+                <field name="total_work_hours"  widget="float_time" />
+                <field name="achievement_percentage" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+    <record id="search_employee_production_filter" model="ir.ui.view">
+       <field name="name">employee.production.search</field>
+       <field name="model">employee.production</field>
+        <field name="arch" type="xml">
+            <search string="Employee Production">
+              <field name="employee_id"/>
+
+
+                <group expand="0" string="Group by...">
+                    <filter name="employee_id" context="{'group_by' : 'employee_id'}" string="Employee"/>
+                    <filter name="from_date" context="{'group_by' : 'from_date'}" string="Date"/>
+                    <filter name="process_type" context="{'group_by' : 'process_type'}" string="Process Type"/>
+
+                </group>
+            </search>
+       </field>
+    </record>
+
+    <record id="action_employee_production" model="ir.actions.act_window">
+        <field name="name">Production Analysis Report</field>
+        <field name="res_model">employee.production</field>
+        <field name="view_mode">tree,pivot</field>
+    </record>
+
+    <menuitem id="menu_employee_production" name="Production Analysis Report"
+              parent="main_production_reporting_root_menu"
+              action="action_employee_production"
+              sequence="3"
+    />
+
+
+</odoo>
