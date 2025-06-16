@@ -123,6 +123,7 @@ class PaymentPostingETM(models.Model):
                                                    currency_field='company_currency_id', copy=False)
     amount = fields.Monetary(string="Amount", currency_field='company_currency_id', tracking=1)
     manually_create = fields.Boolean(string="Manually Created", default=False)
+    ehm_process_type_id = fields.Many2one('ehm.process.type', string="Util. Type")
 
     @api.depends('payment_posting_etm_invoice_ids.amount', 'amount')
     def _compute_invoice_pending_amount(self):
@@ -388,6 +389,15 @@ class PaymentPostingETM(models.Model):
                 "manually_create": True,
             })
             invoice.invoice_availability = True
+
+    def action_open_notes_upload_wizard(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Upload Notes File',
+            'res_model': 'notes.upload.wizard.etm',
+            'view_mode': 'form',
+            'target': 'new',
+        }
 
 
 

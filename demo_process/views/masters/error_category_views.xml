@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_demo_process_error_category_form" model="ir.ui.view">
+        <field name="name">demo.process.error.category.form</field>
+        <field name="model">demo.process.error.category</field>
+        <field name="arch" type="xml">
+            <form string="Demo Process Error Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_demo_process_error_category_tree" model="ir.ui.view">
+        <field name="name">demo.process.error.category.tree</field>
+        <field name="model">demo.process.error.category</field>
+        <field name="arch" type="xml">
+            <tree string="Demo Process Error Category">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_demo_process_error_category" model="ir.actions.act_window">
+        <field name="name">Error Category</field>
+        <field name="res_model">demo.process.error.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

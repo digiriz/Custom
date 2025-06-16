@@ -38,6 +38,8 @@
                             <field name="payer_identity" readonly="1"/>
                             <field name="payer_nm" readonly="1"/>
                             <field name="pro_date" readonly="1"/>
+                            <field name="deposit_date" readonly="1"/>
+
                         </group>
                     </group>
                     <group readonly="1">
@@ -53,11 +55,13 @@
                             <field name="pending_amount"/>
                             <field name="transaction"/>
                             <field name="status_id"/>
+                            <field name="recon_date"/>
+                            <field name="ehm_process_type_id"/>
                         </group>
                         <group>
                             <field name="posted_date"/>
                             <field name="remarks_id"/>
-                            <field name="recon_date"/>
+
                             <field name="clarification_sent_date"/>
                             <field name="clarification_received_date"/>
                             <field name="batch_closed_date"/>
@@ -91,6 +95,16 @@
                             <field name="rebuttals"/>
                         </group>
                     </group>
+                    <group string="ERROR FIXING BY USER" name="error_fixing_by_user">
+                            <group>
+                                <field name="fixing_date"/>
+                                <field name="updated_bar_batch"/>
+                                <field name="comments"/>
+                                <field name="error_status"/>
+                                <field name="reprocessing_id"/>
+                            </group>
+                        </group>
+
                     <notebook colspan="4">
                         <page string="Notes" name="payment_posting_invoice" autofocus="autofocus">
                             <field name="payment_posting_invoice_ids">
@@ -151,7 +165,7 @@
         <field name="name">payment.posting.tree</field>
         <field name="model">payment.posting</field>
         <field name="arch" type="xml">
-            <tree string="Payment Posting" create="false" edit="true" delete="false" multi_edit="1">
+            <tree string="Payment Posting" create="false" edit="true"  multi_edit="1">
                 <field name="priority_compute" column_invisible="1"/>
                     <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
                 <field name="exchange" optional="show"/>
@@ -175,6 +189,7 @@
                 <field name="transaction" optional="hide"/>
                 <field name="auditor_invoice_count" optional="hide" sum="Total Auditor Invoice Count"/>
                 <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="posted_date" optional="show"/>
                 <field name="remarks_id" optional="show"/>
                 <field name="total_work_hours" widget="float_time" optional="show"/>

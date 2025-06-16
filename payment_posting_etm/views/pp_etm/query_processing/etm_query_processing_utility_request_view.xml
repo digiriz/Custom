@@ -50,6 +50,7 @@
                 <field name="type" string="Category" optional="show"/>
                 <field name="deposit_date" string="Deposit Date" optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="bar_batch"  optional="show"/>
                 <field name="q_status_id" optional="show"/>
                 <field name="action_needed" optional="show"/>

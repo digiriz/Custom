@@ -3,7 +3,7 @@
     <data noupdate="0">
         <record id="ir_cron_generate_employee_production" model="ir.cron">
             <field name="name">Generate Employee Production</field>
-            <field name="model_id" ref="model_employee_target"/>
+            <field name="model_id" ref="employee_production.model_employee_target"/>
             <field name="state">code</field>
             <field name="code">#model.action_generate_employee_production(from_date='2024-11-01',to_date='2024-11-01', type=False, name=False)
 model.action_generate_employee_production()
@@ -21,7 +21,7 @@ model.action_generate_employee_production()
 
         <record id="ir_cron_generate_employee_timesheet" model="ir.cron">
             <field name="name">Push Production Work Hours</field>
-            <field name="model_id" ref="model_employee_target"/>
+            <field name="model_id" ref="employee_production.model_employee_target"/>
             <field name="state">code</field>
             <field name="code">#model.action_generate_employee_timesheet(from_date='2024-11-01',to_date='2024-11-01', type=False, name=False)
 model.action_generate_employee_timesheet()

@@ -115,6 +115,7 @@
                                        options="{'currency_field': 'company_currency_id'}" readonly="1"/>
                                 <field name="write_uid"/>
                                 <field name="write_date"/>
+                                <field name="ehm_process_type_id"/>
                             </group>
                         </group>
                         <group readonly="1">
@@ -132,7 +133,8 @@
                                        options="{'currency_field': 'company_currency_id'}"/>
                                 <field name="of_transactions"/>
                                 <field name="transaction"/>
-                                <field name="status_id"/>
+                            <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                             </group>
                             <group>
                                 <field name="posted_date"/>

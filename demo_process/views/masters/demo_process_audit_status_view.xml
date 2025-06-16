@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_demo_process_audit_status_form" model="ir.ui.view">
+        <field name="name">demo.process.audit.status.form</field>
+        <field name="model">demo.process.audit.status</field>
+        <field name="arch" type="xml">
+            <form string="Audit Status">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="in_process"/>
+                        <field name="remarks_required"/>
+                        <field name="completed_status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_demo_process_audit_status_tree" model="ir.ui.view">
+        <field name="name">demo.process.audit.status.tree</field>
+        <field name="model">demo.process.audit.status</field>
+        <field name="arch" type="xml">
+            <tree string="Audit Status">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_demo_process_audit_status" model="ir.actions.act_window">
+        <field name="name">AStatus</field>
+        <field name="res_model">demo.process.audit.status</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -38,7 +38,9 @@
                     <field name="pending_amount" sum="Total Pending Amount"
                            widget='monetary' decoration-bf="1" decoration-info="1" options="{'currency_field': 'company_currency_id'}" optional="hide"/>
                     <field name="transaction" sum="Total Transaction" optional="hide"/>
-                    <field name="status_id" optional="show"/>
+
+                <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                     <field name="duplicate_status_id" optional="hide"/>
                     <field name="posted_date" optional="show"/>
                     <field name="remarks_id" optional="hide"/>
@@ -99,6 +101,7 @@
                                 <field name="descriptions" />
                                 <field name="division_id" />
                                 <field name="deposit_date" />
+                                <field name="ehm_process_type_id" />
                             </group>
                         </group>
                         <group readonly="1">
@@ -118,6 +121,7 @@
                                 <field name="of_transactions"/>
                                 <field name="transaction"/>
                                 <field name="status_id"/>
+                                <field name="ehm_process_type_id"/>
                             </group>
                             <group>
                                 <field name="posted_date"/>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_employee_target_wizard" name="Employee Target - Configuration"
+                  parent="main_target_root_menu"
+                  action="employee_production.employee_target_wizard_action"
+                  sequence="1"
+        />
+    </data>
+</odoo>

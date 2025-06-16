@@ -99,21 +99,21 @@
 
         <record id="production_employee_target_user_rule_etm" model="ir.rule">
             <field name="name">ETM - Production Employee Target: Access Assigned Records</field>
-            <field name="model_id" ref="payment_posting.model_employee_production"/>
+            <field name="model_id" ref="employee_production.model_employee_production"/>
             <field name="groups" eval="[(4, ref('group_custom_user_etm'))]"/>
             <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
         </record>
 
         <record id="production_employee_target_supervisor_rule_etm" model="ir.rule">
             <field name="name">ETM - Production Employee Target: Access Team Records</field>
-            <field name="model_id" ref="payment_posting.model_employee_production"/>
+            <field name="model_id" ref="employee_production.model_employee_production"/>
             <field name="groups" eval="[(4, ref('group_custom_supervisor_etm'))]"/>
             <field name="domain_force">['|', ('employee_id.user_id', '=', user.id),('employee_id.parent_id.user_id', '=', user.id)]</field>
         </record>
 
         <record id="production_employee_target_admin_rule_etm" model="ir.rule">
             <field name="name">ETM - Production Employee Target: Access All Records</field>
-            <field name="model_id" ref="payment_posting.model_employee_production"/>
+            <field name="model_id" ref="employee_production.model_employee_production"/>
             <field name="groups" eval="[(4, ref('group_custom_admin_etm'))]"/>
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
@@ -122,28 +122,28 @@
 
         <record id="production_employee_target_user_rule_audit_etm" model="ir.rule">
             <field name="name">ETM - Production Employee Target: Access Assigned Records - Audit</field>
-            <field name="model_id" ref="payment_posting.model_employee_production"/>
+            <field name="model_id" ref="employee_production.model_employee_production"/>
             <field name="groups" eval="[(4, ref('group_custom_user_quality_etm'))]"/>
             <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
         </record>
 
         <record id="production_employee_target_supervisor_rule_audit_etm" model="ir.rule">
             <field name="name">ETM - Production Employee Target: Access Team Records - Audit</field>
-            <field name="model_id" ref="payment_posting.model_employee_production"/>
+            <field name="model_id" ref="employee_production.model_employee_production"/>
             <field name="groups" eval="[(4, ref('group_custom_supervisor_quality_etm'))]"/>
             <field name="domain_force">['|', ('employee_id.user_id', '=', user.id),('employee_id.parent_id.user_id', '=', user.id)]</field>
         </record>
 
         <record id="production_employee_target_admin_rule_audit_etm" model="ir.rule">
             <field name="name">ETM - Production Employee Target: Access All Records - Audit</field>
-            <field name="model_id" ref="payment_posting.model_employee_production"/>
+            <field name="model_id" ref="employee_production.model_employee_production"/>
             <field name="groups" eval="[(4, ref('group_custom_admin_quality_etm'))]"/>
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
 
         <record id="rule_escalation_supervisor_team_records_etm" model="ir.rule">
             <field name="name">Supervisor - ETM: Manage Team Records</field>
-            <field name="model_id" ref="payment_posting.model_employee_escalation"/>
+            <field name="model_id" ref="employee_escalation.model_employee_escalation"/>
             <field name="domain_force">[
               '|', ('employee_id.user_id', '=', user.id), ('employee_id.parent_id.user_id', '=', user.id)
             ]</field>
@@ -151,14 +151,14 @@
         </record>
         <record id="rule_escalation_employee_own_records_etm" model="ir.rule">
             <field name="name">Employee - ETM: See Own Records</field>
-            <field name="model_id" ref="payment_posting.model_employee_escalation"/>
+            <field name="model_id" ref="employee_escalation.model_employee_escalation"/>
             <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
             <field name="groups" eval="[(4, ref('group_custom_user_etm'))]"/>
         </record>
 
         <record id="rule_escalation_admin_team_records_etm" model="ir.rule">
             <field name="name">Admin - ETM: Manage All Records</field>
-            <field name="model_id" ref="payment_posting.model_employee_escalation"/>
+            <field name="model_id" ref="employee_escalation.model_employee_escalation"/>
             <field name="domain_force">[(1, '=', 1)]</field>
             <field name="groups" eval="[(4, ref('group_custom_admin_etm'))]"/>
         </record>

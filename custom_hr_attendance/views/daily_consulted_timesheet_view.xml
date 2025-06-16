@@ -8,6 +8,7 @@
                 <form string="Daily Consolidated Timesheet">
                     <sheet>
                         <group>
+                            <field name="compute_field_dummy" invisible="1"/>
                             <field name="date"/>
                             <field name="employee_id"/>
                             <field name="attendance_hours" readonly="1" force_save="1" widget="float_time"/>
@@ -51,6 +52,7 @@
             <field name="model">daily.consulted.timesheet</field>
             <field name="arch" type="xml">
                 <tree string="Daily Consolidated Timesheet" decoration-danger="attendance_hours != worked_hours">
+                    <field name="compute_field_dummy" column_invisible="1"/>
                     <field name="date"/>
                     <field name="employee_id"/>
                     <field name="attendance_hours" widget="float_time"/>

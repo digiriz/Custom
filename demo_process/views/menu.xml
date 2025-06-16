@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="main_demo_process_root_menu" name="Demo Process"
+                  sequence="-99"
+                  web_icon="demo_process,static/description/validation.png"
+        />
+
+        <menuitem id="main_allocation_demo_process_root_menu" name="Allocation"
+                  parent="main_demo_process_root_menu"
+                  sequence="1"
+        />
+
+        <menuitem id="main_production_demo_process_root_menu" name="Production"
+                  parent="main_demo_process_root_menu"
+                  sequence="2"
+        />
+
+        <menuitem id="main_audit_allocation_demo_process_root_menu" name="Audit Allocation"
+                  parent="main_demo_process_root_menu"
+                  sequence="3"
+        />
+
+        <menuitem id="main_quality_assurance_demo_process_root_menu" name="Quality Assurance"
+                  parent="main_demo_process_root_menu"
+                  sequence="4"
+        />
+
+        <!--<menuitem id="main_reprocessing_demo_process_root_menu" name="Re-processing"
+                  parent="main_demo_process_root_menu"
+                  sequence="5"
+        />-->
+
+        <menuitem id="main_reporting_demo_process_root_menu" name="Reporting"
+                  parent="main_demo_process_root_menu"
+                  sequence="6"
+        />
+        <menuitem id="batch_reporting_demo_process_root_menu" name="Batch Reporting"
+                  parent="main_reporting_demo_process_root_menu"
+                  sequence="6"
+        />
+        <menuitem id="record_reporting_demo_process_root_menu" name="Record Reporting"
+                  parent="main_reporting_demo_process_root_menu"
+                  sequence="7"
+        />
+
+
+        <menuitem id="main_allocation_demo_process_ams_menu" name="AMS"
+                  parent="main_allocation_demo_process_root_menu"
+                  action="action_demo_process_ams_allocation"
+                  sequence="1"/>
+
+        <menuitem id="main_production_demo_process_ams_menu" name="AMS"
+                  parent="main_production_demo_process_root_menu"
+                  action="action_demo_process_ams_production"
+                  sequence="1"/>
+
+        <menuitem id="main_audit_allocation_demo_process_ams_menu" name="AMS"
+                  parent="main_audit_allocation_demo_process_root_menu"
+                  action="action_demo_process_ams_audit_allocation"
+                  sequence="1"/>
+
+        <menuitem id="main_quality_assurance_demo_process_ams_menu" name="AMS"
+                  parent="main_quality_assurance_demo_process_root_menu"
+                  action="action_demo_process_ams_quality_assurance"
+                  sequence="1"/>
+
+        <!--  <menuitem id="main_reprocessing_demo_process_ams_menu" name="AMS"
+                    parent="main_reprocessing_demo_process_root_menu"
+                    action="action_demo_process_ams_reprocessing"
+                    sequence="1"/>
+  -->
+        <menuitem id="main_reporting_demo_process_ams_menu" name="AMS"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_ams_reporting"
+                  sequence="1"/>
+
+        <menuitem id="main_allocation_demo_process_cama_menu" name="CAMA"
+                  parent="main_allocation_demo_process_root_menu"
+                  action="action_demo_process_cama_allocation"
+                  sequence="2"/>
+
+        <menuitem id="main_production_demo_process_cama_menu" name="CAMA"
+                  parent="main_production_demo_process_root_menu"
+                  action="action_demo_process_cama_production"
+                  sequence="2"/>
+
+        <menuitem id="main_audit_allocation_demo_process_cama_menu" name="CAMA"
+                  parent="main_audit_allocation_demo_process_root_menu"
+                  action="action_demo_process_cama_audit_allocation"
+                  sequence="2"/>
+
+        <menuitem id="main_quality_assurance_demo_process_cama_menu" name="CAMA"
+                  parent="main_quality_assurance_demo_process_root_menu"
+                  action="action_demo_process_cama_quality_assurance"
+                  sequence="2"/>
+
+        <!-- <menuitem id="main_reprocessing_demo_process_cama_menu" name="CAMA"
+                   parent="main_reprocessing_demo_process_root_menu"
+                   action="action_demo_process_cama_reprocessing"
+                   sequence="2"/>-->
+
+        <menuitem id="main_reporting_demo_process_cama_menu" name="CAMA"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_cama_reporting"
+                  sequence="2"/>
+
+        <menuitem id="main_allocation_demo_process_pa_menu" name="PA"
+                  parent="main_allocation_demo_process_root_menu"
+                  action="action_demo_process_pa_allocation"
+                  sequence="3"/>
+
+        <menuitem id="main_production_demo_process_pa_menu" name="PA"
+                  parent="main_production_demo_process_root_menu"
+                  action="action_demo_process_pa_production"
+                  sequence="3"/>
+
+        <menuitem id="main_audit_allocation_demo_process_pa_menu" name="PA"
+                  parent="main_audit_allocation_demo_process_root_menu"
+                  action="action_demo_process_pa_audit_allocation"
+                  sequence="3"/>
+
+        <menuitem id="main_quality_assurance_demo_process_pa_menu" name="PA"
+                  parent="main_quality_assurance_demo_process_root_menu"
+                  action="action_demo_process_pa_quality_assurance"
+                  sequence="3"/>
+
+        <!--  <menuitem id="main_reprocessing_demo_process_pa_menu" name="PA"
+                    parent="main_reprocessing_demo_process_root_menu"
+                    action="action_demo_process_pa_reprocessing"
+                    sequence="3"/>-->
+
+        <menuitem id="main_reporting_demo_process_pa_menu" name="PA"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_pa_reporting"
+                  sequence="3"/>
+
+        <menuitem id="main_allocation_demo_process_wta_menu" name="WTA"
+                  parent="main_allocation_demo_process_root_menu"
+                  action="action_demo_process_wta_allocation"
+                  sequence="4"/>
+
+        <menuitem id="main_production_demo_process_wta_menu" name="WTA"
+                  parent="main_production_demo_process_root_menu"
+                  action="action_demo_process_wta_production"
+                  sequence="4"/>
+
+        <menuitem id="main_audit_allocation_demo_process_wta_menu" name="WTA"
+                  parent="main_audit_allocation_demo_process_root_menu"
+                  action="action_demo_process_wta_audit_allocation"
+                  sequence="4"/>
+
+        <menuitem id="main_quality_assurance_demo_process_wta_menu" name="WTA"
+                  parent="main_quality_assurance_demo_process_root_menu"
+                  action="action_demo_process_wta_quality_assurance"
+                  sequence="4"/>
+
+        <!-- <menuitem id="main_reprocessing_demo_process_wta_menu" name="WTA"
+                   parent="main_reprocessing_demo_process_root_menu"
+                   action="action_demo_process_wta_reprocessing"
+                   sequence="4"/>-->
+
+        <menuitem id="main_reporting_demo_process_wta_menu" name="WTA"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_wta_reporting"
+                  sequence="4"/>
+
+        <menuitem id="main_allocation_demo_process_cama_charges_menu" name="CAMA Charges"
+                  parent="main_allocation_demo_process_root_menu"
+                  action="action_demo_process_cama_charges_allocation"
+                  sequence="5"/>
+
+        <menuitem id="main_production_demo_process_cama_charges_menu" name="CAMA Charges"
+                  parent="main_production_demo_process_root_menu"
+                  action="action_demo_process_cama_charges_production"
+                  sequence="5"/>
+
+        <menuitem id="main_audit_allocation_demo_process_cama_charges_menu" name="CAMA Charges"
+                  parent="main_audit_allocation_demo_process_root_menu"
+                  action="action_demo_process_cama_charges_audit_allocation"
+                  sequence="5"/>
+
+        <menuitem id="main_quality_assurance_demo_process_cama_charges_menu" name="CAMA Charges"
+                  parent="main_quality_assurance_demo_process_root_menu"
+                  action="action_demo_process_cama_charges_quality_assurance"
+                  sequence="5"/>
+
+        <!-- <menuitem id="main_reprocessing_demo_process_cama_charges_menu" name="CAMA Charges"
+                   parent="main_reprocessing_demo_process_root_menu"
+                   action="action_demo_process_cama_charges_reprocessing"
+                   sequence="5"/>-->
+
+        <menuitem id="main_reporting_demo_process_cama_charges_menu" name="CAMA Charges"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_cama_charges_reporting"
+                  sequence="5"/>
+
+        <menuitem id="main_allocation_demo_process_pa_charges_menu" name="PA Charges"
+                  parent="main_allocation_demo_process_root_menu"
+                  action="action_demo_process_pa_chagres_allocation"
+                  sequence="6"/>
+
+        <menuitem id="main_production_demo_process_pa_charges_menu" name="PA Charges"
+                  parent="main_production_demo_process_root_menu"
+                  action="action_demo_process_pa_chagres_production"
+                  sequence="6"/>
+
+        <menuitem id="main_audit_allocation_demo_process_pa_charges_menu" name="PA Charges"
+                  parent="main_audit_allocation_demo_process_root_menu"
+                  action="action_demo_process_pa_chagres_audit_allocation"
+                  sequence="6"/>
+
+        <menuitem id="main_quality_assurance_demo_process_pa_charges_menu" name="PA Charges"
+                  parent="main_quality_assurance_demo_process_root_menu"
+                  action="action_demo_process_pa_chagres_quality_assurance"
+                  sequence="6"/>
+        <!--
+                <menuitem id="main_reprocessing_demo_process_pa_charges_menu" name="PA Charges"
+                          parent="main_reprocessing_demo_process_root_menu"
+                          action="action_demo_process_pa_chagres_reprocessing"
+                          sequence="6"/>-->
+
+        <menuitem id="main_reporting_demo_process_pa_charges_menu" name="PA Charges"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_pa_chagres_reporting"
+                  sequence="6"/>
+
+
+        <menuitem id="main_allocation_demo_process_avala_menu" name="Avala"
+                  parent="main_allocation_demo_process_root_menu"
+                  action="action_demo_process_avala_allocation"
+                  sequence="7"/>
+
+        <menuitem id="main_production_demo_process_avala_menu" name="Avala"
+                  parent="main_production_demo_process_root_menu"
+                  action="action_demo_process_avala_production"
+                  sequence="7"/>
+
+        <menuitem id="main_audit_allocation_demo_process_avala_menu" name="Avala"
+                  parent="main_audit_allocation_demo_process_root_menu"
+                  action="action_demo_process_avala_audit_allocation"
+                  sequence="7"/>
+
+        <menuitem id="main_quality_assurance_demo_process_avala_menu" name="Avala"
+                  parent="main_quality_assurance_demo_process_root_menu"
+                  action="action_demo_process_avala_quality_assurance"
+                  sequence="7"/>
+        <!--
+                <menuitem id="main_reprocessing_demo_process_pa_charges_menu" name="PA Charges"
+                          parent="main_reprocessing_demo_process_root_menu"
+                          action="action_demo_process_pa_chagres_reprocessing"
+                          sequence="6"/>-->
+
+        <menuitem id="main_reporting_demo_process_avala_menu" name="Avala"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_avala_reporting"
+                  sequence="7"/>
+
+        <menuitem id="main_reporting_demo_process_consolidated_menu" name="Consolidated"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_consolidated_reporting"
+                  sequence="7"/>
+
+        <menuitem id="main_demo_process_masters_root_menu" name="Technical"
+                  parent="main_demo_process_root_menu"
+                  groups="demo_process.group_custom_admin,demo_process.group_custom_admin_quality"
+                  sequence="10"/>
+
+
+        <menuitem id="menu_demo_station" name="Demo Station"
+                  parent="main_demo_process_masters_root_menu"
+                  action="action_demo_station"
+                  sequence="1"
+        />
+
+        <menuitem id="menu_demo_process_error_category" name="Error Category"
+                  parent="main_demo_process_masters_root_menu"
+                  action="action_demo_process_error_category"
+                  sequence="2"
+        />
+
+        <menuitem id="menu_facility_master" name="Facility"
+                  parent="main_demo_process_masters_root_menu"
+                  action="action_facility_master"
+                  sequence="3"
+        />
+
+
+        <menuitem id="main_reporting_demo_process_wta_menu" name="WTA"
+                  parent="batch_reporting_demo_process_root_menu"
+                  action="action_demo_process_wta_reporting"
+                  sequence="4"/>
+
+        <!--
+                 <menuitem id="menu_login_id" name="Login ID"
+                      parent="main_demo_process_masters_root_menu"
+                      action="action_login_id"
+                      sequence="3"
+            />-->
+
+        <!--         <menuitem id="menu_demo_process_reprocessing_status" name="Demo Process Reprocessing Status"
+                      parent="main_demo_process_masters_root_menu"
+                      action="action_demo_process_reprocessing_status"
+                      sequence="5"
+            />-->
+
+
+        <menuitem id="menu_demo_process_user_status" name="PStatus"
+                  parent="main_demo_process_masters_root_menu"
+                  action="action_demo_process_user_status"
+                  sequence="6"
+        />
+
+        <menuitem id="record_reporting_demo_process_ams_menu" name="AMS"
+                  parent="record_reporting_demo_process_root_menu"
+                  action="action_reporting_demo_process_ams_reporting"
+                  sequence="4"/>
+        <menuitem id="record_reporting_demo_process_cama_menu" name="CAMA"
+                  parent="record_reporting_demo_process_root_menu"
+                  action="action_reporting_demo_process_cama_reporting"
+                  sequence="5"/>
+        <menuitem id="record_reporting_demo_process_pa_menu" name="PA"
+                  parent="record_reporting_demo_process_root_menu"
+                  action="action_reporting_demo_process_pa_reporting"
+                  sequence="4"/>
+        <menuitem id="record_reporting_demo_process_wta_menu" name="WTA"
+                  parent="record_reporting_demo_process_root_menu"
+                  action="action_reporting_demo_process_wta_reporting"
+                  sequence="4"/>
+        <menuitem id="record_reporting_demo_process_cama_charges_menu" name="CAMA CHARGES"
+                  parent="record_reporting_demo_process_root_menu"
+                  action="action_reporting_demo_process_cama_charges_reporting"
+                  sequence="4"/>
+        <menuitem id="record_reporting_demo_process_pa_charges_menu" name="PA Charges"
+                  parent="record_reporting_demo_process_root_menu"
+                  action="action_reporting_demo_process_pa_charges_reporting"
+                  sequence="4"/>
+        <menuitem id="record_reporting_demo_process_avala_menu" name="Alava"
+                  parent="record_reporting_demo_process_root_menu"
+                  action="action_reporting_demo_process_avala_reporting"
+                  sequence="5"/>
+
+        <menuitem name="Demo Search Report"
+                  parent="main_reporting_demo_process_root_menu"
+                  id="demo_search_report_menu"
+                  action="demo_search_report_act"
+                  sequence="8"/>
+
+        <menuitem id="record_reporting_demo_process_consolidated_menu" name="Consolidated"
+                  parent="record_reporting_demo_process_root_menu"
+                  action="action_reporting_demo_process_consolidated_reporting"
+                  sequence="7"/>
+
+
+        <menuitem id="menu_demo_process_audit_status" name="AStatus"
+                  parent="main_demo_process_masters_root_menu"
+                  action="action_demo_process_audit_status"
+                  sequence="3"
+        />
+
+        <menuitem id="menu_demo_process_user_remarks" name="Remarks"
+                  parent="main_demo_process_masters_root_menu"
+                  action="action_demo_process_user_remarks"
+                  sequence="4"
+        />
+        <menuitem id="menu_escalations" name="Appreciation / Escalation" parent="main_reporting_demo_process_root_menu"
+                  action="action_employee_escalation" sequence="8"/>
+
+        <menuitem id="menu_employee_target_wizard" name="Employee Target - Configuration"
+                  parent="main_demo_process_target_root_menu"
+                  action="employee_production.demo_process_employee_target_wizard_action"
+                  sequence="1"
+        />
+
+
+    </data>
+</odoo>

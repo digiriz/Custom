@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_notes_upload_wizard" model="ir.ui.view">
+        <field name="name">notes.upload.wizard.etm.form</field>
+        <field name="model">notes.upload.wizard.etm</field>
+        <field name="arch" type="xml">
+            <form string="Upload Notes File">
+                <group>
+                    <field name="file_data" filename="file_name"/>
+                    <field name="file_name" invisible="1"/>
+                </group>
+                <footer>
+                    <button name="action_read_file" type="object" string="Import Notes" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_notes_upload_wizard" model="ir.actions.act_window">
+        <field name="name">Upload Notes File</field>
+        <field name="res_model">notes.upload.wizard.etm</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

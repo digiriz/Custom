@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_demo_process_wta_quality_assurance_tree" model="ir.ui.view">
+            <field name="name">wta.quality.assurance.tree</field>
+            <field name="model">demo.process</field>
+            <field name="priority">0</field>
+            <field name="arch" type="xml">
+                <tree string="WTA" multi_edit="1">
+                     <field name="received_date" optional="show"/>
+                    <field name="scan_date" optional="show"/>
+                    <field name="dos" optional="show"/>
+                    <field name="facility" optional="show"/>
+                     <field name="updated_facility" optional="show"/>
+                    <field name="demo_count" optional="show"/>
+                    <field name="assigned_employee_id" optional="show"/>
+                    <field name="assigned_date" optional="show"/>
+                    <field name="assigned_to" optional="show"/>
+                    <field name="final_count" optional="show"/>
+                    <field name="demo_process_pstatus" optional="show"/>
+                    <field name="posted_date" optional="show"/>
+                    <field name="comments" optional="hide"/>
+                    <field name="auditor_user_id" optional="show"/>
+                    <field name="audited_date" optional="show"/>
+                    <field name="auditor_status" optional="show"/>
+                    <field name="error_count" optional="hide"/>
+                    <field name="incorrect" optional="hide"/>
+                    <field name="missed" optional="hide"/>
+                    <field name="navigation" optional="hide"/>
+                    <field name="error_comments" optional="hide"/>
+                    <field name="error_category_id" optional="hide"/>
+                    <field name="fixing_date" optional="hide"/>
+                    <field name="updated_bar_batch" optional="hide"/>
+                    <field name="comments" optional="hide"/>
+                    <field name="reprocessing_id" optional="hide"/>
+                    <field name="client_audit_status" optional="hide"/>
+                    <field name="client_error_count" optional="hide"/>
+                    <field name="c_audit_date" optional="hide"/>
+                    <field name="client_remarks_id" optional="hide"/>
+                    <field name="rebuttals" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_demo_process_wta_quality_assurance_form" model="ir.ui.view">
+            <field name="name">wta.quality.assurance.form</field>
+            <field name="model">demo.process</field>
+            <field name="arch" type="xml">
+                <form string="WTA">
+                    <header>
+                        <field name="demo_process_pstatus" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="type" readonly="1"/>
+                                <field name="received_date" readonly="1"/>
+                                <field name="dos" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="facility" readonly="1"/>
+                                <field name="updated_facility"/>
+                                <field name="demo_count" readonly="1"/>
+                            </group>
+                        </group>
+                        <group  string="Supervisor User Entry">
+                            <group>
+                                <field name="assigned_employee_id"/>
+                                <field name="assigned_date"/>
+                                <field name="athena_id" />
+                            </group>
+                        </group>
+                        <group string="User Entry">
+                            <group>
+                                <field name="final_count"/>
+                                <field name="comments"/>
+                            </group>
+                            <group>
+                                <field name="demo_process_pstatus"/>
+                                <field name="posted_date"/>
+                            </group>
+                        </group>
+                        <group string="Auditor Status" name="auditor_status">
+                            <group>
+                                <field name="auditor_user_id"/>
+                                <field name="audited_date"/>
+                                <field name="auditor_status"/>
+                                <field name="error_count"/>
+                                <field name="incorrect"/>
+                            </group>
+                            <group>
+                                <field name="missed"/>
+                                <field name="navigation"/>
+                                <field name="error_comments"/>
+                                <field name="error_category_id"/>
+                            </group>
+                        </group>
+                        <group string="ERROR FIXING BY USER" name="error_fixing_by_user">
+                            <group>
+                                <field name="fixing_date"/>
+                                <field name="updated_bar_batch"/>
+                            </group>
+                            <group>
+                                <field name="comments"/>
+                                <field name="reprocessing_id"/>
+                            </group>
+                        </group>
+
+                        <group string="Client Status" name="client_status">
+                            <group>
+                                <field name="client_audit_status"/>
+                                <field name="client_error_count"/>
+                                <field name="c_audit_date"/>
+                            </group>
+                            <group>
+                                <field name="client_remarks_id"/>
+                                <field name="rebuttals"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="demo_process_note_lines">
+                                    <tree editable="bottom">
+                                        <field name="date_image" />
+                                        <field name="imaging_type" />
+                                        <field name="description" />
+                                        <field name="date_entered" />
+                                        <field name="page_count" />
+                                        <field name="entered_by" />
+                                        <field name="patient_no" />
+                                        <field name="notes" />
+                                        <field name="reporting_remark" />
+                                        <field name="error_mark" />
+                                        <field name="demo_station_id" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!--        <record id="payment_posting_etm_view_search" model="ir.ui.view">-->
+        <!--            <field name="name">ams.search</field>-->
+        <!--            <field name="model">demo.process</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search>-->
+        <!--                    <field name="invoice_no"/>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <record id="action_demo_process_wta_quality_assurance" model="ir.actions.act_window">
+            <field name="name">Quality Assurance - WTA</field>
+            <field name="res_model">demo.process</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('demo_process_pstatus','=','Completed'),('type', '=', 'wta')]</field>
+            <field name="context">{'default_type': 'wta'}</field>
+            <!--            <field name="search_view_id" ref="payment_posting_etm_search_view" />-->
+            <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'tree', 'view_id': ref('view_demo_process_wta_quality_assurance_tree')}),
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_demo_process_wta_quality_assurance_form')})]"/>
+
+        </record>
+
+
+    </data>
+</odoo>

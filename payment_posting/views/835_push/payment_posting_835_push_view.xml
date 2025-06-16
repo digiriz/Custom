@@ -38,6 +38,8 @@
                             <field name="payer_identity" readonly="1"/>
                             <field name="payer_nm" readonly="1"/>
                             <field name="pro_date" readonly="1"/>
+                            <field name="deposit_date" readonly="1"/>
+
                         </group>
                     </group>
                     <group readonly="1">
@@ -54,11 +56,14 @@
                             <field name="of_transactions"/>
                             <field name="transaction"/>
                             <field name="status_id"/>
+                             <field name="recon_date"/>
+                            <field name="ehm_process_type_id"/>
+
                         </group>
                         <group>
                             <field name="posted_date"/>
                             <field name="remarks_id"/>
-                            <field name="recon_date"/>
+
                             <field name="clarification_sent_date"/>
                             <field name="clarification_received_date"/>
                             <field name="batch_closed_date"/>
@@ -124,31 +129,43 @@
         <field name="name">payment.posting.tree</field>
         <field name="model">payment.posting</field>
         <field name="arch" type="xml">
-            <tree string="Payment Posting" create="false">
+            <tree string="Payment Posting" create="false" editable="bottom">
+                <button name="view_record" string="View" type="object" class="btn btn-primay" />
                 <field name="priority_compute" column_invisible="1"/>
-                    <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
-                <field name="exchange" optional="show"/>
-                <field name="check_eft_number" optional="show"/>
-                <field name="load_date" optional="show"/>
-                <field name="tax_id" optional="hide"/>
-                <field name="offset" optional="hide"/>
-                <field name="clm" optional="hide"/>
-                <field name="pay_m" optional="hide"/>
-                <field name="created" optional="show"/>
-                <field name="amount" optional="show"/>
-                <field name="division_id" optional="show"/>
-                <field name="tx" optional="show"/>
-                <field name="remit_adv" optional="hide"/>
-                <field name="payer_identity" optional="hide"/>
-                <field name="payer_nm" optional="hide"/>
-                <field name="recon_date" optional="hide"/>
-                <field name="pro_date" optional="show"/>
-                <field name="assigned_to" optional="show"/>
-                <field name="assigned_date" optional="show"/>
+                <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show" readonly="1"/>
+                <field name="exchange" optional="show" readonly="1"/>
+                <field name="check_eft_number" optional="show" readonly="1"/>
+                <field name="load_date" optional="show" readonly="1"/>
+                <field name="tax_id" optional="hide" readonly="1"/>
+                <field name="offset" optional="hide" readonly="1"/>
+                <field name="clm" optional="hide" readonly="1"/>
+                <field name="pay_m" optional="hide" readonly="1"/>
+                <field name="created" optional="show" readonly="1"/>
+                <field name="amount" optional="show" readonly="1"/>
+                <field name="division_id" optional="show" readonly="1"/>
+                <field name="tx" optional="show" readonly="1"/>
+                <field name="remit_adv" optional="hide" readonly="1"/>
+                <field name="payer_identity" optional="hide" readonly="1"/>
+                <field name="payer_nm" optional="hide" readonly="1"/>
+
+                <field name="pro_date" optional="show" readonly="1"/>
+                <field name="deposit_date" optional="show" readonly="1"/>
+                <field name="assigned_to" optional="show" readonly="1"/>
+                <field name="assigned_date" optional="show" readonly="1"/>
+                <field name="bar_batch" optional="show"/>
+                <field name="posted_amount" optional="show"/>
+                <field name="pending_amount"  optional="show"/>
+                <field name="of_transactions" optional="show"/>
                 <field name="transaction" optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="recon_date" optional="hide" />
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="posted_date" optional="show"/>
                 <field name="remarks_id" optional="show"/>
+                <field name="recon_date" optional="show"/>
+                <field name="clarification_sent_date" optional="show"/>
+                <field name="clarification_received_date" optional="show"/>
+                <field name="batch_closed_date" optional="show"/>
                 <field name="total_work_hours" widget="float_time" optional="show"/>
             </tree>
         </field>

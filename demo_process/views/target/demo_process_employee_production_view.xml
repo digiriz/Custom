@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_demo_process_employee_production_tree" model="ir.ui.view">
+        <field name="name">employee.production.tree</field>
+        <field name="model">employee.production</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Production" create="false" edit="false">
+                <field name="process_type"/>
+                <field name="from_date"/>
+                <field name="employee_id"/>
+                <field name="original_transaction_target" optional="hide"/>
+                <field name="transaction_target"/>
+                <field name="transaction_achieved"/>
+                <field name="original_invoice_target" optional="hide"/>
+                <field name="invoice_target" optional="hide"/>
+                <field name="invoice_achieved" optional="hide"/>
+                <field name="original_auditor_target" optional="hide"/>
+                <field name="auditor_target"/>
+                <field name="auditor_achieved"/>
+                <field name="total_work_hours" widget="float_time"/>
+                <field name="achievement_percentage" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_demo_process_employee_production" model="ir.actions.act_window">
+        <field name="name">Production Analysis Report</field>
+        <field name="res_model">employee.production</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="view_id" ref="view_demo_process_employee_production_tree"/>
+        <field name="domain">[('process_type', 'in', ['ams', 'cama', 'pa', 'wta', 'cama_charges', 'pa_charges'])]
+        </field>
+    </record>
+
+    <menuitem id="menu_demo_process_employee_production" name="Production Analysis Report"
+              parent="main_reporting_demo_process_root_menu"
+              action="action_demo_process_employee_production"
+              sequence="9"
+    />
+
+
+</odoo>

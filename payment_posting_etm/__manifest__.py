@@ -6,10 +6,11 @@
     'author': 'Digimeta',
     'website': 'https://www.digimeta.dev/',
     'category': 'Custom',
-    'depends': ['base', 'payment_posting'],
+    'depends': ['base', 'payment_posting','employee_production','employee_escalation'],
     'data': [
         'security/etm_security.xml',
         'security/ir.model.access.csv',
+        'wizard/notes_upload_wizard_etm_views.xml',
         'views/pp_etm/allocation/pp_adjustments_view.xml',
         'views/pp_etm/allocation/pp_chk_research_view.xml',
         'views/pp_etm/allocation/pp_corrections_view.xml',

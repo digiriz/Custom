@@ -33,6 +33,8 @@
                             <field name="payer_identity" readonly="1"/>
                             <field name="payer_nm" readonly="1"/>
                             <field name="pro_date" readonly="1"/>
+                            <field name="deposit_date" readonly="1"/>
+
                         </group>
                     </group>
                     <group readonly="1">
@@ -52,11 +54,13 @@
                             <field name="of_transactions"/>
                             <field name="transaction"/>
                             <field name="status_id"/>
+                            <field name="recon_date"/>
+                            <field name="ehm_process_type_id"/>
                         </group>
                         <group>
                             <field name="posted_date"/>
                             <field name="remarks_id"/>
-                            <field name="recon_date"/>
+
                             <field name="clarification_sent_date"/>
                             <field name="clarification_received_date"/>
                             <field name="batch_closed_date"/>
@@ -90,6 +94,15 @@
                         <group>
                             <field name="client_remarks_id"/>
                             <field name="rebuttals"/>
+                        </group>
+                    </group>
+                    <group string="ERROR FIXING BY USER" name="error_fixing_by_user">
+                        <group>
+                            <field name="fixing_date"/>
+                            <field name="updated_bar_batch"/>
+                            <field name="comments"/>
+                            <field name="error_status"/>
+                            <field name="reprocessing_id"/>
                         </group>
                     </group>
                     <notebook>
@@ -149,13 +162,16 @@
                 <field name="remit_adv" optional="hide"/>
                 <field name="payer_identity" optional="hide"/>
                 <field name="payer_nm" optional="hide"/>
-                <field name="recon_date" optional="hide"/>
+
                 <field name="auditor_invoice_count" optional="hide" sum="Total Auditor Invoice Count"/>
                 <field name="pro_date" optional="show"/>
+                <field name="deposit_date" optional="show"/>
                 <field name="assigned_to" optional="show"/>
                 <field name="assigned_date" optional="show"/>
                 <field name="transaction" optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="recon_date" optional="hide"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="posted_date" optional="show"/>
                 <field name="remarks_id" optional="show"/>
                 <field name="total_work_hours" widget="float_time" optional="show"/>

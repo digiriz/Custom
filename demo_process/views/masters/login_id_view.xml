@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_login_id_form" model="ir.ui.view">
+        <field name="name">login.id.form</field>
+        <field name="model">login.id</field>
+        <field name="arch" type="xml">
+            <form string="Login ID">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_login_id_tree" model="ir.ui.view">
+        <field name="name">login.id.tree</field>
+        <field name="model">login.id</field>
+        <field name="arch" type="xml">
+            <tree string="Login ID">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_login_id" model="ir.actions.act_window">
+        <field name="name">Login ID</field>
+        <field name="res_model">login.id</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

@@ -128,7 +128,8 @@
                                 <field name="deposit_date"/>
                                 <field name="denial_code"/>
                                 <field name="ar_comments" />
-                                <field name="status_id"/>
+                            <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                                 <field name="posted_date"/>
                             </group>
                             <group string="Query Block" name="query_block">
@@ -215,7 +216,7 @@
                                         <field name="etm_id"/>
                                         <field name="invoice_availability" column_invisible="1"/>
                                         <field name="amount"/>
-                                        <button name="action_view_related_etm" type="object" string="View" class="btn btn-primary"/>
+                                        <button name="action_view_related_etm" type="object" string="View" class="btn btn-primary" invisible="not invoice_availability"/>
                                     </tree>
                                 </field>
                                 <group>

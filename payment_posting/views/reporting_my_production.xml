@@ -50,6 +50,7 @@
                             <field name="pending_amount"/>
                             <field name="transaction"/>
                             <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                         </group>
                         <group>
                             <field name="posted_date"/>
@@ -162,6 +163,7 @@
                        widget='monetary' options="{'currency_field': 'company_currency_id'}"/>
                 <field name="transaction" sum="Total Transaction" optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="posted_date" optional="show"/>
                 <field name="remarks_id" optional="show"/>
                 <field name="clarification_sent_date" optional="hide"/>
