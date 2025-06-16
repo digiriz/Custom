@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_demo_process_reprocessing_status_form" model="ir.ui.view">
+        <field name="name">demo.process.reprocessing.status.form</field>
+        <field name="model">demo.process.reprocessing.status</field>
+        <field name="arch" type="xml">
+            <form string="Demo Process Reprocessing Status">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_demo_process_reprocessing_status_tree" model="ir.ui.view">
+        <field name="name">demo.process.reprocessing.status.tree</field>
+        <field name="model">demo.process.reprocessing.status</field>
+        <field name="arch" type="xml">
+            <tree string="Demo Process Reprocessing Status">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_demo_process_reprocessing_status" model="ir.actions.act_window">
+        <field name="name">Demo Process Reprocessing Status</field>
+        <field name="res_model">demo.process.reprocessing.status</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

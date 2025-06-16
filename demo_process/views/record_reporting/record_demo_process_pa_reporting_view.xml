@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_demo_process_pa_record_reporting_tree" model="ir.ui.view">
+            <field name="name">demo.process.record.reporting.pa.tree</field>
+            <field name="model">demo.process.notes</field>
+            <field name="priority">0</field>
+            <field name="arch" type="xml">
+                <tree string="PA">
+                    <field name="dos" optional="show" />
+                    <field name="facility" optional="show" />
+                    <field name="received_date" optional="show" />
+                    <field name="assigned_employee_id" optional="hide" />
+                    <field name="assigned_date" optional="hide" />
+                    <field name="assigned_to" optional="hide" />
+                    <field name="date_image" optional="show" />
+                    <field name="imaging_type"  optional="show"/>
+                    <field name="description" optional="show" />
+                    <field name="date_entered" optional="show" />
+                    <field name="page_count"  optional="show"/>
+                    <field name="entered_by" optional="show" />
+                    <field name="patient_no" optional="show" />
+                    <field name="notes"  optional="show"/>
+                    <field name="reporting_remark"  optional="show"/>
+                    <field name="error_mark"  optional="show"/>
+                    <field name="demo_station_id" optional="show" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_demo_process_pa_record_reporting_form" model="ir.ui.view">
+            <field name="name">demo.process.notes.record.reporting.pa.form</field>
+            <field name="model">demo.process.notes</field>
+            <field name="arch" type="xml">
+                <form string="PA">
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="demo_process_id" />
+                                <field name="dos" />
+                                <field name="facility" />
+                                <field name="received_date" />
+                                <field name="date_image" />
+                                <field name="imaging_type" />
+                                <field name="description" />
+                                <field name="date_entered" />
+                                <field name="page_count"  />
+                                <field name="entered_by" />
+                            </group>
+                            <group>
+                                <field name="received_date" />
+                                <field name="assigned_employee_id" />
+                                <field name="assigned_date" />
+                                <field name="patient_no" />
+                                <field name="notes" />
+                                <field name="reporting_remark" />
+                                <field name="error_mark" />
+                                <field name="demo_station_id" />
+                            </group>
+                        </group>
+
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <record id="action_reporting_demo_process_pa_reporting" model="ir.actions.act_window">
+            <field name="name">Record Reporting - PA</field>
+            <field name="res_model">demo.process.notes</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type', '=', 'pa')]</field>
+            <field name="context">{'create': False, 'edit': False, 'delete': False}</field>
+            <field name="search_view_id" ref="demo_process_notes_view_search" />
+            <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'tree', 'view_id': ref('view_demo_process_pa_record_reporting_tree')}),
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_demo_process_pa_record_reporting_form')})]"/>
+
+        </record>
+
+
+    </data>
+</odoo>

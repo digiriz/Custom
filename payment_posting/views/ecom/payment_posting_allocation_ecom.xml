@@ -82,6 +82,7 @@
                                 <field name="create_uid" />
                                 <field name="create_date" />
                                 <field name="type" readonly="1" force_save="1"/>
+                                <field name="ehm_process_type_id" readonly="1" force_save="1"/>
                             </group>
                             <group>
                                 <field name="bk_dep_dt"/>
@@ -95,6 +96,7 @@
                                 <field name="offset_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
                                 <field name="write_uid" />
                                 <field name="write_date" />
+                                <field name="ehm_process_type_id" />
                             </group>
                         </group>
                         <group>
@@ -113,7 +115,8 @@
                                 <field name="pending_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
                                 <field name="of_transactions"/>
                                 <field name="transaction"/>
-                                <field name="status_id"/>
+                            <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                             </group>
                             <group>
                                 <field name="posted_date"/>

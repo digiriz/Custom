@@ -49,6 +49,7 @@
                                    options="{'currency_field': 'company_currency_id'}" readonly="1"/>
                             <field name="write_uid"/>
                             <field name="write_date"/>
+                            <field name="ehm_process_type_id"/>
                         </group>
                     </group>
                     <group readonly="1">
@@ -67,6 +68,7 @@
                             <field name="of_transactions"/>
                             <field name="transaction"/>
                             <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                         </group>
                         <group>
                             <field name="posted_date"/>
@@ -176,6 +178,7 @@
                        optional="show" decoration-bf="1" decoration-info="1"/>
                 <field name="transaction" optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="posted_date" optional="show"/>
                 <field name="remarks_id" optional="hide"/>
                 <field name="clarification_sent_date" optional="hide"/>

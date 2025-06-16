@@ -12,4 +12,4 @@ class PaymentPostingInvoice(models.Model):
                                           related='company_id.currency_id', readonly=True,
                                           help='Utility field to express threshold currency')
     amount = fields.Monetary(string="Amount", currency_field='company_currency_id')
-    payment_posting_id = fields.Many2one('payment.posting', string="Payment Posting")
+    payment_posting_id = fields.Many2one('payment.posting', string="Payment Posting", ondelete='cascade')

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_escalation_user,access_employee_escalation_user,employee_escalation.model_employee_escalation,base.group_user,1,0,0,0
+access_escalation_type,access_escalation_type,model_escalation_type,base.group_user,1,1,1,1

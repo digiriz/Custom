@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record model='ir.ui.view' id='demo_search_report_form'>
+            <field name="name">demo.search.report.form</field>
+            <field name="model">demo.search.report</field>
+            <field name="arch" type="xml">
+                <form string="Batch Report">
+                    <p>
+                       Please enter facility
+                    </p>
+                    <group>
+                        <field name="type" />
+                        <field name="record_type" />
+                        <field name="record_fields" invisible="record_type != 'record'" />
+                        <field name="record_details"  invisible="record_type != 'record'"/>
+                        <field name="batch_fields"  invisible="record_type != 'batch'" />
+                        <field name="batch_details"  invisible="record_type != 'batch'" />
+                    </group>
+                    <footer>
+                        <button name="demo_search_report_action" type="object" default_focus="1"
+                                string="View" class="oe_highlight"
+                                />
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='demo_search_report_act'>
+            <field name="name">Demo Search Report</field>
+            <field name="res_model">demo.search.report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="demo_search_report_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+
+    </data>
+
+</odoo>

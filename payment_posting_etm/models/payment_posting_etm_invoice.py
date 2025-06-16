@@ -15,8 +15,8 @@ class PaymentPostingETMInvoice(models.Model):
     amount = fields.Monetary(string="Amount", currency_field='company_currency_id')
     payment_posting_etm_id = fields.Many2one('payment.posting.etm', string="Payment Posting ETM")
     inv_enc = fields.Char("Inv Enc", required=True)
-    mrn = fields.Char(string="MRN#", required=True)
-    dos = fields.Date(string="DOS", required=True)
+    mrn = fields.Char(string="MRN#", required=False)
+    dos = fields.Date(string="DOS", required=False)
     etm_id = fields.Char("Id", required=True)
     invoice_availability = fields.Boolean(string="Invoice Availability",
                                           compute="_compute_invoice_availability", store=True)

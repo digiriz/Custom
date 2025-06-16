@@ -22,12 +22,16 @@
                     <field name="remit_adv" optional="hide"/>
                     <field name="payer_identity" optional="hide"/>
                     <field name="payer_nm" optional="hide"/>
-                    <field name="recon_date" optional="hide"/>
+
                     <field name="pro_date" optional="show"/>
+                    <field name="deposit_date" optional="show"/>
                     <field name="assigned_to" optional="show"/>
                     <field name="assigned_date" optional="show"/>
                     <field name="transaction" optional="show"/>
-                    <field name="status_id" optional="show"/>
+
+                <field name="status_id" optional="show"/>
+                    <field name="recon_date" optional="hide"/>
+                <field name="ehm_process_type_id" optional="show"/>
                     <field name="posted_date" optional="show"/>
                     <field name="remarks_id" optional="show"/>
                     <field name="total_work_hours" widget="float_time" optional="show"/>
@@ -76,6 +80,8 @@
                                 <field name="payer_identity" readonly="1"/>
                                 <field name="payer_nm" readonly="1"/>
                                 <field name="pro_date" readonly="1"/>
+                                <field name="deposit_date" readonly="1"/>
+
                             </group>
                         </group>
                         <group readonly="1">
@@ -91,12 +97,12 @@
                                 <field name="pending_amount"/>
                                 <field name="of_transactions"/>
                                 <field name="transaction"/>
-                                <field name="status_id"/>
-                            </group>
+                            <field name="status_id"/>
+                                <field name="recon_date"/>
+                            <field name="ehm_process_type_id"/>                            </group>
                             <group>
                                 <field name="posted_date"/>
                                 <field name="remarks_id"/>
-                                <field name="recon_date"/>
                                 <field name="clarification_sent_date"/>
                                 <field name="clarification_received_date"/>
                                 <field name="batch_closed_date"/>

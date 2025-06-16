@@ -17,7 +17,7 @@
                     <field name="offset" optional="hide"/>
                     <field name="clm" optional="hide"/>
                     <field name="pay_m" optional="hide"/>
-                    <field name="recon_date" optional="hide"/>
+
                     <field name="created" optional="show"/>
                     <field name="amount" optional="show"/>
                     <field name="division_id" optional="show"/>
@@ -27,10 +27,13 @@
                     <field name="payer_identity" optional="hide"/>
                     <field name="payer_nm" optional="hide"/>
                     <field name="pro_date" optional="show"/>
+                    <field name="deposit_date" optional="show"/>
                     <field name="assigned_to" optional="show"/>
                     <field name="assigned_date" optional="show"/>
-                    <field name="status_id" optional="show"/>
-                </tree>
+
+                <field name="status_id" optional="show"/>
+                    <field name="recon_date" optional="hide"/>
+                <field name="ehm_process_type_id" optional="show"/>                </tree>
             </field>
         </record>
 
@@ -67,6 +70,8 @@
                                 <field name="payer_identity"/>
                                 <field name="payer_nm"/>
                                 <field name="pro_date"/>
+                                <field name="deposit_date"/>
+                                <field name="ehm_process_type_id"/>
                             </group>
                         </group>
                         <group readonly="1">
@@ -85,12 +90,14 @@
                                 <field name="pending_amount"/>
                                 <field name="of_transactions"/>
                                 <field name="transaction"/>
-                                <field name="status_id"/>
+                            <field name="status_id"/>
+                                <field name="recon_date"/>
+                            <field name="ehm_process_type_id"/>
                             </group>
                             <group>
                                 <field name="posted_date"/>
                                 <field name="remarks_id"/>
-                                <field name="recon_date"/>
+
                                 <field name="clarification_sent_date"/>
                                 <field name="clarification_received_date"/>
                                 <field name="batch_closed_date"/>

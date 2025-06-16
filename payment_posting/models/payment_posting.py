@@ -141,6 +141,8 @@ class PaymentPosting(models.Model):
         'hr.employee.category',
         string='Employee Tags', compute="_compute_employee", store=True
     )
+    ehm_process_type_id = fields.Many2one('ehm.process.type', string="Util. Type")
+    user_input_line = fields.One2many('payment.posting.user.input', 'payment_posting_id', string="User inputs")
 
     @api.depends('assigned_to')
     def _compute_employee(self):
@@ -451,12 +453,25 @@ class PaymentPosting(models.Model):
                 if not rec.auditor_status:
                     raise UserError('Please select error status')
 
+    def view_record(self):
+        return {
+            'name': self.edm_batch,
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'payment.posting',
+            'res_id':self.id,
+            'views': [(self.env.ref('payment_posting.view_payment_posting_production_sub_835_push_form_view').id or False, 'form')],
+        }
+
     @api.model
     def create(self, vals):
         if vals.get('auditor_status') == 'error' and not vals.get('reprocessing_id'):
             reprocessing_status = self.env['reprocessing.status'].search([], limit=1)
             if reprocessing_status:
                 vals['reprocessing_id'] = reprocessing_status.id
+
+        if vals.get('type') is None:
+            vals['type'] = self.env.context.get('default_type')
         if vals.get('type') is None:
             raise UserError("Please add process type")
         if (('edm_batch' in vals and vals['edm_batch']) or ('check_eft_number' in vals and vals['check_eft_number']))  and vals['type']:

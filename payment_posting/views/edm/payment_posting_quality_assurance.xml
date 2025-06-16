@@ -33,6 +33,7 @@
                             <field name="descriptions" readonly="1"/>
                             <field name="division_id" readonly="1"/>
                             <field name="deposit_date" readonly="1"/>
+
                         </group>
                     </group>
                     <group readonly="1">
@@ -49,6 +50,8 @@
                             <field name="of_transactions"/>
                             <field name="transaction"/>
                             <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
+                            <field name="ehm_process_type_id"/>
                         </group>
                         <group>
                             <field name="posted_date"/>
@@ -158,6 +161,7 @@
                        widget='monetary' options="{'currency_field': 'company_currency_id'}" optional="hide"/>
                 <field name="transaction" sum="Total Transaction" optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="duplicate_status_id" optional="hide"/>
                 <field name="reprocessing_id" optional="hide"/>
                 <field name="posted_date" optional="show"/>

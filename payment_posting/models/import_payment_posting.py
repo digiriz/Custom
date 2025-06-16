@@ -63,7 +63,7 @@ class ImportPaymentPosting(models.Model):
         res = super(ImportPaymentPosting, self).create(vals)
         if 'edm_batch' in vals:
             edm_batch = vals.get('edm_batch')
-            type = vals.get('type')
+            type = vals.get('type') or res.type
 
             if type is None:
                 raise UserError("Please add process type")

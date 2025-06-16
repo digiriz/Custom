@@ -40,6 +40,7 @@
                             <field name="not_posted" readonly="1"/>
                             <field name="not_posted_amount" readonly="1"/>
                             <field name="offset_amount" readonly="1"/>
+
                         </group>
                     </group>
                     <group readonly="1">
@@ -55,7 +56,7 @@
                             <field name="pending_amount"/>
                             <field name="transaction"/>
                             <field name="status_id"/>
-                        </group>
+                            <field name="ehm_process_type_id"/>                        </group>
                         <group>
                             <field name="posted_date"/>
                             <field name="remarks_id"/>
@@ -154,7 +155,7 @@
         <field name="name">payment.posting.tree</field>
         <field name="model">payment.posting</field>
         <field name="arch" type="xml">
-            <tree string="Payment Posting" edit="true" create="false" delete="false" default_order="priority desc" multi_edit="1"
+            <tree string="Payment Posting" edit="true" create="false" default_order="priority desc" multi_edit="1"
                   decoration-info="id_duplicate and id_duplicate == True">
                 <field name="company_currency_id" column_invisible="1"/>
                 <field name="id_duplicate" column_invisible="1"/>
@@ -186,6 +187,7 @@
                        optional="show" decoration-bf="1" decoration-info="1"/>
                 <field name="transaction" optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="posted_date" optional="show"/>
                 <field name="remarks_id" optional="show"/>
                 <field name="clarification_sent_date" optional="hide"/>

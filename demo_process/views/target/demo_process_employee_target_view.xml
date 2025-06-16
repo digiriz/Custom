@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_demo_process_employee_target" model="ir.actions.act_window">
+        <field name="name">Employee Target</field>
+        <field name="res_model">employee.target</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('process_type', 'in', ['ams', 'cama', 'pa', 'wta', 'cama_charges', 'pa_charges'])]</field>
+    </record>
+
+    <menuitem id="main_demo_process_target_root_menu" name="Target"
+              parent="main_demo_process_masters_root_menu"
+              sequence="7"
+    />
+
+    <menuitem id="menu_demo_process_employee_target" name="Employee Target"
+              parent="main_demo_process_target_root_menu"
+              action="action_demo_process_employee_target"
+              sequence="2"
+    />
+</odoo>

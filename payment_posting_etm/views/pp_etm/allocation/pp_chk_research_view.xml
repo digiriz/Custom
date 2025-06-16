@@ -134,7 +134,8 @@
                                 <field name="deposit_date"/>
                                 <field name="denial_code"/>
                                 <field name="ar_comments"/>
-                                <field name="status_id"/>
+                            <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                                 <field name="posted_date"/>
                             </group>
                             <group string="Query Block" name="query_block">

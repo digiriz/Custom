@@ -27,7 +27,9 @@
                     <field name="deposit_date" optional="hide"/>
                     <field name="company_currency_id" column_invisible="True"/>
                     <field name="no_of_transactions" sum="Total Transaction" optional="hide"/>
-                    <field name="status_id" optional="show"/>
+
+                <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                     <field name="auditor_user_id" optional="hide" widget="many2one_avatar_user"/>
                     <field name="audited_date" optional="hide"/>
                     <field name="reprocessing_id" optional="hide"/>
@@ -120,7 +122,8 @@
                                 <field name="deposit_date"/>
                                 <field name="denial_code"/>
                                 <field name="ar_comments" />
-                                <field name="status_id"/>
+                            <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                                 <field name="posted_date"/>
                             </group>
                             <group string="Query Block" name="query_block">

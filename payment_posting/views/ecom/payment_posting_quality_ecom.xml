@@ -37,7 +37,9 @@
                     <field name="pending_amount" widget="monetary" options="{'currency_field': 'company_currency_id'}"
                            optional="hide" decoration-bf="1" decoration-info="1"/>
                     <field name="transaction" optional="show"/>
-                    <field name="status_id" optional="show"/>
+
+                <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                     <field name="posted_date" optional="show"/>
                     <field name="remarks_id" optional="hide"/>
                     <field name="clarification_sent_date" optional="hide"/>
@@ -106,6 +108,7 @@
                                        options="{'currency_field': 'company_currency_id'}" readonly="1"/>
                                 <field name="write_uid"/>
                                 <field name="write_date"/>
+                                <field name="ehm_process_type_id"/>
                             </group>
                         </group>
                         <group>
@@ -123,7 +126,8 @@
                                        options="{'currency_field': 'company_currency_id'}"/>
                                 <field name="of_transactions"/>
                                 <field name="transaction"/>
-                                <field name="status_id"/>
+                            <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                             </group>
                             <group>
                                 <field name="posted_date"/>

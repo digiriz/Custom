@@ -48,7 +48,7 @@ Additionally, the app provides a leave summary for the current month, which can 
     'installable': True,
     'application': True,
     'auto_install': False,
-    
+    'license':'LGPL-3',
     #author and support Details
     'author': 'DevIntelle Consulting Service Pvt.Ltd',
     'website': 'http://www.devintellecs.com',    

@@ -56,6 +56,7 @@
                 <field name="action_needed"  optional="show"/>
                 <field name="action_comments"  optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="q_status_id" optional="show"/>
                 <field name="posted_date" optional="show"/>
                 <field name="issue_closed_date" optional="show"/>

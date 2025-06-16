@@ -45,6 +45,8 @@
         <field name="name">Employee Target</field>
         <field name="res_model">employee.target</field>
         <field name="view_mode">tree,form</field>
+        <field name="domain">[('process_type', 'in', ['edm_process', 'ecom_process', '835_push',
+        'pp_adjustments', 'pp_denials', 'pp_corrections', 'pp_transfers', 'pp_chk_research'])]</field>
     </record>
 
     <menuitem id="main_target_root_menu" name="Target"

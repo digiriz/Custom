@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_demo_process_wta_production_tree" model="ir.ui.view">
+            <field name="name">wta.production.tree</field>
+            <field name="model">demo.process</field>
+            <field name="priority">0</field>
+            <field name="arch" type="xml">
+                <tree string="WTA" multi_edit="1">
+                     <field name="received_date" optional="show"/>
+                    <field name="scan_date" optional="show"/>
+                    <field name="dos" optional="show"/>
+                    <field name="facility" optional="show"/>
+                     <field name="updated_facility" optional="show"/>
+                    <field name="demo_count" optional="show"/>
+                    <field name="assigned_employee_id" optional="show"/>
+                    <field name="assigned_date" optional="show"/>
+                    <field name="assigned_to" optional="show"/>
+                    <field name="final_count" optional="show"/>
+                    <field name="demo_process_pstatus" optional="show"/>
+                    <field name="posted_date" optional="show"/>
+                    <field name="comments" optional="hide"/>
+                    <field name="total_work_hours" widget="float_time" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_demo_process_wta_production_form" model="ir.ui.view">
+            <field name="name">wta.production.form</field>
+            <field name="model">demo.process</field>
+            <field name="arch" type="xml">
+                <form string="WTA">
+                    <header>
+                        <button name="action_open_notes_upload_wizard" string="Import Notes" type="object" class="btn btn-primary" />
+                        <field name="timer_start" invisible="1"/>
+                        <button name="action_start_time" type="object" string="Start" invisible="timer_start"
+                                class="btn btn-success text-uppercase"/>
+                        <button name="action_stop_timing" type="object" string="Stop" invisible="not timer_start"
+                                class="btn btn-danger text-uppercase"/>
+                        <field name="demo_process_pstatus" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="type" readonly="1"/>
+                                <field name="received_date" readonly="1"/>
+                                <field name="dos" readonly="1"/>
+                                <field name="total_work_hours" widget="float_time"/>
+                            </group>
+                            <group>
+                                <field name="facility" readonly="1"/>
+                                <field name="updated_facility"/>
+                                <field name="demo_count" readonly="1"/>
+                            </group>
+                        </group>
+                        <group  string="Supervisor User Entry">
+                            <group>
+                                <field name="assigned_employee_id"/>
+                                <field name="assigned_date"/>
+                                <field name="athena_id" />
+                            </group>
+                        </group>
+                        <group string="User Entry">
+                            <group>
+                                <field name="final_count"/>
+                                <field name="comments"/>
+                            </group>
+                            <group>
+                                <field name="demo_process_pstatus"/>
+                                <field name="posted_date"/>
+                            </group>
+                        </group>
+                        <group string="Auditor Status" name="auditor_status">
+                            <group>
+                                <field name="auditor_user_id"/>
+                                <field name="audited_date"/>
+                                <field name="auditor_status"/>
+                                <field name="error_count"/>
+                                <field name="incorrect"/>
+                            </group>
+                            <group>
+                                <field name="missed"/>
+                                <field name="navigation"/>
+                                <field name="error_comments"/>
+                                <field name="error_category_id"/>
+                            </group>
+                        </group>
+                        <group string="ERROR FIXING BY USER" name="error_fixing_by_user">
+                            <group>
+                                <field name="fixing_date"/>
+                                <field name="updated_bar_batch"/>
+                            </group>
+                            <group>
+                                <field name="comments"/>
+                                <field name="reprocessing_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <div class="o_statusbar_buttons d-flex align-items-center align-content-around flex-wrap gap-1">
+                                    <button name="select_all" type="object" string="Select All" class="btn btn-primary" />
+                                    <button name="deselect_all" type="object" string="Deselect All" class="btn btn-info" />
+                                    <button name="delete_records" type="object" string="Delete" class="btn btn-danger" />
+                                </div>
+                                <field name="demo_process_note_lines">
+                                    <tree editable="bottom">
+                                        <field name="select" />
+                                        <field name="date_image" />
+                                        <field name="imaging_type" />
+                                        <field name="description" />
+                                        <field name="date_entered" />
+                                        <field name="page_count" />
+                                        <field name="entered_by" />
+                                        <field name="patient_no" />
+                                        <field name="notes" />
+                                        <field name="reporting_remark" />
+                                        <field name="error_mark" />
+                                        <field name="demo_station_id" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Production Timing">
+                                <field name="production_timing_ids">
+                                    <tree create="0" editable="bottom">
+                                        <field name="production_start_time"/>
+                                        <field name="production_end_time"/>
+                                        <field name="duration" type="measure" widget="float_time"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!--        <record id="payment_posting_etm_view_search" model="ir.ui.view">-->
+        <!--            <field name="name">ams.search</field>-->
+        <!--            <field name="model">demo.process</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search>-->
+        <!--                    <field name="invoice_no"/>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <record id="action_demo_process_wta_production" model="ir.actions.act_window">
+            <field name="name">Production - WTA</field>
+            <field name="res_model">demo.process</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('demo_process_pstatus', '!=', 'Completed'),('type', '=', 'wta')]</field>
+            <field name="context">{'search_default_my_tasks': 1,'default_type': 'wta'}</field>
+            <!--            <field name="search_view_id" ref="payment_posting_etm_search_view" />-->
+            <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'tree', 'view_id': ref('view_demo_process_wta_production_tree')}),
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_demo_process_wta_production_form')})]"/>
+
+        </record>
+
+
+    </data>
+</odoo>

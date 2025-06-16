@@ -27,6 +27,7 @@ class DailyConsultantTimesheet(models.Model):
     analytic_line_ids = fields.Many2many(
         'account.analytic.line',
         string='Analytic Lines', compute='_compute_timesheet_line_ids',)
+    compute_field_dummy = fields.Boolean(compute="_compute_hours")
 
     @api.depends('date','employee_id')
     def _compute_timesheet_line_ids(self):
@@ -44,6 +45,7 @@ class DailyConsultantTimesheet(models.Model):
     @api.depends('date', 'employee_id','analytic_line_ids')
     def _compute_hours(self):
         for rec in self:
+            rec.compute_field_dummy = True
             """Update analytic_line_ids, attendance_hours, and worked_hours based on the selected date and employee."""
             if rec.date and rec.employee_id:
                 account_analytic = self.env['account.analytic.line'].search([

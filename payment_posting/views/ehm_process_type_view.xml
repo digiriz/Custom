@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ehm_process_type_form" model="ir.ui.view">
+        <field name="name">ehm.process.tpe.form</field>
+        <field name="model">ehm.process.type</field>
+        <field name="arch" type="xml">
+            <form string="Util. Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ehm_process_type_tree" model="ir.ui.view">
+        <field name="name">ehm.process.type.tree</field>
+        <field name="model">ehm.process.type</field>
+        <field name="arch" type="xml">
+            <tree string="Util. Type">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_ehm_process_type" model="ir.actions.act_window">
+        <field name="name">Util. Type</field>
+        <field name="res_model">ehm.process.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_ehm_process_type" name="Util. Type"
+              parent="masters_payment_posting_menu"
+              action="action_ehm_process_type"
+              groups="group_custom_admin"
+              sequence="20"
+    />
+</odoo>

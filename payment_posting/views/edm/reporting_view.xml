@@ -37,6 +37,7 @@
                             <field name="descriptions" readonly="1"/>
                             <field name="division_id" readonly="1"/>
                             <field name="deposit_date" readonly="1"/>
+
                         </group>
                     </group>
                     <group readonly="1">
@@ -52,6 +53,7 @@
                             <field name="pending_amount"/>
                             <field name="transaction"/>
                             <field name="status_id"/>
+                            <field name="ehm_process_type_id"/>
                             <field name="reprocessing_id"/>
                         </group>
                         <group>
@@ -126,6 +128,18 @@
                                 </div>
                             </div>-->
                         </page>
+                        <page name="user_input" string="User Inputs">
+                            <field name="user_input_line">
+                                <tree create="1" editable="bottom">
+                                    <field name="check_number" />
+                                    <field name="pg_number" />
+                                    <field name="company_currency_id" column_invisible="1" />
+                                    <field name="check_amount"  widget="monetary"
+                                       options="{'currency_field': 'company_currency_id'}" />
+                                    <field name="payer_name" />
+                                </tree>
+                            </field>
+                        </page>
                         <page string="Production Timing" name="production_timing" autofocus="autofocus">
                             <field name="production_timing_ids">
                                 <tree create="0" editable="bottom">
@@ -152,7 +166,7 @@
         <field name="name">payment.posting.tree</field>
         <field name="model">payment.posting</field>
         <field name="arch" type="xml">
-            <tree string="Payment Posting" create="false" edit="true" delete="false" multi_edit="1">
+            <tree string="Payment Posting" create="false" edit="true"  multi_edit="1">
                 <field name="priority_compute" column_invisible="1"/>
                     <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top" optional="show"/>
                 <field name="edm_batch" optional="show"/>
@@ -190,6 +204,7 @@
                        widget='monetary' options="{'currency_field': 'company_currency_id'}"/>
                 <field name="transaction" sum="Total Transaction" optional="show"/>
                 <field name="status_id" optional="show"/>
+                <field name="ehm_process_type_id" optional="show"/>
                 <field name="posted_date" optional="show"/>
                 <field name="remarks_id" optional="show"/>
                 <field name="clarification_sent_date" optional="hide"/>
